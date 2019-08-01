@@ -1,5 +1,9 @@
 <script>
+	import { stores } from '@sapper/app';
+	const { preloading, page, session } = stores();
+
 	export let segment;
+	let { films } = $session.navigation
 </script>
 
 <style>
@@ -20,11 +24,14 @@
 
 <nav>
 	<ul>
-		<li><a class='{segment === undefined ? "selected" : ""}' href='.'>home</a></li>
-		<li><a class='{segment === "about" ? "selected" : ""}' href='about'>about</a></li>
-
-		<!-- for the blog link, we're using rel=prefetch so that Sapper prefetches
-		     the blog data when we hover over the link or tap it on a touchscreen -->
-		<li><a rel=prefetch class='{segment === "blog" ? "selected" : ""}' href='blog'>blog</a></li>
+		<li><a href='/'>Latest</a></li>
+		<li>
+			<a href='/films'>Films</a>
+			<ul>
+				{#each films.items as film}
+				<li><a rel=prefetch href='/films/{film.fields.identifier}'>{film.fields.title}</a></li>
+				{/each}
+			</ul>
+		</li>
 	</ul>
 </nav>

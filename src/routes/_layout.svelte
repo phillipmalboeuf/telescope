@@ -88,4 +88,4 @@
 	<slot></slot>
 </main>
 
-<Menu {segment}/>
+<Menu {segment} />
