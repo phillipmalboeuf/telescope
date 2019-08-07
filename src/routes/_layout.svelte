@@ -19,7 +19,7 @@
   }
 
 	:global(body) {
-		font-family: sans-serif;
+		font-family: system-ui, -apple-system;
     font-size: 20px;
     line-height: 1.333;
 
@@ -36,7 +36,7 @@
 
 	:global(h1, h2, h3, h4, h5, h6, p) {
     margin: 0 0 var(--rythm);
-    white-space: pre-line;
+    /* white-space: pre-line; */
   }
 
 	:global(h1, h2, h3, h4, h5, h6) {
