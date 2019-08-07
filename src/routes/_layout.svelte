@@ -40,8 +40,9 @@
   }
 
 	:global(h1, h2, h3, h4, h5, h6) {
+    /* font-family: 'Telescopique-Variable', system-ui, -apple-system; */
     font-size: calc(var(--rythm)*2);
-    font-weight: bold;
+    font-weight: normal;
 		text-transform: uppercase;
     line-height: 1;
   }
