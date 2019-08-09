@@ -1,5 +1,5 @@
 <script>
-	import { fade, fly, bounce } from 'svelte/transition'
+	import { fade, fly } from 'svelte/transition'
 	import { elasticOut, bounceOut, backOut } from 'svelte/easing'
 
 	import { stores } from '@sapper/app'
