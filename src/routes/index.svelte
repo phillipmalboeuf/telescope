@@ -6,7 +6,6 @@
 <style>
 	h1 {
 		font-family: 'Telescopique Splash', 'Telescopique', system-ui, -apple-system;
-		font-size: 5vw;
 		margin-bottom: 0;
 	}
 </style>

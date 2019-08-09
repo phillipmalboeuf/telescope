@@ -22,6 +22,8 @@
 		font-family: system-ui, -apple-system;
     font-size: 20px;
     line-height: 1.333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
 		color: black;
 		background: white;
@@ -41,15 +43,38 @@
 
 	:global(h1, h2, h3, h4, h5, h6) {
     font-family: 'Telescopique', system-ui, -apple-system;
-    font-size: calc(var(--rythm)*2);
     font-weight: normal;
+    font-variation-settings: "wdth" 200;
 		text-transform: uppercase;
-    line-height: 1;
+    line-height: 1.2;
   }
 
 	:global(h4, h5, h6) {
-    font-size: var(--rythm);
     margin-bottom: calc(var(--rythm)/2);
+  }
+
+  :global(h1) {
+    font-size: 7vw;
+  }
+
+  :global(h2) {
+    font-size: 30pt;
+  }
+
+  :global(h4) {
+    font-size: 15pt;
+  }
+
+  :global(h5) {
+    font-size: 12pt;
+  }
+
+  :global(h6) {
+    font-size: 10pt;
+  }
+
+  :global(p) {
+    font-size: 19pt;
   }
 
 	:global(p:last-child) {

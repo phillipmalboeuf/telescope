@@ -67,6 +67,10 @@
 				transform: rotate(180deg);
 				white-space: nowrap;
 			}
+
+			h5 {
+				font-variation-settings: "wdth" 300;
+			}
 </style>
 
 <button on:click={toggle}>
@@ -77,10 +81,10 @@
 <nav transition:fade>
 	<ul>
 		<li in:fly={{ y: ys[0], opacity: 1 }}>
-			<a href='/' on:click={toggle}><h4>Latest</h4></a>
+			<a href='/' on:click={toggle}><h5>Latest</h5></a>
 		</li>
 		<li in:fly={{ y: ys[1], opacity: 1 }}>
-			<a href='/films' on:click={toggle}><h4>Films</h4></a>
+			<a href='/films' on:click={toggle}><h5>Films</h5></a>
 			<!-- <ul>
 				{#each films.items as film}
 				<li><a rel=prefetch href='/films/{film.fields.identifier}'>{film.fields.title}</a></li>
@@ -88,19 +92,19 @@
 			</ul> -->
 		</li>
 		<li in:fly={{ y: ys[2], opacity: 1 }}>
-			<a href='/news' on:click={toggle}><h4>News</h4></a>
+			<a href='/news' on:click={toggle}><h5>News</h5></a>
 		</li>
 		<li in:fly={{ y: ys[3], opacity: 1 }}>
-			<a href='/about' on:click={toggle}><h4>About</h4></a>
+			<a href='/about' on:click={toggle}><h5>About</h5></a>
 		</li>
 		<li in:fly={{ y: ys[4], opacity: 1 }}>
-			<a href='/shop' on:click={toggle}><h4>Shop</h4></a>
+			<a href='/shop' on:click={toggle}><h5>Shop</h5></a>
 		</li>
 		<li in:fly={{ y: ys[5], opacity: 1 }}>
-			<a href='/contact' on:click={toggle}><h4>Contact</h4></a>
+			<a href='/contact' on:click={toggle}><h5>Contact</h5></a>
 		</li>
 		<li in:fly={{ y: ys[6], opacity: 1 }}>
-			<a href='/fr-CA' on:click={toggle}><h4>Français</h4></a>
+			<a href='/fr-CA' on:click={toggle}><h5>Français</h5></a>
 		</li>
 	</ul>
 </nav>
