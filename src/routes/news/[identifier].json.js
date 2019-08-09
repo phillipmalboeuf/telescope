@@ -3,10 +3,10 @@ import { entry } from '../../clients/contentful';
 
 export async function get(req, res, next) {
 	
-	const { films } = req.navigation
+	const { articles } = req.navigation
 	const lookup = new Map()
-	films.items.forEach(film => {
-		lookup.set(film.fields.identifier, film)
+	articles.items.forEach(article => {
+		lookup.set(article.fields.identifier, article)
 	})
 
 	const { identifier } = req.params

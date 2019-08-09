@@ -6,17 +6,19 @@ const client = createClient({
 })
 export default client
 
-const select = ['sys.id', 'fields.title', 'fields.identifier', 'fields.publishedDate'].join(',')
+const select = ['sys.id', 'fields.title', 'fields.identifier', 'fields.tags', 'fields.poster', 'fields.publishedDate'].join(',')
 const order = ['fields.publishedDate', 'sys.createdAt'].join(',')
 export const navigation = locale => Promise.all([
   client.getEntries({ content_type: 'article', locale, select, order }),
   client.getEntries({ content_type: 'film', locale, select, order }),
-  client.getEntries({ content_type: 'product', locale, select, order })
-]).then(async ([articles, films, products])=> {
+  client.getEntries({ content_type: 'product', locale, select, order }),
+  client.getEntries({ content_type: 'tag', locale, select: ['sys.id', 'fields.title', 'fields.identifier'].join(',') })
+]).then(async ([articles, films, products, tags])=> {
   return {
     articles,
     films,
-    products
+    products,
+    tags
   }
 })
 

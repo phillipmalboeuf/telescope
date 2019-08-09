@@ -12,7 +12,7 @@ const content = async (req, res, next) => {
 	next();
 }
 
-polka() // You can also use Express
+polka()
 	.use(
 		compression({ threshold: 0 }),
 		sirv('static', { dev }),

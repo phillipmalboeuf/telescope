@@ -1,10 +1,10 @@
 
 export function get(req, res) {
-	const { films } = req.navigation
+	const { articles } = req.navigation
 
 	res.writeHead(200, {
 		'Content-Type': 'application/json'
 	});
 
-	res.end(JSON.stringify(films));
+	res.end(JSON.stringify(articles));
 }

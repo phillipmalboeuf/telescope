@@ -8,8 +8,6 @@
 		font-family: 'Telescopique Splash', 'Telescopique', system-ui, -apple-system;
 		font-size: 5vw;
 		margin-bottom: 0;
-
-		
 	}
 </style>
 
@@ -17,6 +15,6 @@
 	<title>Telescope</title>
 </svelte:head>
 
-<h1>
+<!-- <h1>
 	<Hover texts={['TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE']} />
-</h1>
+</h1> -->
