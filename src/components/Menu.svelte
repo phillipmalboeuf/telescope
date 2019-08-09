@@ -26,8 +26,7 @@
 		top: 0;
 		right: 0;
 
-		transform: rotate(90deg);
-		font-size: 20pt;
+		font-size: 12pt;
 
 		display: inline-block;
 		border: none;
@@ -74,7 +73,7 @@
 </style>
 
 <button on:click={toggle}>
-	☰
+	{#if visible}⎚{:else}☰{/if}
 </button>
 
 {#if visible}

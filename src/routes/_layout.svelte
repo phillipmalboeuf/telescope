@@ -108,6 +108,11 @@
   :global(a:active, button:active) {
     top: 1px;
   }
+
+  :global(button) {
+    font-family: 'Telescopique', system-ui, -apple-system;
+    font-variation-settings: "wdth" 200;
+  }
 </style>
 
 <main>
