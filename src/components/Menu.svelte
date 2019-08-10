@@ -6,16 +6,60 @@
 	const { preloading, page, session } = stores()
 
 	export let segment
-	let { films } = $session.navigation
+	let { films, articles, products } = $session.navigation
+
+	const columns = [
+		{
+			title: 'Latest',
+			path: ''
+		},
+		{
+			title: 'Films',
+			path: 'films',
+			items: films.items
+		},
+		{
+			title: 'News',
+			path: 'news',
+			items: [...articles.items, ...articles.items, ...articles.items, ...articles.items, ...articles.items]
+		},
+		{
+			title: 'About',
+			path: 'about'
+		},
+		{
+			title: 'Shop',
+			path: 'shop',
+			items: products.items
+		},
+		{
+			title: 'Contact',
+			path: 'contact'
+		},
+		{
+			title: 'English',
+			path: 'en-US'
+		}
+	]
 
 	let visible = false
 	let ys = new Array(7).fill(0)
+
+	let selected = undefined
 
 	function toggle() {
 		if (!visible) {
 			ys = ys.map(y => (Math.random() * 200) + 100)
 		}
 		visible = !visible
+	}
+
+	function enter(index) {
+		selected = index
+	}
+
+	function leave() {
+		selected = undefined
 	}
 </script>
 
@@ -45,31 +89,58 @@
 		background: white;
 	}
 
-	nav > ul {
+	ul {
 		list-style: none;
 		padding: var(--gutter);
 		margin: 0;
 
 		display: flex;
+		justify-content: center;
 		height: 100%;
 	}
 
-		nav > ul > li {
+	ul > li > a > h4 {
+		font-variation-settings: "wdth" 300;
+		transition: font-variation-settings 333ms, padding 333ms 10ms;
+		padding: calc(var(--gutter) - 6pt);
+	}
+
+	ul.selected > li > a > h4 {
+		padding-left: calc(var(--gutter) - 2vw - 6pt);
+		padding-right: calc(var(--gutter) - 2vw - 6pt);
+	}
+
+		ul > li {
 			color: white;
 			background: black;
-			padding: calc(var(--gutter) - 0.5vh);
 			margin-right: calc(var(--gutter) / 2);
+
+			position: relative;
+			overflow-y: auto;
+		}
+
+		ul > li.selected > a > h4 {
+			padding-right: calc(var(--gutter) * 6);
 		}
 			
-			nav > ul > li > a {
+			ul > li > a {
 				writing-mode: vertical-rl;
 				transform: rotate(180deg);
 				white-space: nowrap;
 			}
 
-			h5 {
-				font-variation-settings: "wdth" 300;
-			}
+	ol {
+		position: absolute;
+		top: var(--gutter);
+		right: calc(var(--gutter) * 2);
+		width: calc(var(--gutter) * 4);
+
+		list-style: none;
+	}
+
+		ol > li {
+			margin-bottom: calc(var(--rythm) * 2);
+		}
 </style>
 
 <button on:click={toggle}>
@@ -78,33 +149,27 @@
 
 {#if visible}
 <nav transition:fade>
-	<ul>
-		<li in:fly={{ y: ys[0], opacity: 1 }}>
-			<a href='/' on:click={toggle}><h5>Latest</h5></a>
-		</li>
-		<li in:fly={{ y: ys[1], opacity: 1 }}>
-			<a href='/films' on:click={toggle}><h5>Films</h5></a>
-			<!-- <ul>
-				{#each films.items as film}
-				<li><a rel=prefetch href='/films/{film.fields.identifier}'>{film.fields.title}</a></li>
+	<ul on:mouseleave={leave} class:selected={selected !== undefined}>
+		{#each columns as column, index}
+		<li class:selected={selected === index} on:mouseenter={()=> enter(index)} in:fly={{ y: ys[0], opacity: 1 }}>
+			<a href='/{column.path}' on:click={toggle}><h4>{column.title}</h4></a>
+
+			{#if selected === index}
+			<ol out:fade>
+				{#if column.items}
+				{#each column.items as item}
+				<li>
+					<a rel=prefetch href='/{column.path}/{item.fields.identifier}' on:click={toggle}>
+						<h4>{item.fields.title}</h4>
+						<h6>{item.fields.tags}</h6>
+					</a>
+				</li>
 				{/each}
-			</ul> -->
+				{/if}
+			</ol>
+			{/if}
 		</li>
-		<li in:fly={{ y: ys[2], opacity: 1 }}>
-			<a href='/news' on:click={toggle}><h5>News</h5></a>
-		</li>
-		<li in:fly={{ y: ys[3], opacity: 1 }}>
-			<a href='/about' on:click={toggle}><h5>About</h5></a>
-		</li>
-		<li in:fly={{ y: ys[4], opacity: 1 }}>
-			<a href='/shop' on:click={toggle}><h5>Shop</h5></a>
-		</li>
-		<li in:fly={{ y: ys[5], opacity: 1 }}>
-			<a href='/contact' on:click={toggle}><h5>Contact</h5></a>
-		</li>
-		<li in:fly={{ y: ys[6], opacity: 1 }}>
-			<a href='/fr-CA' on:click={toggle}><h5>Français</h5></a>
-		</li>
+		{/each}
 	</ul>
 </nav>
 {/if}

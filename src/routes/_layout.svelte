@@ -50,6 +50,7 @@
   }
 
 	:global(h4, h5, h6) {
+    font-variation-settings: "wdth" 250;
     margin-bottom: calc(var(--rythm)/2);
   }
 
