@@ -9,4 +9,4 @@
   }
 </style>
 
-<video src={srcs ? srcs[0].fields.file.url : undefined} poster={poster.fields.file.url} loop muted autoplay />
+<video src={srcs ? srcs[0].fields.file.url : undefined} poster={poster.fields.file.url} loop muted controls />

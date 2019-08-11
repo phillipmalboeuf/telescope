@@ -41,7 +41,7 @@
     /* white-space: pre-line; */
   }
 
-	:global(h1, h2, h3, h4, h5, h6) {
+	:global(h1, h2, h3, h4, h5, h6, blockquote) {
     font-family: 'Telescopique', system-ui, -apple-system;
     font-weight: normal;
     font-variation-settings: "wdth" 200;
@@ -54,8 +54,8 @@
     margin-bottom: calc(var(--rythm)/2);
   }
 
-  :global(h1) {
-    font-size: 7vw;
+  :global(h1, blockquote p) {
+    font-size: 8vw;
   }
 
   :global(h2) {
@@ -86,6 +86,10 @@
 		ul + h1, ul + h2, ul + h3,
 		ol + h1, ol + h2, ol + h3) {
     margin-top: calc(var(--rythm)*2);
+  }
+
+  :global(blockquote) {
+    margin: var(--gutter) 0;
   }
 
 	:global(small) {

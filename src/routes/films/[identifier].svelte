@@ -17,6 +17,7 @@
 	import Picture from '../../components/Picture.svelte'
   import Video from '../../components/Video.svelte'
   import Tag from '../../components/Tag.svelte'
+	import Document from '../../components/document/index.svelte'
 
 	export let film
 </script>
@@ -28,8 +29,9 @@
 	<title>{film.fields.title}</title>
 </svelte:head>
 
+
+<Video poster={film.fields.poster} srcs={film.fields.video} />
 <h1>{film.fields.title}</h1>
 
-<div class='content'>
-	<Video poster={film.fields.poster} srcs={film.fields.video} />
-</div>
+<Document body={film.fields.description} />
+
