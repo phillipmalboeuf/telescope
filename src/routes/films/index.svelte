@@ -1,13 +1,16 @@
 <script context="module">
-	export function preload({ params, query }) {
-		return this.fetch(`films.json`).then(r => r.json()).then(films => {
-			return { films };
-		});
+	import json from 'json-complete'
+
+	export async function preload({ params, query }) {
+		const res = await this.fetch(`films.json`)
+		const films = json.decode(await res.text())
+
+		return { films }
 	}
 </script>
 
 <script>
-	export let films;
+	export let films
 </script>
 
 <style>
@@ -20,7 +23,7 @@
 <h1>Films</h1>
 
 <ul>
-	{#each films.items as film}
+	{#each films as film}
 		<li><a rel='prefetch' href='/films/{film.fields.identifier}'>{film.fields.title}</a></li>
 	{/each}
 </ul>

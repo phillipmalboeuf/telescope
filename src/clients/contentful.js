@@ -15,10 +15,10 @@ export const navigation = locale => Promise.all([
   client.getEntries({ content_type: 'tag', locale, select: ['sys.id', 'fields.title', 'fields.identifier'].join(',') })
 ]).then(async ([articles, films, products, tags])=> {
   return {
-    articles,
-    films,
-    products,
-    tags
+    articles: articles.items.map(item => ({ ...item, type: 'article' })),
+    films: films.items.map(item => ({ ...item, type: 'film' })),
+    products: products.items.map(item => ({ ...item, type: 'product' })),
+    tags: tags.items.map(item => ({ ...item, type: 'tag' }))
   }
 })
 

@@ -5,7 +5,7 @@
 	let { tags } = $session.navigation
   export let id
 
-  let tag = tags.items.find(t => t.fields.identifier === id)
+  let tag = tags.find(t => t.fields.identifier === id)
   if (tag) {
     tag = tag.fields.title
   } else {

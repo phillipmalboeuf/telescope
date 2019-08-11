@@ -1,18 +1,24 @@
 <script context="module">
+	import json from 'json-complete'
+
 	export async function preload({ params, query }) {
-		const res = await this.fetch(`films/${params.identifier}.json`);
-		const data = await res.json();
+		const res = await this.fetch(`films/${params.identifier}.json`)
+		const data = json.decode(await res.text())
 
 		if (res.status === 200) {
-			return { film: data };
+			return { film: data }
 		} else {
-			this.error(res.status, data.message);
+			this.error(res.status, data.message)
 		}
 	}
 </script>
 
 <script>
-	export let film;
+	import Picture from '../../components/Picture.svelte'
+  import Video from '../../components/Video.svelte'
+  import Tag from '../../components/Tag.svelte'
+
+	export let film
 </script>
 
 <style>
@@ -25,6 +31,5 @@
 <h1>{film.fields.title}</h1>
 
 <div class='content'>
-	<!-- {@html film.html} -->
-	{JSON.stringify(film.fields.description)}
+	<Video poster={film.fields.poster} srcs={film.fields.video} />
 </div>

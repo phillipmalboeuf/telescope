@@ -1,11 +1,13 @@
-import { entry } from '../../clients/contentful';
+
+import json from 'json-complete'
+import { entry } from '../../clients/contentful'
 
 
 export async function get(req, res, next) {
 	
 	const { articles } = req.navigation
 	const lookup = new Map()
-	articles.items.forEach(article => {
+	articles.forEach(article => {
 		lookup.set(article.fields.identifier, article)
 	})
 
@@ -14,16 +16,16 @@ export async function get(req, res, next) {
 	if (lookup.has(identifier)) {
 		res.writeHead(200, {
 			'Content-Type': 'application/json'
-		});
+		})
 
-		res.end(JSON.stringify(await entry(lookup.get(identifier).sys.id, 'fr-CA')));
+		res.end(json.encode(await entry(lookup.get(identifier).sys.id, 'fr-CA')))
 	} else {
 		res.writeHead(404, {
 			'Content-Type': 'application/json'
-		});
+		})
 
-		res.end(JSON.stringify({
+		res.end(json.encode({
 			message: `Not found`
-		}));
+		}))
 	}
 }

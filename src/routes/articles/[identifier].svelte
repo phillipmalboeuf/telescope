@@ -1,12 +1,14 @@
 <script context="module">
+	import json from 'json-complete'
+
 	export async function preload({ params, query }) {
-		const res = await this.fetch(`news/${params.identifier}.json`);
-		const data = await res.json();
+		const res = await this.fetch(`articles/${params.identifier}.json`)
+		const data = json.decode(await res.text())
 
 		if (res.status === 200) {
-			return { article: data };
+			return { article: data }
 		} else {
-			this.error(res.status, data.message);
+			this.error(res.status, data.message)
 		}
 	}
 </script>

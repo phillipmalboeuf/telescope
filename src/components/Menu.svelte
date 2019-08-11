@@ -16,12 +16,12 @@
 		{
 			title: 'Films',
 			path: 'films',
-			items: films.items
+			items: films
 		},
 		{
 			title: 'News',
-			path: 'news',
-			items: [...articles.items, ...articles.items, ...articles.items, ...articles.items, ...articles.items]
+			path: 'articles',
+			items: [...articles, ...articles, ...articles, ...articles, ...articles]
 		},
 		{
 			title: 'About',
@@ -30,7 +30,7 @@
 		{
 			title: 'Shop',
 			path: 'shop',
-			items: products.items
+			items: products
 		},
 		{
 			title: 'Contact',
