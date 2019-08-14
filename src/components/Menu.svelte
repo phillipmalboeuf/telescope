@@ -42,10 +42,10 @@
 		}
 	]
 
-	let visible = true
+	let visible = false
 	let ys = new Array(7).fill(0)
 
-	let selected = 2
+	let selected = undefined
 
 	function toggle() {
 		if (!visible) {
@@ -98,8 +98,6 @@
 		justify-content: center;
 		height: 100%;
 	}
-
-	
 
 		ul > li {
 			color: white;
