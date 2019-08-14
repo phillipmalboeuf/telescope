@@ -30,8 +30,7 @@
 </svelte:head>
 
 
-<Video poster={film.fields.poster} srcs={film.fields.video} />
-<h1>{film.fields.title}</h1>
+<Video poster={film.fields.poster} srcs={film.fields.video} title="{film.fields.title} • {film.fields.tags}" full controls />
 
 <Document body={film.fields.description} />
 

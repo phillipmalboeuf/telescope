@@ -102,7 +102,7 @@
     padding-left: var(--rythm);
   }
 
-	:global(a, button) {
+	:global(a, button, input) {
     outline: none;
     cursor: pointer;
     color: inherit;
@@ -114,7 +114,7 @@
     top: 1px;
   }
 
-  :global(button) {
+  :global(button, label) {
     font-family: 'Telescopique', system-ui, -apple-system;
     font-variation-settings: "wdth" 200;
   }
