@@ -42,10 +42,10 @@
 		}
 	]
 
-	let visible = false
+	let visible = true
 	let ys = new Array(7).fill(0)
 
-	let selected = undefined
+	let selected = 2
 
 	function toggle() {
 		if (!visible) {
@@ -99,16 +99,7 @@
 		height: 100%;
 	}
 
-	ul > li > a > h4 {
-		font-variation-settings: "wdth" 300;
-		transition: font-variation-settings 333ms, padding 333ms 10ms;
-		padding: calc(var(--gutter) - 6pt);
-	}
-
-	ul.selected > li > a > h4 {
-		padding-left: calc(var(--gutter) - 2vw - 6pt);
-		padding-right: calc(var(--gutter) - 2vw - 6pt);
-	}
+	
 
 		ul > li {
 			color: white;
@@ -117,13 +108,28 @@
 
 			position: relative;
 			overflow-y: auto;
+
+			flex: 1;
+			transition: flex 333ms;
 		}
 
-		ul > li.selected > a > h4 {
-			padding-right: calc(var(--gutter) * 6);
+		ul > li.selected {
+			flex: 7;
 		}
-			
+
+		ul > li > a > h4 {
+			padding: calc(var(--gutter) - 6pt);
+			transition: transform 333ms;
+		}
+
+		ul.selected > li > a > h4 {
+			transform: translateX(calc(var(--gutter) * -0.5));
+		}
+
 			ul > li > a {
+				position: absolute;
+				top: 0;
+				right: 0;
 				writing-mode: vertical-rl;
 				transform: rotate(180deg);
 				white-space: nowrap;
@@ -132,8 +138,8 @@
 	ol {
 		position: absolute;
 		top: var(--gutter);
-		right: calc(var(--gutter) * 2);
-		width: calc(var(--gutter) * 4);
+		right: calc(var(--gutter) * 2.5);
+		width: calc(var(--gutter) * 4.5);
 
 		list-style: none;
 	}
@@ -154,8 +160,7 @@
 		<li class:selected={selected === index} on:mouseenter={()=> enter(index)} in:fly={{ y: ys[0], opacity: 1 }}>
 			<a href='/{column.path}' on:click={toggle}><h4>{column.title}</h4></a>
 
-			{#if selected === index}
-			<ol out:fade>
+			<ol>
 				{#if column.items}
 				{#each column.items as item}
 				<li>
@@ -167,7 +172,6 @@
 				{/each}
 				{/if}
 			</ol>
-			{/if}
 		</li>
 		{/each}
 	</ul>
