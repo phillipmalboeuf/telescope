@@ -21,7 +21,7 @@
 		{
 			title: 'News',
 			path: 'articles',
-			items: [...articles, ...articles, ...articles, ...articles, ...articles]
+			items: articles
 		},
 		{
 			title: 'About',

@@ -14,6 +14,7 @@
 </script>
 
 <script>
+	import Document from '../../components/document/index.svelte'
 	export let article;
 </script>
 
@@ -26,6 +27,4 @@
 
 <h1>{article.fields.title}</h1>
 
-<div class='content'>
-	{JSON.stringify(article.fields.body)}
-</div>
+<Document body={article.fields.body} />
