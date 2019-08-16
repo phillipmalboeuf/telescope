@@ -19,17 +19,26 @@
 
     a {
       display: inline-block;
+      margin-top: calc(var(--gutter) * -2);
+    }
+
+    a.film {
+      margin-top: calc(var(--gutter) * 2);
+      margin-bottom: calc(var(--gutter) * 3);
+    }
+
+    li:first-child a {
+      margin-top: 0;
     }
 
       figure {
         position: relative;
-        margin: -15vh 0 0;
+        margin: 0;
         width: 32.5vw;
       }
 
-      figure.film {
-        width: 100vw;
-        margin: 0 calc(var(--gutter) * -1) 30vh;
+      a.film figure {
+        width: 100%;
       }
 
       li:first-child figure {
@@ -46,9 +55,9 @@
 				white-space: nowrap;
       }
 
-      figure.film figcaption {
+      a.film figure figcaption {
         color: white;
-        top: var(--gutter);
+        top: 0;
         right: var(--gutter);
       }
 
@@ -78,8 +87,8 @@
 <ol>
 	{#each items as item}
 	<li>
-    <a rel='prefetch' href='/{item.type}s/{item.fields.identifier}'>
-      <figure class={item.type}>
+    <a class={item.type} rel='prefetch' href='/{item.type}s/{item.fields.identifier}'>
+      <figure>
         {#if item.type === 'film'}
         <Video poster={item.fields.poster} />
         {:else}

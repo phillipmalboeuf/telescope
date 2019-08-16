@@ -1,7 +1,7 @@
 <script>
   export let poster
   export let srcs
-  export let title
+  export let title = undefined
   export let full = true
   export let controls = false
 
@@ -36,7 +36,7 @@
   }
 
   function fullscreen() {
-    videoElement.requestFullscreen()
+    videoElement.webkitRequestFullscreen()
   }
 
   function keydown(e) {
