@@ -11,7 +11,8 @@
 	const columns = [
 		{
 			title: 'Latest',
-			path: ''
+			path: '',
+			items: [...films, ...articles, ...products]
 		},
 		{
 			title: 'Films',
@@ -162,7 +163,7 @@
 				{#if column.items}
 				{#each column.items as item}
 				<li>
-					<a rel=prefetch href='/{column.path}/{item.fields.identifier}' on:click={toggle}>
+					<a rel=prefetch href='/{item.type}s/{item.fields.identifier}' on:click={toggle}>
 						<h4>{item.fields.title}</h4>
 						<h6>{item.fields.tags}</h6>
 					</a>

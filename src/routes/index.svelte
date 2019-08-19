@@ -13,18 +13,26 @@
 </script>
 
 <style>
-	/* h1 {
+	h1 {
+		cursor: move;
 		font-family: 'Telescopique Splash', 'Telescopique', system-ui, -apple-system;
-		margin-bottom: 0;
-	} */
+		margin-bottom: calc(var(--gutter) * 2.5);
+		text-align: center;
+	}
 </style>
 
 <svelte:head>
 	<title>Telescope</title>
 </svelte:head>
 
-<List {items} />
+<h1>
+	<Hover text={'TELESCOPE'} />
+	<Hover text={'TELESCOPE'} />
+	<Hover text={'TELESCOPE'} />
+	<Hover text={'TELESCOPE'} />
+	<Hover text={'TELESCOPE'} />
+	<Hover text={'TELESCOPE'} />
+	<Hover text={'TELESCOPE'} />
+</h1>
 
-<!-- <h1>
-	<Hover texts={['TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE']} />
-</h1> -->
+<List {items} />
