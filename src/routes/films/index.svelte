@@ -5,12 +5,34 @@
 		const res = await this.fetch(`films.json`)
 		const films = json.decode(await res.text())
 
-		return { films }
+		let tags = {}
+		films.forEach(film => {
+			film.fields.tags.forEach(tag => {
+				if (tags[tag]) {
+					tags[tag]++
+				} else {
+					tags[tag] = 1
+				}
+			})
+		})
+
+		tags = Object.entries(tags)
+		tags.sort((left, right) => right[1] - left[1])
+
+		if (query.tag) {
+			return { films: films.filter(film => film.fields.tags.includes(query.tag)), tags }
+		}
+
+		return { films, tags }
 	}
 </script>
 
 <script>
+	import List from '../../components/List.svelte'
+	import Tags from '../../components/Tags.svelte'
+
 	export let films
+	export let tags
 </script>
 
 <style>
@@ -20,10 +42,6 @@
 	<title>Films</title>
 </svelte:head>
 
-<h1>Films</h1>
+<Tags {tags} />
 
-<ul>
-	{#each films as film}
-		<li><a rel='prefetch' href='/films/{film.fields.identifier}'>{film.fields.title}</a></li>
-	{/each}
-</ul>
+<List items={[...films, ...films, ...films, ...films]} full={false} />

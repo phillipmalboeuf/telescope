@@ -4,6 +4,7 @@
   export let title = undefined
   export let full = true
   export let controls = false
+  export let hover = false
 
   let time = 0
 	let duration
@@ -196,6 +197,10 @@
     {/if}
   </figcaption>
 </figure>
+{:else if hover}
+<video class:full src={srcs ? srcs[0].fields.file.url : undefined} poster={poster.fields.file.url} loop muted
+  on:mouseenter={e => e.currentTarget.play()}
+  on:mouseleave={e => e.currentTarget.pause()} />
 {:else}
 <video class:full src={srcs ? srcs[0].fields.file.url : undefined} poster={poster.fields.file.url} loop muted autoplay />
 {/if}
