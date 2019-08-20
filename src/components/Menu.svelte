@@ -90,6 +90,10 @@
 		background: white;
 	}
 
+	nav.bottom {
+		position: relative;
+	}
+
 	ul {
 		list-style: none;
 		padding: var(--gutter);
@@ -164,6 +168,29 @@
 				{#each column.items as item}
 				<li>
 					<a rel=prefetch href='/{item.type}s/{item.fields.identifier}' on:click={toggle}>
+						<h4>{item.fields.title}</h4>
+						<h6>{item.fields.tags}</h6>
+					</a>
+				</li>
+				{/each}
+				{/if}
+			</ol>
+		</li>
+		{/each}
+	</ul>
+</nav>
+{:else}
+<nav class="bottom">
+	<ul on:mouseleave={leave} class:selected={selected !== undefined}>
+		{#each columns as column, index}
+		<li class:selected={selected === index} on:mouseenter={()=> enter(index)}>
+			<a href='/{column.path}'><h4>{column.title}</h4></a>
+
+			<ol>
+				{#if column.items}
+				{#each column.items as item}
+				<li>
+					<a rel=prefetch href='/{item.type}s/{item.fields.identifier}'>
 						<h4>{item.fields.title}</h4>
 						<h6>{item.fields.tags}</h6>
 					</a>
