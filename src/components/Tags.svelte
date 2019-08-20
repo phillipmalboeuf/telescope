@@ -1,5 +1,7 @@
 <script>
   export let tags
+	export let path
+	export let all
 </script>
 
 <style>
@@ -14,8 +16,8 @@
 </style>
 
 <nav>
-	<a href="/articles"><h6>News</h6></a>
+	<a href="/{path}"><h6>{all}</h6></a>
 	{#each tags as [tag, total]}
-	<a href="/articles?tag={tag}"><h6>{tag}</h6></a> 
+	<a href="/{path}?tag={tag}"><h6>{tag}</h6></a> 
 	{/each}
 </nav>

@@ -40,6 +40,6 @@
 	<title>News</title>
 </svelte:head>
 
-<Tags {tags} />
+<Tags {tags} path="articles" all="All News" />
 
 <List items={articles} />

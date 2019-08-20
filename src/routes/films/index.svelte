@@ -42,6 +42,6 @@
 	<title>Films</title>
 </svelte:head>
 
-<Tags {tags} />
+<Tags {tags} path="films" all="All Films" />
 
 <List items={[...films, ...films, ...films, ...films]} full={false} />
