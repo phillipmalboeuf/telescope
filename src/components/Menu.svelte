@@ -2,11 +2,13 @@
 	import { fade, fly } from 'svelte/transition'
 	import { elasticOut, bounceOut, backOut } from 'svelte/easing'
 
+	import MenuItems from './MenuItems.svelte'
+
 	import { stores } from '@sapper/app'
 	const { preloading, page, session } = stores()
 
 	export let segment
-	let { films, articles, products } = $session.navigation
+	let { films, articles, products, about, contact } = $session.navigation
 
 	const columns = [
 		{
@@ -26,7 +28,8 @@
 		},
 		{
 			title: 'About',
-			path: 'about'
+			path: 'about',
+			items: about,
 		},
 		{
 			title: 'Shop',
@@ -35,7 +38,8 @@
 		},
 		{
 			title: 'Contact',
-			path: 'contact'
+			path: 'contact',
+			items: contact
 		},
 		{
 			title: 'English',
@@ -139,19 +143,6 @@
 				transform: rotate(180deg);
 				white-space: nowrap;
 			}
-
-	ol {
-		position: absolute;
-		top: var(--gutter);
-		right: calc(var(--gutter) * 2.5);
-		width: calc(var(--gutter) * 4.5);
-
-		list-style: none;
-	}
-
-		ol > li {
-			margin-bottom: calc(var(--rythm) * 2);
-		}
 </style>
 
 <button on:click={toggle}>
@@ -165,18 +156,7 @@
 		<li class:selected={selected === index} on:mouseenter={()=> enter(index)} in:fly={{ y: ys[0], opacity: 1 }}>
 			<a href='/{column.path}' on:click={toggle}><h4>{column.title}</h4></a>
 
-			<ol>
-				{#if column.items}
-				{#each column.items as item}
-				<li>
-					<a rel=prefetch href='/{item.type}s/{item.fields.identifier}' on:click={toggle}>
-						<h4>{item.fields.title}</h4>
-						<h6>{item.fields.tags}</h6>
-					</a>
-				</li>
-				{/each}
-				{/if}
-			</ol>
+			<MenuItems items={column.items} on:click={toggle} />
 		</li>
 		{/each}
 	</ul>
@@ -188,18 +168,7 @@
 		<li class:selected={selected === index} on:mouseenter={()=> enter(index)}>
 			<a href='/{column.path}'><h4>{column.title}</h4></a>
 
-			<ol>
-				{#if column.items}
-				{#each column.items as item}
-				<li>
-					<a rel=prefetch href='/{item.type}s/{item.fields.identifier}'>
-						<h4>{item.fields.title}</h4>
-						<h6>{item.fields.tags}</h6>
-					</a>
-				</li>
-				{/each}
-				{/if}
-			</ol>
+			<MenuItems items={column.items} />
 		</li>
 		{/each}
 	</ul>

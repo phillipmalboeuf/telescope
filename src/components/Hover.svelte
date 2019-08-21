@@ -82,7 +82,7 @@
 <div on:mousemove={move} bind:this={element}>
   {#each text as letter, index}
   <span style='font-variation-settings: "wdth" {x 
-    ? 900 * ((text.length - Math.abs(index - (x * text.length))) / (text.length * 1.66))
+    ? 900 * ((text.length - Math.abs(index - (x * text.length))) / (text.length))
     : 300}, "wght" {x 
     ? 160 * ((text.length - Math.abs(index - (x * text.length))) / (text.length))
     : 40}'>{letter}</span>

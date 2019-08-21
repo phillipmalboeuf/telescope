@@ -18,6 +18,7 @@
 		font-family: 'Telescopique Splash', 'Telescopique', system-ui, -apple-system;
 		margin-bottom: calc(var(--gutter) * 2.5);
 		text-align: center;
+		line-height: 1;
 	}
 </style>
 
@@ -26,7 +27,6 @@
 </svelte:head>
 
 <h1>
-	<Hover text={'TELESCOPE'} />
 	<Hover text={'TELESCOPE'} />
 	<Hover text={'TELESCOPE'} />
 	<Hover text={'TELESCOPE'} />
