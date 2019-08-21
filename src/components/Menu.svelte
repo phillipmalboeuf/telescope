@@ -77,6 +77,8 @@
 		border: none;
 		padding: var(--rythm);
 		background: transparent;
+
+		text-shadow: white 2px 2px;
 	}
 
 	nav {
