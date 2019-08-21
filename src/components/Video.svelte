@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from 'svelte'
+
   export let poster
   export let srcs
   export let title = undefined
@@ -11,9 +13,10 @@
   let buffered
 	let paused
   let volume = 1
+  let fullscreen = false
   let fade = false
 
-  let videoElement
+  let element
   let fadeTimeout
 
   function format(t) {
@@ -36,8 +39,16 @@
     volume = volume ? 0 : 1
   }
 
-  function fullscreen() {
-    videoElement.webkitRequestFullscreen()
+  function requestToggleFullscreen() {
+    if (!fullscreen) {
+      element.webkitRequestFullscreen()
+    } else {
+      document.webkitCancelFullScreen()
+    }
+  }
+
+  function toggleFullscreen() {
+    fullscreen = !fullscreen
   }
 
   function keydown(e) {
@@ -52,6 +63,12 @@
     fadeTimeout = setTimeout(() => fade = true, 1666)
     fade = false
   }
+
+  onMount(() => {
+    document.addEventListener('webkitfullscreenchange', toggleFullscreen, false)
+
+    return () => document.removeEventListener('webkitfullscreenchange', toggleFullscreen)
+  })
 </script>
 
 <style>
@@ -78,6 +95,10 @@
     cursor: none;
   }
 
+  figure.fullscreen video.full {
+    margin: 0
+  }
+
   figcaption {
     transition: opacity 666ms;
     opacity: 1;
@@ -93,6 +114,11 @@
     left: 0;
   }
 
+  figure.fullscreen figcaption.title {
+    top: calc(var(--gutter));
+    left: calc(var(--gutter));
+  }
+
   figcaption.title h1 {
     font-size: 12pt;
   }
@@ -104,6 +130,15 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+  }
+
+  figure.fullscreen figcaption.controls {
+    left: 0;
+    padding: 0 var(--gutter);
+  }
+
+  figure.fullscreen figcaption.seeker {
+    padding: 0 var(--gutter);
   }
 
     button {
@@ -120,6 +155,10 @@
       transform: translateX(-50%);
     }
 
+    figure.fullscreen input[type="range"] {
+      bottom: 30px;
+    }
+
     input[type="range"] {
       position: absolute;
       bottom: 12px;
@@ -132,6 +171,10 @@
       -moz-appearance: none;
       appearance: none;
       background: transparent;
+    }
+
+    figure.fullscreen input[type="range"] {
+      bottom: 6px;
     }
 
     input[type="range"]::-webkit-slider-thumb {
@@ -158,16 +201,19 @@
       height: 12px;
       background: white;
     }
+
+    figure.fullscreen .buffer {
+      bottom: -6px;
+    }
 </style>
 
-<svelte:window on:keydown={keydown}/>
+<svelte:window on:keydown={keydown} />
 
 {#if controls}
-<figure class:fade on:mousemove={activate}>
+<figure class:fade class:fullscreen on:mousemove={activate} bind:this={element}>
   <figcaption class="title"><h1>{title}</h1></figcaption>
 
   <video class:full src={srcs ? srcs[0].fields.file.url : undefined} poster={poster.fields.file.url} autoplay
-    bind:this={videoElement}
     bind:currentTime={time}
     bind:duration
     bind:buffered
@@ -178,8 +224,8 @@
   <figcaption class="controls">
     <button on:click={togglePaused}>{#if paused}➞{:else}❚{/if}</button>
     <span>
-      <button on:click={fullscreen}>╹</button>
-      <button on:click={toggleVolume}>⌑</button>
+      <button on:click={requestToggleFullscreen}>{#if fullscreen}╻{:else}╹{/if}</button>
+      <button on:click={toggleVolume}>{#if volume}⌑{:else}⊠{/if}</button>
     </span>
   </figcaption>
 
