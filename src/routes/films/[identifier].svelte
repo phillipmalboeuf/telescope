@@ -23,6 +23,13 @@
 </script>
 
 <style>
+	section > :global(h2),
+	section > :global(h4),
+	section > :global(h6),
+	section > :global(p) {
+		width: 52.5vw;
+		margin-left: auto;
+	}
 </style>
 
 <svelte:head>
@@ -30,7 +37,8 @@
 </svelte:head>
 
 
-<Video poster={film.fields.poster} srcs={film.fields.video} title="{film.fields.title} • {film.fields.tags}" full controls />
+<Video poster={film.fields.poster} srcs={film.fields.video} title="{film.fields.title} • {film.fields.tags}" full controls grabs={film.fields.screenGrabs} />
 
-<Document body={film.fields.description} />
-
+<section>
+	<Document body={film.fields.description} />
+</section>

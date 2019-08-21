@@ -14,6 +14,16 @@
 	export let about
 </script>
 
+<style>
+	section > :global(h2),
+	section > :global(h4),
+	section > :global(h6),
+	section > :global(p) {
+		width: 52.5vw;
+		margin-left: auto;
+	}
+</style>
+
 
 <svelte:head>
 	<title>About</title>

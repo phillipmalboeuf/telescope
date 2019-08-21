@@ -1,4 +1,5 @@
 <script>
+  import Gallery from '../Gallery.svelte'
   import Mark from './mark.svelte'
 
   export let node
@@ -20,4 +21,18 @@
 
 {:else if node.nodeType === 'blockquote'}
   <blockquote>{#each node.content as code}<svelte:self node={code} />{/each}</blockquote>
+
+{:else if node.nodeType === 'embedded-entry-block'}
+  {#if node.data.target.sys.contentType.sys.id === 'collaboratorSlider'}
+  <Gallery images={node.data.target.fields.collaborators.map(collaborator => ({
+    thumbnail: collaborator.fields.photo,
+    content: collaborator.fields
+  }))}>
+    <h6 slot="content" let:content={content}>
+      {content.name}<br />
+      {content.profession}<br />
+      <a href={content.link} target="_blank">{content.linkLabel} →</a>
+    </h6>
+  </Gallery>
+  {/if}
 {/if}

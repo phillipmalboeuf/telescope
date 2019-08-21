@@ -1,9 +1,13 @@
 <script>
   import { onMount } from 'svelte'
 
+  import Gallery from './Gallery.svelte'
+
   export let poster
   export let srcs
   export let title = undefined
+  export let grabs = undefined
+
   export let full = true
   export let controls = false
   export let hover = false
@@ -62,6 +66,10 @@
     clearTimeout(fadeTimeout)
     fadeTimeout = setTimeout(() => fade = true, 1666)
     fade = false
+  }
+
+  function grab(index) {
+    seek(grabs[index].fields.time)
   }
 
   onMount(() => {
@@ -243,6 +251,10 @@
     {/if}
   </figcaption>
 </figure>
+
+{#if grabs}
+  <Gallery images={grabs.map(grab => ({ thumbnail: grab.fields.thumbnail }))} on:pick={event => grab(event.detail)} />
+{/if}
 {:else if hover}
 <video class:full src={srcs ? srcs[0].fields.file.url : undefined} poster={poster.fields.file.url} loop muted
   on:mouseenter={e => e.currentTarget.play()}

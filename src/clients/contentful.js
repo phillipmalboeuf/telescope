@@ -26,4 +26,4 @@ export const navigation = locale => Promise.all([
   }
 })
 
-export const entry = (id, locale) => client.getEntry(id, { locale })
+export const entry = (id, locale) => client.getEntry(id, { locale, include: 2 })

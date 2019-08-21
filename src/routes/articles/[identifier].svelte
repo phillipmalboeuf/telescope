@@ -19,6 +19,13 @@
 </script>
 
 <style>
+	section > :global(h2),
+	section > :global(h4),
+	section > :global(h6),
+	section > :global(p) {
+		width: 52.5vw;
+		margin-left: auto;
+	}
 </style>
 
 <svelte:head>
@@ -27,4 +34,6 @@
 
 <h1>{article.fields.title}</h1>
 
-<Document body={article.fields.body} />
+<section>
+	<Document body={article.fields.body} />
+</section>
