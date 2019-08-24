@@ -55,7 +55,7 @@
   }
 
   :global(h1, blockquote p) {
-    font-size: 8vw;
+    font-size: 6.66vw;
   }
 
   :global(h2) {
@@ -124,4 +124,4 @@
 	<slot></slot>
 </main>
 
-<Menu {segment} />
+<!-- <Menu {segment} /> -->

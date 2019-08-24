@@ -1,112 +1,81 @@
 <script>
   import { onMount } from 'svelte'
+  import { interpolate, interpolateBasis } from 'd3-interpolate'
 
   export let text = undefined
-  // export let texts = undefined
+  export let texts = undefined
+  let variants
+  let size
+
   let x
-  // let y
-  let w
-  // let h
+  let y
+  let wdth
+  let wght
 
   let element
+
+  let widthInterpolator = interpolate('140 600 900 600 140', '900 700 500 300 100')
+  let weightInterpolator = interpolate('40 160 40', '160 100 40')
   
   function move(e) {
-    x = e.layerX / w
-    // y = e.layerY / h
+    x = e.layerX / size.w
+    // y = e.layerY / size.h
+
+    wdth = widthInterpolator(Math.abs((x * 2) - 1)).split(' ')
+    if (x > 0.5) {
+      wdth.reverse()
+    }
+
+    // wght = weightInterpolator(Math.abs((y * 2) - 1)).split(' ')
+    // if (y > 0.5) {
+    //   wght.reverse()
+    // }
+
+    variants = {
+      wdth: interpolateBasis(wdth),
+      // wght: interpolateBasis(wght)
+    }
   }
 
   onMount(() => {
-    w = element.offsetWidth
-    // h = element.offsetHeight
+    size = {
+      w: element.offsetWidth,
+      h: element.offsetHeight
+    }
   })
-
-  // function enterColumn(parent, index) {
-  //   for (const child of  parent.children) {
-  //     child.style = undefined
-  //   }
-  //   parent.children[index].style = `font-variation-settings: "wdth" 900, "wght" 160`
-  //   if (parent.children[index - 1]) {
-  //     parent.children[index - 1].style = `font-variation-settings: "wdth" 600, "wght" 100`
-  //   } 
-  //   if (parent.children[index + 1]) {
-  //     parent.children[index + 1].style = `font-variation-settings: "wdth" 600, "wght" 100`
-  //   }
-  //   if (!parent.children[index - 1]) {
-  //     parent.children[index + 1].style = `font-variation-settings: "wdth" 700, "wght" 120`
-  //     parent.children[index + 2].style = `font-variation-settings: "wdth" 500, "wght" 80`
-  //   }
-
-  //   if (!parent.children[index + 1]) {
-  //     parent.children[index - 1].style = `font-variation-settings: "wdth" 700, "wght" 120`
-  //     parent.children[index - 2].style = `font-variation-settings: "wdth" 500, "wght" 80`
-  //   }
-  // }
-
-  // function enterRow(element) {
-  //   element.style = `font-variation-settings: "wdth" 200, "wght" 40`
-  // }
-
-  // function leaveRow(element) {
-  //   element.style = undefined
-  //   // for (const child of element.children) {
-  //   //   child.style = undefined
-  //   // }
-  // }
 </script>
 
 <style>
   div {
-    /* font-variation-settings: "wdth" 200, "wght" 40; */
-    /* user-select: none; */
-  }
-
-  div > div {
-    /* display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    height: 1em; */
-  }
-
-  span {
-    /* position: relative; */
-    /* transition: font-variation-settings 100ms; */
-  }
-
-  span:after {
-    /* content: attr(data-char); */
-    /* position: absolute;
-	  left: -0.5em; */
+    position: relative;
+    text-align: center;
   }
 </style>
 
-<div on:mousemove={move} bind:this={element}>
-  {#each text as letter, index}
-  <span style='font-variation-settings: "wdth" {x 
-    ? 900 * ((text.length - Math.abs(index - (x * text.length))) / (text.length))
-    : 300}, "wght" {x 
-    ? 160 * ((text.length - Math.abs(index - (x * text.length))) / (text.length))
-    : 40}'>{letter}</span>
-  {/each}
-</div>
 
-<!-- <div on:mousemove={move} bind:this={element}>
+
+<div on:mousemove={move} bind:this={element}>
   {#if texts}
+
   {#each texts as t, i}
-  <div>
     {#each t as letter, index}
-    <span data-char={letter} style='font-variation-settings: "wdth" {x 
-      ? 600 * ((t.length - Math.abs(index - (x * t.length))) / t.length)
-      : 400}, "wght" {y 
-      ? 160 * ((texts.length - Math.abs(i - (y * texts.length))) / texts.length)
-      : 60}' />
+    {#if variants}
+    <span style='font-variation-settings: "wdth" {variants.wdth(index / (t.length - 1))}, "wght" 100'>{letter}</span>
+    {:else}
+    <span style='font-variation-settings: "wdth" 500, "wght" 100'>{letter}</span>
+    {/if}
     {/each}
-  </div>
+    <br />
   {/each}
+
+
   {:else}
-  {#each text as letter, index}
+  <!-- {#each text as letter, index}
   <span style='font-variation-settings: "wdth" {x 
     ? 700 * ((text.length - Math.abs(index - (x * text.length))) / text.length)
-    : 400}'>{letter}</span>
-  {/each}
+    : 400}, "wght" {x 
+    ? 160 * ((text.length - Math.abs(index - (x * text.length))) / (text.length))
+    : 40}'>{letter}</span>
+  {/each} -->
   {/if}
-</div> -->
+</div>
