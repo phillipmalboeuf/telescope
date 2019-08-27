@@ -39,7 +39,7 @@
 		{
 			title: 'Contact',
 			path: 'contact',
-			items: contact
+			items: [{ type: 'newsletter' }, ...contact]
 		},
 		{
 			title: 'English',
@@ -64,7 +64,7 @@
 	}
 
 	function leave() {
-		selected = undefined
+		// selected = undefined
 	}
 </script>
 

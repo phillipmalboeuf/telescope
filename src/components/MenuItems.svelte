@@ -1,4 +1,5 @@
 <script>
+  import NewsletterForm from './NewsletterForm.svelte'
 	export let items
 </script>
 
@@ -27,6 +28,8 @@ ol {
     <h4>{item.fields.title}</h4>
     <h6>{item.fields.linkLabel}</h6>
   </a>
+  {:else if item.type === 'newsletter'}
+  <NewsletterForm />
   {:else}
   <a rel=prefetch href={item.type === 'about'
     ? `/${item.type}#${item.fields.identifier}`

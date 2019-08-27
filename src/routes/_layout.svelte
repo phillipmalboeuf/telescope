@@ -114,7 +114,7 @@
     top: 1px;
   }
 
-  :global(button, label) {
+  :global(button, label, input) {
     font-family: 'Telescopique', system-ui, -apple-system;
     font-variation-settings: "wdth" 200;
   }
@@ -124,4 +124,4 @@
 	<slot></slot>
 </main>
 
-<!-- <Menu {segment} /> -->
+<Menu {segment} />

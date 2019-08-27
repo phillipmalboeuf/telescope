@@ -27,3 +27,4 @@ export const navigation = locale => Promise.all([
 })
 
 export const entry = (id, locale) => client.getEntry(id, { locale, include: 2 })
+export const asset = (id, locale) => client.getAsset(id, { locale })
