@@ -33,7 +33,7 @@
 		},
 		{
 			title: 'Shop',
-			path: 'shop',
+			path: 'products',
 			items: products
 		},
 		{

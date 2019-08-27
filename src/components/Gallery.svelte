@@ -44,7 +44,7 @@
 			flex: 3;
 		}
 
-    :global(img) {
+    figure :global(img) {
       height: 25vh;
       object-fit: cover;
     }
@@ -67,7 +67,7 @@
         width: 100vw;
       }
 
-      :global(h6) {
+      figcaption :global(h6) {
         line-height: 2;
       }
 </style>
