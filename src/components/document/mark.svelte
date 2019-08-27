@@ -19,11 +19,11 @@
   {#each mark.content as mark}<svelte:self mark={mark} />{/each}
 </a>
 {:else if mark.nodeType === 'entry-hyperlink'}
-<a href="/{mark.data.target.sys.contentType.sys.id}s/{mark.data.target.fields.identifier}" underline>
+<a href="{mark.data.target.sys.contentType.sys.id}s/{mark.data.target.fields.identifier}" underline>
   {#each mark.content as mark}<svelte:self mark={mark} />{/each}
 </a>
 {:else if mark.nodeType === 'asset-hyperlink'}
-<a href="/{mark.data.target.fields.file.url}" target="_blank">
+<a href="{mark.data.target.fields.file.url}" target="_blank">
   {#each mark.content as mark}<svelte:self mark={mark} />{/each}
 </a>
 {/if}

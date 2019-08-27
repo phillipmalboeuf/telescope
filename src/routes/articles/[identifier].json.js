@@ -18,7 +18,7 @@ export async function get(req, res, next) {
 			'Content-Type': 'application/json'
 		})
 
-		res.end(json.encode(await entry(lookup.get(identifier).sys.id, 'fr-CA')))
+		res.end(json.encode(await entry(lookup.get(identifier).sys.id, req.locale)))
 	} else {
 		res.writeHead(404, {
 			'Content-Type': 'application/json'

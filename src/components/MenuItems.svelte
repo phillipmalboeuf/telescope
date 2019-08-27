@@ -16,6 +16,11 @@ ol {
   ol > li {
     margin-bottom: calc(var(--rythm) * 2);
   }
+
+  a.disabled {
+    pointer-events: none;
+    text-decoration: line-through;
+  }
 </style>
 
 
@@ -30,10 +35,16 @@ ol {
   </a>
   {:else if item.type === 'newsletter'}
   <NewsletterForm />
+  {:else if item.type === 'locales'}
+  <h4>
+    <a href="{item.path}" class:disabled={item.current === 'fr-CA'}>Français</a><br />
+    <a href="/en{item.path}" class:disabled={item.current === 'en-US'}>English</a>
+  </h4>
+  <h6>Languages • Langues</h6>
   {:else}
   <a rel=prefetch href={item.type === 'about'
-    ? `/${item.type}#${item.fields.identifier}`
-    : `/${item.type}s/${item.fields.identifier}`} on:click>
+    ? `${item.type}#${item.fields.identifier}`
+    : `${item.type}s/${item.fields.identifier}`} on:click>
     <h4>{item.fields.title}</h4>
     <h6>{item.fields.tags}</h6>
   </a>

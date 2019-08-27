@@ -42,8 +42,9 @@
 			items: [{ type: 'newsletter' }, ...contact]
 		},
 		{
-			title: 'English',
-			path: 'en-US'
+			title: $session.locale === 'fr-CA' ? 'English' : 'Français',
+			path: $session.locale === 'fr-CA' ? `/en${$page.path}` : $page.path,
+			items: [{ type: 'locales', current: $session.locale, path: $page.path }]
 		}
 	]
 
@@ -64,7 +65,7 @@
 	}
 
 	function leave() {
-		// selected = undefined
+		selected = undefined
 	}
 </script>
 
@@ -154,7 +155,7 @@
 	<ul on:mouseleave={leave} class:selected={selected !== undefined}>
 		{#each columns as column, index}
 		<li class:selected={selected === index} on:mouseenter={()=> enter(index)} in:fly={{ y: ys[0], opacity: 1 }}>
-			<a href='/{column.path}' on:click={toggle}><h4>{column.title}</h4></a>
+			<a href='{column.path}' on:click={toggle}><h4>{column.title}</h4></a>
 
 			<MenuItems items={column.items} on:click={toggle} />
 		</li>
@@ -166,7 +167,7 @@
 	<ul on:mouseleave={leave} class:selected={selected !== undefined}>
 		{#each columns as column, index}
 		<li class:selected={selected === index} on:mouseenter={()=> enter(index)}>
-			<a href='/{column.path}'><h4>{column.title}</h4></a>
+			<a href='{column.path}'><h4>{column.title}</h4></a>
 
 			<MenuItems items={column.items} />
 		</li>

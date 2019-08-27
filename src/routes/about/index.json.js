@@ -8,5 +8,5 @@ export async function get(req, res) {
 		'Content-Type': 'application/json'
 	})
 
-	res.end(json.encode(await Promise.all(about.map(piece => entry(piece.sys.id, 'fr-CA')))))
+	res.end(json.encode(await Promise.all(about.map(piece => entry(piece.sys.id, req.locale)))))
 }

@@ -7,19 +7,35 @@ import { navigation } from './clients/contentful';
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === 'development';
 
-const content = async (req, res, next) => {
-	req.navigation = await navigation('fr-CA')
+const content = locale => async (req, res, next) => {
+	req.locale = locale
+	req.navigation = await navigation(locale)
 	next();
 }
 
 polka()
 	.use(
+		'/en',
 		compression({ threshold: 0 }),
 		sirv('static', { dev }),
-		content,
+		content('en-US'),
 		sapper.middleware({
 			session: (req, res) => {
 				return {
+					locale: req.locale,
+					navigation: req.navigation
+				}
+			}
+		})
+	)
+	.use(
+		compression({ threshold: 0 }),
+		sirv('static', { dev }),
+		content('fr-CA'),
+		sapper.middleware({
+			session: (req, res) => {
+				return {
+					locale: req.locale,
 					navigation: req.navigation
 				}
 			}

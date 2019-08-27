@@ -108,7 +108,7 @@
 <ol>
 	{#each items as item}
 	<li>
-    <a class={item.type} class:full rel='prefetch' href='/{item.type}s/{item.fields.identifier}'>
+    <a class={item.type} class:full rel='prefetch' href='{item.type}s/{item.fields.identifier}'>
       <figure>
         {#if item.type === 'film'}
         <Video srcs={[item.fields.teaser]} poster={item.fields.poster} hover {full} />
