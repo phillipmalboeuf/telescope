@@ -134,7 +134,7 @@
   }
 
   figcaption.title h1 {
-    font-size: 12pt;
+    font-size: 10pt;
   }
 
   figcaption.controls {
@@ -164,7 +164,7 @@
 
     button {
       padding: calc(var(--rythm) / 2);
-      font-size: 12pt;
+      font-size: 10pt;
     }
 
     button.faded {
@@ -174,7 +174,7 @@
     label[for="time"] {
       position: absolute;
       bottom: 36px;
-      font-size: 8pt;
+      font-size: 10pt;
       transform: translateX(-50%);
     }
 

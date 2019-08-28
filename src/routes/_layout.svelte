@@ -59,23 +59,19 @@
   }
 
   :global(h2) {
-    font-size: 30pt;
+    font-size: 24pt;
   }
 
   :global(h4) {
-    font-size: 15pt;
-  }
-
-  :global(h5) {
-    font-size: 12pt;
+    font-size: 13pt;
   }
 
   :global(h6) {
-    font-size: 10pt;
+    font-size: 8pt;
   }
 
   :global(p) {
-    font-size: 19pt;
+    font-size: 16pt;
   }
 
 	:global(p:last-child) {

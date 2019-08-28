@@ -76,7 +76,7 @@
 		top: 0;
 		right: 0;
 
-		font-size: 12pt;
+		font-size: 10pt;
 
 		display: inline-block;
 		padding: var(--rythm);
