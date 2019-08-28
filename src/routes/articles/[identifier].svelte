@@ -14,17 +14,52 @@
 </script>
 
 <script>
+	import Picture from '../../components/Picture.svelte'
+  import Video from '../../components/Video.svelte'
+  import Tag from '../../components/Tag.svelte'
+	import Credits from '../../components/Credits.svelte'
 	import Document from '../../components/document/index.svelte'
-	export let article;
+
+	export let article
 </script>
 
 <style>
-	section > :global(h2),
-	section > :global(h4),
-	section > :global(h6),
-	section > :global(p) {
-		width: 52.5vw;
+	h1 {
+		position: absolute;
+		top: var(--gutter);
+		right: var(--gutter);
+
+		font-size: 15pt;
+		writing-mode: vertical-rl;
+		transform: rotate(180deg) translateX(2px);
+		white-space: nowrap;
+	}
+
+	aside {
+		width: 47.5vw;
+
+		position: absolute;
+		top: 0;
+		left: 0;
+		margin-top: calc(var(--gutter) * -1);
+		margin-left: calc(var(--gutter) * -1);
+	}
+
+	aside figure {
+		margin: 0 0 var(--rythm);
+	}
+
+	article {
+		margin-top: calc(var(--gutter) * 4);
+	}
+
+	article > :global(h2),
+	article > :global(h4),
+	article > :global(h6),
+	article > :global(p) {
+		width: 37.5vw;
 		margin-left: auto;
+		margin-right: calc(var(--gutter) * 2);
 	}
 </style>
 
@@ -32,8 +67,18 @@
 	<title>{article.fields.title}</title>
 </svelte:head>
 
-<h1>{article.fields.title}</h1>
+<h1>{article.fields.title} • {article.fields.tags}</h1>
 
-<section>
+<aside>
+	{#each article.fields.photos as photo}
+	<figure>
+		<Picture media={photo} />
+	</figure>
+	{/each}
+</aside>
+
+<article>
 	<Document body={article.fields.body} />
-</section>
+
+	<p><Credits credits={article.fields.creditList} /></p>
+</article>

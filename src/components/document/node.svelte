@@ -13,6 +13,8 @@
   <h6>{#each node.content as mark}<Mark mark={mark} />{/each}</h6>
 {:else if node.nodeType === 'paragraph'}
   <p>{#each node.content as mark}<Mark mark={mark} />{/each}</p>
+{:else if node.nodeType === 'hr'}
+  <hr />
 
 {:else if node.nodeType === 'unordered-list'}
   <ul>

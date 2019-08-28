@@ -82,9 +82,9 @@
     margin-bottom: 0;
   }
 
-	:global(p + h1, p + h2, p + h3,
-		ul + h1, ul + h2, ul + h3,
-		ol + h1, ol + h2, ol + h3) {
+	:global(p + h1, p + h2, p + h4,
+		ul + h1, ul + h2, ul + h4,
+		ol + h1, ol + h2, ol + h4) {
     margin-top: calc(var(--rythm)*2);
   }
 
@@ -102,12 +102,19 @@
     padding-left: var(--rythm);
   }
 
+  :global(hr) {
+    border: none;
+    margin: var(--rythm) 0;
+  }
+
 	:global(a, button, input) {
     outline: none;
     cursor: pointer;
     color: inherit;
     text-decoration: none;
     position: relative;
+    border: none;
+    background: transparent;
   }
 
   :global(a:active, button:active) {

@@ -17,16 +17,25 @@
 	import Picture from '../../components/Picture.svelte'
   import Video from '../../components/Video.svelte'
   import Tag from '../../components/Tag.svelte'
+	import Credits from '../../components/Credits.svelte'
 	import Document from '../../components/document/index.svelte'
 
 	export let film
 </script>
 
 <style>
-	section > :global(h2),
-	section > :global(h4),
-	section > :global(h6),
-	section > :global(p) {
+	aside {
+		width: 32.5vw;
+	}
+
+	article {
+		margin-top: calc(var(--gutter) * -3);
+	}
+
+	article > :global(h2),
+	article > :global(h4),
+	article > :global(h6),
+	article > :global(p) {
 		width: 52.5vw;
 		margin-left: auto;
 	}
@@ -39,6 +48,12 @@
 
 <Video poster={film.fields.poster} srcs={film.fields.video} title="{film.fields.title} • {film.fields.tags}" full controls grabs={film.fields.screenGrabs} />
 
-<section>
+<aside>
+	<Document body={film.fields.crew} />
+</aside>
+
+<article>
 	<Document body={film.fields.description} />
-</section>
+
+	<p><Credits credits={film.fields.creditList} /></p>
+</article>

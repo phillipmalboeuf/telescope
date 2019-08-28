@@ -79,9 +79,7 @@
 		font-size: 12pt;
 
 		display: inline-block;
-		border: none;
 		padding: var(--rythm);
-		background: transparent;
 
 		text-shadow: white 2px 2px;
 	}

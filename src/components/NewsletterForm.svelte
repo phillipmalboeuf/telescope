@@ -17,14 +17,7 @@
 
   input {
     font-size: 10pt;
-    border: none;
     border-bottom: 1px solid transparent;
-    background: transparent;
-  }
-
-  button {
-    border: none;
-    background: transparent;
   }
 </style>
 

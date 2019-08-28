@@ -165,8 +165,6 @@
   }
 
     button {
-      background: transparent;
-      border: none;
       padding: calc(var(--rythm) / 2);
       font-size: 12pt;
     }
@@ -197,7 +195,6 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
-      background: transparent;
     }
 
     figure.fullscreen input[type="range"] {
