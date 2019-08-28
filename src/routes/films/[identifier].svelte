@@ -73,4 +73,6 @@
 	<p><Credits credits={film.fields.creditList} /></p>
 </article>
 
+{#if film.fields.relatedContent}
 <List items={film.fields.relatedContent} full={false} />
+{/if}

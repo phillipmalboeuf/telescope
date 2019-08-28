@@ -88,4 +88,6 @@
 	</article>
 </section>
 
+{#if article.fields.relatedContent}
 <List items={article.fields.relatedContent} full={false} />
+{/if}

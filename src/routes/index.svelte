@@ -10,6 +10,9 @@
 
 	let items = [...films, ...articles, ...products]
 		.filter(item => item.fields.tags.includes('latest'))
+		.sort((left, right) => {
+			return new Date(right.fields.publishedDate) - new Date(left.fields.publishedDate)
+		})
 </script>
 
 <style>

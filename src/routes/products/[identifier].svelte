@@ -111,4 +111,6 @@
 	</article>
 </section>
 
+{#if product.fields.relatedContent}
 <List items={product.fields.relatedContent} full={false} />
+{/if}
