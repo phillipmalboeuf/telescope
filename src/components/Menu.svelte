@@ -14,7 +14,7 @@
 		{
 			title: 'Latest',
 			path: '',
-			items: [...films, ...articles, ...products]
+			items: [...films, ...articles, ...products].filter(item => item.fields.tags.includes('latest'))
 		},
 		{
 			title: 'Films',
