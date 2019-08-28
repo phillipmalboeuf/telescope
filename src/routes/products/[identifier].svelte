@@ -17,6 +17,7 @@
 	import Picture from '../../components/Picture.svelte'
   import Video from '../../components/Video.svelte'
   import Tag from '../../components/Tag.svelte'
+	import List from '../../components/List.svelte'
 	import Document from '../../components/document/index.svelte'
 	
 	export let product
@@ -34,12 +35,14 @@
 		white-space: nowrap;
 	}
 
-	aside {
-		width: 47.5vw;
+	section {
+		display: flex;
+		margin-bottom: calc(var(--rythm) * 2);
+	}
 
-		position: absolute;
-		top: 0;
-		left: 0;
+	aside {
+		width: 42.5vw;
+
 		margin-top: calc(var(--gutter) * -1);
 		margin-left: calc(var(--gutter) * -1);
 	}
@@ -49,17 +52,16 @@
 	}
 
 	article {
-		margin-top: calc(var(--gutter) * 4);
+		width: 37.5vw;
+		margin: calc(var(--gutter) * 4) calc(var(--gutter) * 2) calc(var(--rythm) * 2) auto;
 	}
 
-	article > :global(h2),
+	/* article > :global(h2),
 	article > :global(h4),
 	article > :global(h6),
 	article > :global(p) {
-		width: 37.5vw;
-		margin-left: auto;
-		margin-right: calc(var(--gutter) * 2);
-	}
+		
+	} */
 
 	button {
 		font-size: 15pt;
@@ -76,32 +78,36 @@
 	<title>{product.fields.title}</title>
 </svelte:head>
 
-<h1>{product.fields.title} • {product.fields.tags}</h1>
+<h1>{product.fields.title} • {#each product.fields.tags as tag}<a href="products?tag={tag}">{tag}</a> {/each}</h1>
 
-<aside>
-	{#each product.fields.photos as photo}
-	<figure>
-		<Picture media={photo} />
-	</figure>
-	{/each}
-</aside>
+<section>
+	<aside>
+		{#each product.fields.photos as photo}
+		<figure>
+			<Picture media={photo} />
+		</figure>
+		{/each}
+	</aside>
 
-<article>
-	<h4>{#each product.fields.sizes as size, index}{#if index}&nbsp;• {/if}{size}{/each}</h4>
-	<h6>Sizing</h6>
-	<hr />
-	<h4>{#each product.fields.colors as color, index}{#if index}&nbsp;• {/if}{color}{/each}</h4>
-	<h6>Colors</h6>
-	<hr />
-	<h4>{#if product.fields.soldOut}Sold Out{:else}{product.fields.price}{/if}</h4>
-	<h6>Price</h6>
-	<hr />
-	<h4>01</h4>
-	<h6>Quantity</h6>
-	<hr />
-	<p><button disabled>Add to Cart</button></p>
+	<article>
+		<h4>{#each product.fields.sizes as size, index}{#if index}&nbsp;• {/if}{size}{/each}</h4>
+		<h6>Sizing</h6>
+		<hr />
+		<h4>{#each product.fields.colors as color, index}{#if index}&nbsp;• {/if}{color}{/each}</h4>
+		<h6>Colors</h6>
+		<hr />
+		<h4>{#if product.fields.soldOut}Sold Out{:else}{product.fields.price}{/if}</h4>
+		<h6>Price</h6>
+		<hr />
+		<h4>01</h4>
+		<h6>Quantity</h6>
+		<hr />
+		<p><button disabled>Add to Cart</button></p>
 
-	<hr />
+		<hr />
 
-	<Document body={product.fields.description} />
-</article>
+		<Document body={product.fields.description} />
+	</article>
+</section>
+
+<List items={product.fields.relatedContent} full={false} />

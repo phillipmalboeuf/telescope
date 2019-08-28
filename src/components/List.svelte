@@ -5,6 +5,11 @@
 
   export let items
   export let full = true
+
+  items = items.map(item => ({
+    ...item,
+    type: item.type || item.sys.contentType.sys.id
+  }))
 </script>
 
 <style>

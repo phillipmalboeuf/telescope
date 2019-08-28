@@ -25,8 +25,6 @@
   let element
   let fadeTimeout
 
-  console.log(srcs)
-
   function format(t) {
     return Math.floor(t / 60) + ":" + ("0" + (t % 60).toFixed()).slice(-2)
   }

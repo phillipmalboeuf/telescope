@@ -18,6 +18,7 @@
   import Video from '../../components/Video.svelte'
   import Tag from '../../components/Tag.svelte'
 	import Credits from '../../components/Credits.svelte'
+	import List from '../../components/List.svelte'
 	import Document from '../../components/document/index.svelte'
 
 	export let film
@@ -30,6 +31,7 @@
 
 	article {
 		margin-top: calc(var(--gutter) * -3);
+		margin-bottom: calc(var(--rythm) * 2);
 	}
 
 	article > :global(h2),
@@ -46,7 +48,7 @@
 </svelte:head>
 
 
-<Video poster={film.fields.poster} srcs={film.fields.video} title="{film.fields.title} • {film.fields.tags}" full controls grabs={film.fields.screenGrabs} />
+<Video poster={film.fields.poster} srcs={film.fields.video} title="{film.fields.title} • {film.fields.tags.join(' ')}" full controls grabs={film.fields.screenGrabs} />
 
 <aside>
 	<Document body={film.fields.crew} />
@@ -57,3 +59,5 @@
 
 	<p><Credits credits={film.fields.creditList} /></p>
 </article>
+
+<List items={film.fields.relatedContent} full={false} />

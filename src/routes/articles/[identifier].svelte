@@ -18,6 +18,7 @@
   import Video from '../../components/Video.svelte'
   import Tag from '../../components/Tag.svelte'
 	import Credits from '../../components/Credits.svelte'
+	import List from '../../components/List.svelte'
 	import Document from '../../components/document/index.svelte'
 
 	export let article
@@ -35,12 +36,14 @@
 		white-space: nowrap;
 	}
 
-	aside {
-		width: 47.5vw;
+	section {
+		display: flex;
+		margin-bottom: calc(var(--rythm) * 2);
+	}
 
-		position: absolute;
-		top: 0;
-		left: 0;
+	aside {
+		width: 42.5vw;
+
 		margin-top: calc(var(--gutter) * -1);
 		margin-left: calc(var(--gutter) * -1);
 	}
@@ -50,35 +53,38 @@
 	}
 
 	article {
-		margin-top: calc(var(--gutter) * 4);
+		width: 37.5vw;
+		margin: calc(var(--gutter) * 4) calc(var(--gutter) * 2) calc(var(--rythm) * 2) auto;
 	}
 
-	article > :global(h2),
+	/* article > :global(h2),
 	article > :global(h4),
 	article > :global(h6),
 	article > :global(p) {
-		width: 37.5vw;
-		margin-left: auto;
-		margin-right: calc(var(--gutter) * 2);
-	}
+
+	} */
 </style>
 
 <svelte:head>
 	<title>{article.fields.title}</title>
 </svelte:head>
 
-<h1>{article.fields.title} • {article.fields.tags}</h1>
+<h1>{article.fields.title} • {#each article.fields.tags as tag}<a href="articles?tag={tag}">{tag}</a> {/each}</h1>
 
-<aside>
-	{#each article.fields.photos as photo}
-	<figure>
-		<Picture media={photo} />
-	</figure>
-	{/each}
-</aside>
+<section>
+	<aside>
+		{#each article.fields.photos as photo}
+		<figure>
+			<Picture media={photo} />
+		</figure>
+		{/each}
+	</aside>
 
-<article>
-	<Document body={article.fields.body} />
+	<article>
+		<Document body={article.fields.body} />
 
-	<p><Credits credits={article.fields.creditList} /></p>
-</article>
+		<p><Credits credits={article.fields.creditList} /></p>
+	</article>
+</section>
+
+<List items={article.fields.relatedContent} full={false} />
