@@ -16,12 +16,16 @@
 	let duration
   let buffered
 	let paused
+  let resolution = 0
+  let showResolutions = false
   let volume = 1
   let fullscreen = false
   let fade = false
 
   let element
   let fadeTimeout
+
+  console.log(srcs)
 
   function format(t) {
     return Math.floor(t / 60) + ":" + ("0" + (t % 60).toFixed()).slice(-2)
@@ -41,6 +45,10 @@
 
   function toggleVolume() {
     volume = volume ? 0 : 1
+  }
+
+  function selectResolution(index) {
+    resolution = index
   }
 
   function requestToggleFullscreen() {
@@ -138,6 +146,13 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  figcaption.controls > span > span {
+    display: inline-block;
+    max-width: 58pt;
+    text-align: right;
   }
 
   figure.fullscreen figcaption.controls {
@@ -154,6 +169,10 @@
       border: none;
       padding: calc(var(--rythm) / 2);
       font-size: 12pt;
+    }
+
+    button.faded {
+      opacity: 0.666;
     }
 
     label[for="time"] {
@@ -221,7 +240,7 @@
 <figure class:fade class:fullscreen on:mousemove={activate} bind:this={element}>
   <figcaption class="title"><h1>{title}</h1></figcaption>
 
-  <video class:full src={srcs ? srcs[0].fields.file.url : undefined} poster={poster.fields.file.url} autoplay
+  <video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} poster={poster.fields.file.url} autoplay
     bind:currentTime={time}
     bind:duration
     bind:buffered
@@ -232,6 +251,15 @@
   <figcaption class="controls">
     <button on:click={togglePaused}>{#if paused}➞{:else}❚{/if}</button>
     <span>
+      <span on:mouseenter={() => showResolutions = true} on:mouseleave={() => showResolutions = false}>
+        {#if showResolutions}
+        {#each srcs as src, index}
+        <button class:faded={resolution !== index} on:click={() => selectResolution(index)}>{src.fields.description}</button>   
+        {/each}
+        {:else}
+        <button>{srcs[resolution].fields.description}</button>  
+        {/if}
+      </span>
       <button on:click={requestToggleFullscreen}>{#if fullscreen}╻{:else}╹{/if}</button>
       <button on:click={toggleVolume}>{#if volume}⌑{:else}⊠{/if}</button>
     </span>
@@ -256,9 +284,9 @@
   <Gallery images={grabs.map(grab => ({ thumbnail: grab.fields.thumbnail }))} on:pick={event => grab(event.detail)} />
 {/if}
 {:else if hover}
-<video class:full src={srcs ? srcs[0].fields.file.url : undefined} poster={poster.fields.file.url} loop muted
+<video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} poster={poster.fields.file.url} loop muted
   on:mouseenter={e => e.currentTarget.play()}
   on:mouseleave={e => e.currentTarget.pause()} />
 {:else}
-<video class:full src={srcs ? srcs[0].fields.file.url : undefined} poster={poster.fields.file.url} loop muted autoplay />
+<video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} poster={poster.fields.file.url} loop muted autoplay />
 {/if}
