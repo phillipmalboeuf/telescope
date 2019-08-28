@@ -6,6 +6,7 @@
   export let poster
   export let srcs
   export let title = undefined
+  export let tags = undefined
   export let grabs = undefined
 
   export let full = true
@@ -126,15 +127,12 @@
     position: absolute;
     top: calc(var(--gutter) * -0.5);
     left: 0;
+    z-index: 2;
   }
 
   figure.fullscreen figcaption.title {
     top: calc(var(--gutter));
     left: calc(var(--gutter));
-  }
-
-  figcaption.title h1 {
-    font-size: 10pt;
   }
 
   figcaption.controls {
@@ -233,7 +231,7 @@
 
 {#if controls}
 <figure class:fade class:fullscreen on:mousemove={activate} bind:this={element}>
-  <figcaption class="title"><h1>{title}</h1></figcaption>
+  <figcaption class="title"><slot name="title" /></figcaption>
 
   <video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} poster={poster.fields.file.url} autoplay
     bind:currentTime={time}

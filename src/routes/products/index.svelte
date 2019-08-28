@@ -40,6 +40,6 @@
 	<title>Shop</title>
 </svelte:head>
 
-<Tags {tags} path="products" all="All Products" />
+<Tags {tags} path="products" all="All Products" nav />
 
 <List items={products} />

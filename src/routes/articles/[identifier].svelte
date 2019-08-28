@@ -17,6 +17,7 @@
 	import Picture from '../../components/Picture.svelte'
   import Video from '../../components/Video.svelte'
   import Tag from '../../components/Tag.svelte'
+	import Tags from '../../components/Tags.svelte'
 	import Credits from '../../components/Credits.svelte'
 	import List from '../../components/List.svelte'
 	import Document from '../../components/document/index.svelte'
@@ -69,7 +70,7 @@
 	<title>{article.fields.title}</title>
 </svelte:head>
 
-<h1>{article.fields.title} • {#each article.fields.tags as tag}<a href="articles?tag={tag}">{tag}</a> {/each}</h1>
+<h1>{article.fields.title} • <Tags tags={article.fields.tags} path="articles" /></h1>
 
 <section>
 	<aside>

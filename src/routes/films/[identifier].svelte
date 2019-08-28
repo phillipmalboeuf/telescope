@@ -17,6 +17,7 @@
 	import Picture from '../../components/Picture.svelte'
   import Video from '../../components/Video.svelte'
   import Tag from '../../components/Tag.svelte'
+	import Tags from '../../components/Tag.svelte'
 	import Credits from '../../components/Credits.svelte'
 	import List from '../../components/List.svelte'
 	import Document from '../../components/document/index.svelte'
@@ -41,6 +42,10 @@
 		width: 52.5vw;
 		margin-left: auto;
 	}
+
+	h1 {
+    font-size: 10pt;
+  }
 </style>
 
 <svelte:head>
@@ -48,7 +53,15 @@
 </svelte:head>
 
 
-<Video poster={film.fields.poster} srcs={film.fields.video} title="{film.fields.title} • {film.fields.tags.join(' ')}" full controls grabs={film.fields.screenGrabs} />
+<Video poster={film.fields.poster} srcs={film.fields.video} full controls grabs={film.fields.screenGrabs}>
+	<h1 slot="title">
+		{film.fields.title} • {#each film.fields.tags as tag, index}
+{#if tag !== 'latest'}
+{#if index}, {/if}<a href="films?tag={tag}"><Tag id={tag} /></a> 
+{/if}
+{/each}
+	</h1>
+</Video>
 
 <aside>
 	<Document body={film.fields.crew} />

@@ -1,7 +1,10 @@
 <script>
+	import Tag from './Tag.svelte'
   export let tags
 	export let path
-	export let all
+	export let all = undefined
+
+	export let nav = false
 </script>
 
 <style>
@@ -15,9 +18,19 @@
 		}
 </style>
 
+{#if nav}
 <nav>
 	<a href="{path}"><h6>{all}</h6></a>
 	{#each tags as [tag, total]}
-	<a href="{path}?tag={tag}"><h6>{tag}</h6></a> 
+	{#if tag !== 'latest'}
+	<a href="{path}?tag={tag}"><h6><Tag id={tag} /></h6></a> 
+	{/if}
 	{/each}
 </nav>
+{:else}
+{#each tags as tag, index}
+{#if tag !== 'latest'}
+{#if index}, {/if}<a href="{path}?tag={tag}"><Tag id={tag} /></a> 
+{/if}
+{/each}
+{/if}

@@ -1,5 +1,6 @@
 <script>
   import NewsletterForm from './NewsletterForm.svelte'
+  import Tags from './Tags.svelte'
 	export let items
 </script>
 
@@ -46,8 +47,8 @@ ol {
     ? `${item.type}#${item.fields.identifier}`
     : `${item.type}s/${item.fields.identifier}`} on:click>
     <h4>{item.fields.title}</h4>
-    <h6>{item.fields.tags}</h6>
   </a>
+  <h6><Tags tags={item.fields.tags} path={`${item.type}s`} /></h6>
   {/if}
 </li>
 {/each}

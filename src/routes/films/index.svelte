@@ -42,6 +42,6 @@
 	<title>Films</title>
 </svelte:head>
 
-<Tags {tags} path="films" all="All Films" />
+<Tags {tags} path="films" all="All Films" nav />
 
 <List items={films} full={false} />
