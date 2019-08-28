@@ -30,7 +30,7 @@
 		top: var(--gutter);
 		right: var(--gutter);
 
-		font-size: 10pt;
+		font-size: 7pt;
 		writing-mode: vertical-rl;
 		transform: rotate(180deg) translateX(2px);
 		white-space: nowrap;

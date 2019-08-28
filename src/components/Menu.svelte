@@ -76,7 +76,7 @@
 		top: 0;
 		right: 0;
 
-		font-size: 10pt;
+		font-size: 7pt;
 
 		display: inline-block;
 		padding: calc(var(--gutter) / 2.25) calc(var(--gutter) / 2.25);

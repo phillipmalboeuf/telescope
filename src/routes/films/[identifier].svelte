@@ -44,7 +44,7 @@
 	}
 
 	h1 {
-    font-size: 10pt;
+    font-size: 7pt;
   }
 </style>
 

@@ -16,7 +16,7 @@
   }
 
   input {
-    font-size: 8pt;
+    font-size: 7pt;
     border-bottom: 1px solid transparent;
   }
 </style>
