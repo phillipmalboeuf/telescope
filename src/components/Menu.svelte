@@ -12,27 +12,27 @@
 
 	const columns = [
 		{
-			title: 'Latest',
+			title: $session.locale === 'fr-CA' ? 'Nouveautés' : 'Latest',
 			path: '',
 			items: [...films, ...articles, ...products].filter(item => item.fields.tags.includes('latest'))
 		},
 		{
-			title: 'Films',
+			title: $session.locale === 'fr-CA' ? 'Films' : 'Films',
 			path: 'films',
 			items: films
 		},
 		{
-			title: 'News',
+			title: $session.locale === 'fr-CA' ? 'Nouvelles' : 'News',
 			path: 'articles',
 			items: articles
 		},
 		{
-			title: 'About',
+			title: $session.locale === 'fr-CA' ? 'À propos' : 'About',
 			path: 'about',
 			items: about,
 		},
 		{
-			title: 'Shop',
+			title: $session.locale === 'fr-CA' ? 'Magasin' : 'Shop',
 			path: 'products',
 			items: products
 		},
