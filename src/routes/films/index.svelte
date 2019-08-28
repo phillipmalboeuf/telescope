@@ -44,4 +44,4 @@
 
 <Tags {tags} path="films" all="All Films" />
 
-<List items={[...films, ...films, ...films, ...films]} full={false} />
+<List items={films} full={false} />
