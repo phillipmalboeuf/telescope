@@ -79,7 +79,7 @@
 		font-size: 10pt;
 
 		display: inline-block;
-		padding: var(--rythm);
+		padding: calc(var(--gutter) / 2.25) calc(var(--gutter) / 2.25);
 
 		text-shadow: white 2px 2px;
 	}

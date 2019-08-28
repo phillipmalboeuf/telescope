@@ -67,7 +67,7 @@
   }
 
   :global(h6) {
-    font-size: 8pt;
+    font-size: 7pt;
   }
 
   :global(p) {
