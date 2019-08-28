@@ -19,21 +19,21 @@
   
   function move(e) {
     x = e.layerX / size.w
-    // y = e.layerY / size.h
+    y = e.layerY / size.h
 
     wdth = widthInterpolator(Math.abs((x * 2) - 1)).split(' ')
     if (x > 0.5) {
       wdth.reverse()
     }
 
-    // wght = weightInterpolator(Math.abs((y * 2) - 1)).split(' ')
-    // if (y > 0.5) {
-    //   wght.reverse()
-    // }
+    wght = weightInterpolator(Math.abs((y * 2) - 1)).split(' ')
+    if (y > 0.5) {
+      wght.reverse()
+    }
 
     variants = {
       wdth: interpolateBasis(wdth),
-      // wght: interpolateBasis(wght)
+      wght: interpolateBasis(wght)
     }
   }
 
@@ -60,7 +60,7 @@
   {#each texts as t, i}
     {#each t as letter, index}
     {#if variants}
-    <span style='font-variation-settings: "wdth" {variants.wdth(index / (t.length - 1))}, "wght" 100'>{letter}</span>
+    <span style='font-variation-settings: "wdth" {variants.wdth(index / (t.length - 1))}, "wght" {variants.wght(i / (texts.length - 1))}'>{letter}</span>
     {:else}
     <span style='font-variation-settings: "wdth" 500, "wght" 100'>{letter}</span>
     {/if}
