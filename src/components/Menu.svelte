@@ -121,12 +121,16 @@
 			transition: flex 333ms;
 		}
 
+		ul > li:last-child {
+			margin-right: 0;
+		}
+
 		ul > li.selected {
 			flex: 7;
 		}
 
 		ul > li > a > h4 {
-			padding: calc(var(--gutter) - 6pt);
+			padding: calc(var(--gutter) - 5pt);
 			transition: transform 333ms;
 		}
 
