@@ -142,6 +142,10 @@
 			transform: translateX(calc(var(--gutter) * -0.5));
 		}
 
+		ul.selected > li.selected > a > h4 {
+			transform: translateX(0);
+		}
+
 			ul > li > a {
 				position: absolute;
 				top: 0;

@@ -8,8 +8,8 @@
 ol {
   position: absolute;
   top: var(--gutter);
-  right: calc(var(--gutter) * 2.5);
-  width: calc(var(--gutter) * 4.5);
+  right: calc(var(--gutter) * 2.25);
+  width: calc(var(--gutter) * 5);
 
   list-style: none;
 }
