@@ -116,7 +116,11 @@
     <a class={item.type} class:full rel='prefetch' href='{item.type}s/{item.fields.identifier}'>
       <figure>
         {#if item.type === 'film'}
+        {#if item.fields.teaser}
         <Video srcs={[item.fields.teaser]} poster={item.fields.poster} hover {full} />
+        {:else}
+        <Picture media={item.fields.poster} />
+        {/if}
         {:else}
         <Picture media={item.fields.poster} />
         {/if}
