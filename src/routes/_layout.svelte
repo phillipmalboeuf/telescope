@@ -56,7 +56,7 @@
   }
 
   :global(h1, blockquote p) {
-    font-size: 6.66vw;
+    font-size: 6.5vw;
   }
 
   :global(h2) {

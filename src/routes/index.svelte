@@ -21,6 +21,9 @@
 		font-family: 'Telescopique Splash', 'Telescopique', system-ui, -apple-system;
 		margin-bottom: calc(var(--gutter) * 2.5);
 		line-height: 1;
+
+		text-align: center;
+		will-change: transform;
 	}
 </style>
 
