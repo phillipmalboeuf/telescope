@@ -133,7 +133,7 @@
       <figure>
         {#if item.type === 'film'}
         {#if item.fields.teaser}
-        <Video srcs={[item.fields.teaser]} poster={item.fields.poster} hover {full} />
+        <Video srcs={[item.fields.teaser]} poster={item.fields.poster} {full} />
         {:else}
         <Picture media={item.fields.poster} />
         {/if}

@@ -11,7 +11,6 @@
 
   export let full = true
   export let controls = false
-  export let hover = false
 
   let time = 0
 	let duration
@@ -239,7 +238,8 @@
     bind:buffered
     bind:paused
     bind:volume
-    on:play={activate} />
+    on:play={activate}
+    on:click={togglePaused} />
   
   <figcaption class="controls">
     <button on:click={togglePaused}>{#if paused}➞{:else}❚{/if}</button>
