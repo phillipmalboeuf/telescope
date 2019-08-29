@@ -57,7 +57,7 @@
 	<h1 slot="title">
 		{film.fields.title} • {#each film.fields.tags as tag, index}
 {#if tag !== 'latest'}
-{#if index}, {/if}<a href="films?tag={tag}"><Tag id={tag} /></a> 
+{#if index} • {/if}<a href="films?tag={tag}"><Tag id={tag} /></a> 
 {/if}
 {/each}
 	</h1>
