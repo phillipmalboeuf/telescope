@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte'
 	import { fade, fly } from 'svelte/transition'
 	import { elasticOut, bounceOut, backOut } from 'svelte/easing'
 
@@ -53,6 +54,9 @@
 
 	let selected = undefined
 
+	let y
+	let height
+
 	function toggle() {
 		if (!visible) {
 			ys = ys.map(y => (Math.random() * 200) + 100)
@@ -69,6 +73,14 @@
 	function leave() {
 		selected = undefined
 	}
+
+	function scrollToTop() {
+		window.scrollTo({ top: 0, behavior: 'smooth' })
+	}
+
+	onMount(() => {
+		height = document.body.offsetHeight - window.innerHeight
+	})
 </script>
 
 <style>
@@ -162,9 +174,19 @@
 			}
 </style>
 
+<svelte:window bind:scrollY={y} />
+
+{console.log(height)}
+{console.log(y)}
+{#if height && y >= height - 10}
+<button on:click={scrollToTop} style="transform: rotate(-90deg)">
+	→
+</button>
+{:else}
 <button on:click={toggle}>
 	{#if visible}⎚{:else}☰{/if}
 </button>
+{/if}
 
 {#if visible}
 <nav transition:fade>
