@@ -15,6 +15,15 @@
 </script>
 
 <style>
+	nav {
+		display: flex;
+		margin: calc(var(--rythm) * -2.5) 0 calc(var(--rythm) * 1) calc(var(--rythm) / -2);
+	}
+
+		nav a {
+			padding: calc(var(--rythm) / 2);
+		}
+
 	section > :global(h2),
 	section > :global(h4),
 	section > :global(h6),
@@ -28,6 +37,13 @@
 <svelte:head>
 	<title>About</title>
 </svelte:head>
+
+<nav>
+	<a href="about"><h6>About</h6></a>
+	{#each about as piece}
+	<a href="about#{piece.fields.identifier}"><h6>{piece.fields.identifier}</h6></a>
+	{/each}
+</nav>
 
 {#each about as piece}
 <section id={piece.fields.identifier}>
