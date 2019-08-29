@@ -30,7 +30,7 @@
 {:else}
 {#each tags as tag, index}
 {#if tag !== 'latest'}
-{#if index} • {/if}<a href="{path}?tag={tag}"><Tag id={tag} /></a> 
+{#if index}&nbsp;• {/if}<a href="{path}?tag={tag}"><Tag id={tag} /></a> 
 {/if}
 {/each}
 {/if}

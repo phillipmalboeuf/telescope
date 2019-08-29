@@ -75,7 +75,7 @@
 	:global(html.noscroll) {
     overflow: hidden;
   }
-	
+
 	button {
 		position: fixed;
 		z-index: 11;
@@ -141,7 +141,7 @@
 
 		ul > li > a > h4 {
 			padding: calc(var(--gutter) - 5pt);
-			transition: transform 333ms;
+			transition: transform 333ms, font-variation-settings 333ms;
 		}
 
 		ul.selected > li > a > h4 {

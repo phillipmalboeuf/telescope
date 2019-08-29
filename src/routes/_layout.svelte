@@ -48,11 +48,20 @@
     font-variation-settings: "wdth" 200;
 		text-transform: uppercase;
     line-height: 1.2;
+    transition: font-variation-settings 333ms;
   }
 
 	:global(h4, h5, h6) {
     font-variation-settings: "wdth" 250;
     margin-bottom: calc(var(--rythm)/2);
+  }
+
+  :global(h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover) {
+    font-variation-settings: "wdth" 285;
+  }
+
+  :global(a:hover h4, a:hover h6) {
+    font-variation-settings: "wdth" 285;
   }
 
   :global(h1, blockquote p) {
@@ -112,6 +121,7 @@
     position: relative;
     border: none;
     background: transparent;
+    transition: font-variation-settings 333ms;
   }
 
   :global(a:active, button:active) {
@@ -121,6 +131,11 @@
   :global(button, label, input) {
     font-family: 'Telescopique', system-ui, -apple-system;
     font-variation-settings: "wdth" 200;
+    transition: font-variation-settings 333ms;
+  }
+
+  :global(button:hover, input:focus) {
+    font-variation-settings: "wdth" 235;
   }
 </style>
 
