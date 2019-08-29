@@ -56,6 +56,7 @@
 	}
 
 	h1 {
+		position: -webkit-sticky;
     position: sticky;
 		top: var(--gutter);
 
