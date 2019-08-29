@@ -41,7 +41,7 @@
 <nav>
 	<a href="about"><h6>About</h6></a>
 	{#each about as piece}
-	<a href="about#{piece.fields.identifier}"><h6>{piece.fields.identifier}</h6></a>
+	<a href="about#{piece.fields.identifier}"><h6>{piece.fields.title}</h6></a>
 	{/each}
 </nav>
 
