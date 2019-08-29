@@ -17,8 +17,6 @@
 	export let contact
 	export let photo
 
-	console.log(photo)
-
 	onMount(() => {
 		window.sk = window.sk||function(){(sk.q=sk.q||[]).push(arguments)}
 		sk('form', '#newsletter-form', {

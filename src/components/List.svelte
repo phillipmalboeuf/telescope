@@ -2,6 +2,7 @@
   import Picture from './Picture.svelte'
   import Video from './Video.svelte'
   import Tag from './Tag.svelte'
+  import Document from './document/index.svelte'
 
   export let items
   export let full = true
@@ -129,6 +130,11 @@
 <ol>
 	{#each items as item}
 	<li>
+    {#if item.type === 'looseText'}
+    
+    <Document body={item.fields.body} />
+
+    {:else}
     <a class={item.type} class:full rel='prefetch' href='{item.type}s/{item.fields.identifier}'>
       <figure>
         {#if item.type === 'film'}
@@ -145,6 +151,7 @@
         </figcaption>
       </figure>
     </a>
+    {/if}
   </li>
 	{/each}
 </ol>

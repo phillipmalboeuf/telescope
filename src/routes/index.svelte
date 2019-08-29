@@ -1,3 +1,14 @@
+<script context="module">
+	import json from 'json-complete'
+
+	export async function preload({ params, query }) {
+		const res = await this.fetch(`loose.json`)
+		const { loose } = json.decode(await res.text())
+
+		return { loose }
+	}
+</script>
+
 <script>
 	import { fade } from 'svelte/transition'
 	import Hover from '../components/Hover.svelte'
@@ -7,12 +18,15 @@
 	const { preloading, page, session } = stores()
 
 	let { films, articles, products } = $session.navigation
+	export let loose
 
 	let items = [...films, ...articles, ...products]
 		.filter(item => item.fields.tags.includes('latest'))
 		.sort((left, right) => {
 			return new Date(right.fields.publishedDate) - new Date(left.fields.publishedDate)
 		})
+
+	items.splice(5, 0, loose)
 </script>
 
 <style>
