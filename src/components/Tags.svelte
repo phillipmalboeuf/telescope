@@ -10,7 +10,7 @@
 <style>
 	nav {
 		display: flex;
-		margin: calc(var(--rythm) / -2) 0 calc(var(--rythm) * 2) calc(var(--rythm) / -2);
+		margin: calc(var(--rythm) * -2.5) 0 calc(var(--rythm) * 1) calc(var(--rythm) / -2);
 	}
 
 		nav a {
