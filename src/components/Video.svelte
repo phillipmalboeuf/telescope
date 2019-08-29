@@ -233,7 +233,7 @@
 <figure class:fade class:fullscreen on:mousemove={activate} bind:this={element}>
   <figcaption class="title"><slot name="title" /></figcaption>
 
-  <video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} poster={poster.fields.file.url} autoplay
+  <video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} autoplay
     bind:currentTime={time}
     bind:duration
     bind:buffered
@@ -276,10 +276,6 @@
 {#if grabs}
   <Gallery images={grabs.map(grab => ({ thumbnail: grab.fields.thumbnail }))} on:pick={event => grab(event.detail)} />
 {/if}
-{:else if hover}
-<video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} poster={poster.fields.file.url} loop muted
-  on:mouseenter={e => e.currentTarget.play()}
-  on:mouseleave={e => e.currentTarget.pause()} />
 {:else}
-<video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} poster={poster.fields.file.url} loop muted autoplay />
+<video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} loop muted autoplay />
 {/if}

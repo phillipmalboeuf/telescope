@@ -62,7 +62,7 @@
     {#if variants}
     <span style='font-variation-settings: "wdth" {variants.wdth(index / (t.length - 1))}, "wght" {variants.wght(i / (texts.length - 1))}'>{letter}</span>
     {:else}
-    <span style='font-variation-settings: "wdth" 500, "wght" 100'>{letter}</span>
+    <span style='font-variation-settings: "wdth" 500, "wght" 80'>{letter}</span>
     {/if}
     {/each}
     <br />

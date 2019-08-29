@@ -60,11 +60,11 @@
   }
 
   :global(h2) {
-    font-size: 24pt;
+    font-size: 20pt;
   }
 
   :global(h4) {
-    font-size: 13pt;
+    font-size: 12pt;
   }
 
   :global(h6) {
@@ -72,7 +72,7 @@
   }
 
   :global(p) {
-    font-size: 16pt;
+    font-size: 15pt;
   }
 
 	:global(p:last-child) {
