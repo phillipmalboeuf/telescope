@@ -57,6 +57,8 @@
 		if (!visible) {
 			ys = ys.map(y => (Math.random() * 200) + 100)
 		}
+
+		document.documentElement.classList.toggle('noscroll')
 		visible = !visible
 	}
 
@@ -70,6 +72,10 @@
 </script>
 
 <style>
+	:global(html.noscroll) {
+    overflow: hidden;
+  }
+	
 	button {
 		position: fixed;
 		z-index: 11;
