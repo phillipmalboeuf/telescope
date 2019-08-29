@@ -48,8 +48,19 @@
         width: 32.5vw;
       }
 
+      figure :global(video),
+      figure :global(img) {
+        height: calc(32.5vw * 14 / 9);
+        object-fit: cover;
+      }
+
       a.film figure {
         width: 52.5vw;
+      }
+
+      a.film figure :global(video),
+      a.film figure :global(img) {
+        height: calc(52.5vw * 9 / 14);
       }
 
       a.film.full figure {
