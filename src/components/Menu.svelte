@@ -109,6 +109,10 @@
 		height: 100%;
 	}
 
+	nav.bottom ul {
+		margin-top: calc(var(--gutter) * -1);
+	}
+
 		ul > li {
 			color: white;
 			background: black;
