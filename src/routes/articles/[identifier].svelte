@@ -26,66 +26,71 @@
 </script>
 
 <style>
-	h1 {
-		position: absolute;
-		top: var(--gutter);
-		right: var(--gutter);
+	section {
+		position: relative;
+	}
 
-		font-size: 15pt;
+	nav {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+	}
+
+	h1 {
+		position: sticky;
+		top: var(--gutter);
+
+		font-size: 12pt;
 		writing-mode: vertical-rl;
 		transform: rotate(180deg) translateX(2px);
 		white-space: nowrap;
 	}
 
-	section {
+	section div {
 		display: flex;
 		margin-bottom: calc(var(--rythm) * 2);
 	}
 
-	aside {
-		width: 42.5vw;
+		aside {
+			width: 42.5vw;
 
-		margin-top: calc(var(--gutter) * -1);
-		margin-left: calc(var(--gutter) * -1);
-	}
+			margin-top: calc(var(--gutter) * -1);
+			margin-left: calc(var(--gutter) * -1);
+		}
 
-	aside figure {
-		margin: 0 0 var(--rythm);
-	}
+		aside figure {
+			margin: 0 0 var(--rythm);
+		}
 
-	article {
-		width: 37.5vw;
-		margin: calc(var(--gutter) * 4) calc(var(--gutter) * 2) calc(var(--rythm) * 2) auto;
-	}
-
-	/* article > :global(h2),
-	article > :global(h4),
-	article > :global(h6),
-	article > :global(p) {
-
-	} */
+		article {
+			width: 37.5vw;
+			margin: calc(var(--gutter) * 4) calc(var(--gutter) * 2) calc(var(--rythm) * 2) auto;
+		}
 </style>
 
 <svelte:head>
 	<title>{article.fields.title}</title>
 </svelte:head>
 
-<h1>{article.fields.title} • <Tags tags={article.fields.tags} path="articles" /></h1>
-
 <section>
-	<aside>
-		{#each article.fields.photos as photo}
-		<figure>
-			<Picture media={photo} />
-		</figure>
-		{/each}
-	</aside>
+	<nav><h1>{article.fields.title} • <Tags tags={article.fields.tags} path="articles" /></h1></nav>
 
-	<article>
-		<Document body={article.fields.body} />
+	<div>
+		<aside>
+			{#each article.fields.photos as photo}
+			<figure>
+				<Picture media={photo} />
+			</figure>
+			{/each}
+		</aside>
 
-		<p><Credits credits={article.fields.creditList} /></p>
-	</article>
+		<article>
+			<Document body={article.fields.body} />
+
+			<p><Credits credits={article.fields.creditList} /></p>
+		</article>
+	</div>
 </section>
 
 {#if article.fields.relatedContent}

@@ -44,6 +44,10 @@
 			flex: 3;
 		}
 
+    ol > li:last-child {
+			margin-right: 0;
+		}
+
     figure :global(img) {
       height: 25vh;
       object-fit: cover;

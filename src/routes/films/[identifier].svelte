@@ -17,7 +17,7 @@
 	import Picture from '../../components/Picture.svelte'
   import Video from '../../components/Video.svelte'
   import Tag from '../../components/Tag.svelte'
-	import Tags from '../../components/Tag.svelte'
+	import Tags from '../../components/Tags.svelte'
 	import Credits from '../../components/Credits.svelte'
 	import List from '../../components/List.svelte'
 	import Document from '../../components/document/index.svelte'
@@ -26,6 +26,10 @@
 </script>
 
 <style>
+	section {
+		position: relative;
+	}
+
 	aside {
 		width: 32.5vw;
 	}
@@ -41,10 +45,25 @@
 	article > :global(p) {
 		width: 52.5vw;
 		margin-left: auto;
+		margin-right: var(--gutter);
+	}
+
+	nav {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
 	}
 
 	h1 {
-    font-size: 7pt;
+    position: sticky;
+		top: var(--gutter);
+
+		font-size: 12pt;
+		writing-mode: vertical-rl;
+		transform: rotate(180deg) translateX(2px);
+		white-space: nowrap;
+		margin: 0;
   }
 </style>
 
@@ -54,24 +73,24 @@
 
 
 <Video poster={film.fields.poster} srcs={film.fields.video} full controls grabs={film.fields.screenGrabs}>
-	<h1 slot="title">
-		{film.fields.title} • {#each film.fields.tags as tag, index}
-{#if tag !== 'latest'}
-{#if index} • {/if}<a href="films?tag={tag}"><Tag id={tag} /></a> 
-{/if}
-{/each}
-	</h1>
+	<h6 slot="title">
+		{film.fields.title} • <Tags tags={film.fields.tags} path="films" />
+	</h6>
 </Video>
 
-<aside>
-	<Document body={film.fields.crew} />
-</aside>
+<section>
+	<nav><h1>{film.fields.title} • <Tags tags={film.fields.tags} path="films" /></h1></nav>
 
-<article>
-	<Document body={film.fields.description} />
+	<aside>
+		<Document body={film.fields.crew} />
+	</aside>
 
-	<p><Credits credits={film.fields.creditList} /></p>
-</article>
+	<article>
+		<Document body={film.fields.description} />
+
+		<p><Credits credits={film.fields.creditList} /></p>
+	</article>
+</section>
 
 {#if film.fields.relatedContent}
 <List items={film.fields.relatedContent} full={false} />

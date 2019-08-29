@@ -25,18 +25,28 @@
 </script>
 
 <style>
-	h1 {
-		position: absolute;
-		top: var(--gutter);
-		right: var(--gutter);
+	section {
+		position: relative;
+	}
 
-		font-size: 7pt;
+	nav {
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+	}
+
+	h1 {
+		position: sticky;
+		top: var(--gutter);
+
+		font-size: 12pt;
 		writing-mode: vertical-rl;
 		transform: rotate(180deg) translateX(2px);
 		white-space: nowrap;
 	}
 
-	section {
+	section div {
 		display: flex;
 		margin-bottom: calc(var(--rythm) * 2);
 	}
@@ -57,13 +67,6 @@
 		margin: calc(var(--gutter) * 4) calc(var(--gutter) * 2) calc(var(--rythm) * 2) auto;
 	}
 
-	/* article > :global(h2),
-	article > :global(h4),
-	article > :global(h6),
-	article > :global(p) {
-		
-	} */
-
 	button {
 		font-size: 15pt;
 		padding: 0;
@@ -79,36 +82,38 @@
 	<title>{product.fields.title}</title>
 </svelte:head>
 
-<h1>{product.fields.title} • <Tags tags={product.fields.tags} path="products" /></h1>
-
 <section>
-	<aside>
-		{#each product.fields.photos as photo}
-		<figure>
-			<Picture media={photo} />
-		</figure>
-		{/each}
-	</aside>
+	<nav><h1>{product.fields.title} • <Tags tags={product.fields.tags} path="products" /></h1></nav>
 
-	<article>
-		<h4>{#each product.fields.sizes as size, index}{#if index}&nbsp;• {/if}{size}{/each}</h4>
-		<h6>Sizing</h6>
-		<hr />
-		<h4>{#each product.fields.colors as color, index}{#if index}&nbsp;• {/if}{color}{/each}</h4>
-		<h6>Colors</h6>
-		<hr />
-		<h4>{#if product.fields.soldOut}Sold Out{:else}{product.fields.price}{/if}</h4>
-		<h6>Price</h6>
-		<hr />
-		<h4>01</h4>
-		<h6>Quantity</h6>
-		<hr />
-		<p><button disabled>Add to Cart</button></p>
+	<div>
+		<aside>
+			{#each product.fields.photos as photo}
+			<figure>
+				<Picture media={photo} />
+			</figure>
+			{/each}
+		</aside>
 
-		<hr />
+		<article>
+			<h4>{#each product.fields.sizes as size, index}{#if index}&nbsp;• {/if}{size}{/each}</h4>
+			<h6>Sizing</h6>
+			<hr />
+			<h4>{#each product.fields.colors as color, index}{#if index}&nbsp;• {/if}{color}{/each}</h4>
+			<h6>Colors</h6>
+			<hr />
+			<h4>{#if product.fields.soldOut}Sold Out{:else}{product.fields.price}{/if}</h4>
+			<h6>Price</h6>
+			<hr />
+			<h4>01</h4>
+			<h6>Quantity</h6>
+			<hr />
+			<p><button disabled>Add to Cart</button></p>
 
-		<Document body={product.fields.description} />
-	</article>
+			<hr />
+
+			<Document body={product.fields.description} />
+		</article>
+	</div>
 </section>
 
 {#if product.fields.relatedContent}
