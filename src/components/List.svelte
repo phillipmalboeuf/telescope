@@ -67,6 +67,11 @@
         width: 100%;
       }
 
+      a.film.full figure :global(video),
+      a.film.full figure :global(img) {
+        height: 100vh;
+      }
+
       li:first-child figure {
         margin-top: 0;
       }

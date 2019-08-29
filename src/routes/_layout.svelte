@@ -29,6 +29,7 @@
 		background: white;
 
 		margin: 0;
+    overflow-x: hidden;
 	}
 
 	main {
