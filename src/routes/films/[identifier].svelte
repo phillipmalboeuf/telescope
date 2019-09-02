@@ -60,7 +60,7 @@
     position: sticky;
 		top: var(--gutter);
 
-		font-size: 12pt;
+		font-size: var(--small);
 		writing-mode: vertical-rl;
 		transform: rotate(180deg) translateX(2px);
 		white-space: nowrap;

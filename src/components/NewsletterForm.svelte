@@ -25,7 +25,7 @@
   }
 
   input {
-    font-size: 7pt;
+    font-size: var(--tiny);
     border-bottom: 1px solid transparent;
   }
 

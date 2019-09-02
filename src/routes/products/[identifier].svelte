@@ -41,7 +41,7 @@
 		position: sticky;
 		top: var(--gutter);
 
-		font-size: 12pt;
+		font-size: var(--small);
 		writing-mode: vertical-rl;
 		transform: rotate(180deg) translateX(2px);
 		white-space: nowrap;
@@ -69,7 +69,7 @@
 	}
 
 	button {
-		font-size: 15pt;
+		font-size: var(--medium);
 		padding: 0;
 	}
 

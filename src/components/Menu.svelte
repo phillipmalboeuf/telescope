@@ -94,7 +94,7 @@
 		top: 0;
 		right: 0;
 
-		font-size: 7pt;
+		font-size: var(--tiny);
 
 		display: inline-block;
 		padding: calc(var(--gutter) / 2.25) calc(var(--gutter) / 2.25);

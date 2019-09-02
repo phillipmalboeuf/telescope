@@ -161,7 +161,7 @@
 
     button {
       padding: calc(var(--rythm) / 2);
-      font-size: 7pt;
+      font-size: var(--tiny);
     }
 
     button.faded {
@@ -171,7 +171,7 @@
     label[for="time"] {
       position: absolute;
       bottom: 36px;
-      font-size: 7pt;
+      font-size: var(--tiny);
       transform: translateX(-50%);
     }
 

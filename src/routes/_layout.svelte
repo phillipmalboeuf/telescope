@@ -12,6 +12,18 @@
 	:global(:root) {
     --rythm: 20px;
 		--gutter: 5vw;
+
+    --big: 6.5vw;
+    --medium: 15pt;
+    --small: 12pt;
+    --tiny: 7pt;
+    --body: 15pt;
+  }
+
+  @media (min-width: 1500px) {
+    :global(:root) {
+      --tiny: 8pt;
+    }
   }
 
 	:global(html) {
@@ -65,23 +77,23 @@
   }
 
   :global(h1, blockquote p) {
-    font-size: 6.5vw;
+    font-size: var(--big);
   }
 
   :global(h2) {
-    font-size: 20pt;
+    font-size: var(--medium);
   }
 
   :global(h4) {
-    font-size: 12pt;
+    font-size: var(--small);
   }
 
   :global(h6) {
-    font-size: 7pt;
+    font-size: var(--tiny);
   }
 
   :global(p) {
-    font-size: 15pt;
+    font-size: var(--body);
   }
 
 	:global(p:last-child) {
