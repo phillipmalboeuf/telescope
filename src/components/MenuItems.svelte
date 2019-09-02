@@ -35,7 +35,7 @@ ol {
     <h6>{item.fields.linkLabel}</h6>
   </a>
   {:else if item.type === 'newsletter'}
-  <NewsletterForm />
+  <NewsletterForm id="menu-newsletter-form" />
   {:else if item.type === 'locales'}
   <h4>
     <a href="{item.path}" class:disabled={item.current === 'fr-CA'}>Français</a><br />

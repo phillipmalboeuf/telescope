@@ -58,7 +58,7 @@ ol {
 
 <ol>
 	<li>
-		<NewsletterForm />
+		<NewsletterForm id="contact-page-newsletter-form" />
 	</li>
 {#each contact as point}
 	<li>
