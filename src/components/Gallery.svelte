@@ -80,7 +80,7 @@
   {#each images as { thumbnail, content }, index}
   <li class:selected={selected === index} on:mouseenter={()=> enter(index)} on:click={() => pick(index)}>
     <figure class:content>
-      <Picture media={thumbnail} />
+      <Picture media={thumbnail} small />
       {#if content && selected === index}
       <figcaption transition:fly>
         <slot name="content" {content} />

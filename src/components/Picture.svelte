@@ -1,5 +1,6 @@
 <script>
   export let media
+  export let small = false
 </script>
 
 <style>
@@ -9,5 +10,13 @@
 </style>
 
 <picture>
-  <img src="{media.fields.file.url}" alt="{media.fields.title} {media.fields.description}" />
+  {#if small}
+  <source srcSet="{media.fields.file.url}?w=400&fm=webp" media="(max-width: 900px)" />
+  <source srcSet="{media.fields.file.url}?w=600&fm=webp" media="(max-width: 1200px)" />
+  <img src="{media.fields.file.url}?w=800&fm=webp" alt="{media.fields.title} {media.fields.description}" />
+  {:else}
+  <source srcSet="{media.fields.file.url}?w=900&fm=webp" media="(max-width: 900px)" />
+  <source srcSet="{media.fields.file.url}?w=1200&fm=webp" media="(max-width: 1200px)" />
+  <img src="{media.fields.file.url}?w=1800&fm=webp" alt="{media.fields.title} {media.fields.description}" />
+  {/if}
 </picture>
