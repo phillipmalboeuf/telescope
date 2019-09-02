@@ -113,6 +113,10 @@
 		background: white;
 	}
 
+	nav :global(a:hover h4, a:hover h6) {
+    font-variation-settings: "wdth" 285;
+  }
+
 	nav.bottom {
 		position: relative;
 	}
@@ -176,8 +180,6 @@
 
 <svelte:window bind:scrollY={y} />
 
-{console.log(height)}
-{console.log(y)}
 {#if height && y >= height - 10}
 <button on:click={scrollToTop} style="transform: rotate(-90deg)">
 	→

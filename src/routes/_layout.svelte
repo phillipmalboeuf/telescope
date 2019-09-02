@@ -64,10 +64,6 @@
     font-variation-settings: "wdth" 285;
   }
 
-  :global(a:hover h4, a:hover h6) {
-    font-variation-settings: "wdth" 285;
-  }
-
   :global(h1, blockquote p) {
     font-size: 6.5vw;
   }
