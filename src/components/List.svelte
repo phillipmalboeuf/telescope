@@ -1,4 +1,6 @@
 <script>
+  import { fade, fly } from 'svelte/transition'
+
   import Picture from './Picture.svelte'
   import Video from './Video.svelte'
   import Tag from './Tag.svelte'
@@ -128,8 +130,9 @@
 </style>
 
 <ol>
-	{#each items as item}
-	<li>
+	{#each items as item, index (item.sys.id)}
+  
+	<li in:fly|local="{{ x: 200 * (index % 2 ? 1 : -1), delay: 666, duration: 666 }}" out:fly|local="{{ x: 200 * (index % 2 ? 1 : -1), duration: 666 }}">
     {#if item.type === 'looseText'}
     
     <Document body={item.fields.body} />

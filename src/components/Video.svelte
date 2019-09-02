@@ -20,10 +20,10 @@
   let showResolutions = false
   let volume = 1
   let fullscreen = false
-  let fade = false
+  let inactive = false
 
   let element
-  let fadeTimeout
+  let inactiveTimeout
 
   function format(t) {
     return Math.floor(t / 60) + ":" + ("0" + (t % 60).toFixed()).slice(-2)
@@ -36,8 +36,8 @@
   function togglePaused() {
     paused = !paused
     if (paused) {
-      clearTimeout(fadeTimeout)
-      fade = false
+      clearTimeout(inactiveTimeout)
+      inactive = false
     }
   }
 
@@ -69,9 +69,9 @@
   }
 
   function activate() {
-    clearTimeout(fadeTimeout)
-    fadeTimeout = setTimeout(() => fade = true, 1666)
-    fade = false
+    clearTimeout(inactiveTimeout)
+    inactiveTimeout = setTimeout(() => inactive = true, 1666)
+    inactive = false
   }
 
   function grab(index) {
@@ -105,7 +105,7 @@
     cursor: default;
   }
 
-  figure.fade {
+  figure.inactive {
     cursor: none;
   }
 
@@ -118,7 +118,7 @@
     opacity: 1;
   }
 
-  figure.fade figcaption {
+  figure.inactive figcaption {
     opacity: 0;
   }
 
@@ -229,7 +229,7 @@
 <svelte:window on:keydown={keydown} />
 
 {#if controls}
-<figure class:fade class:fullscreen on:mousemove={activate} bind:this={element}>
+<figure class:inactive class:fullscreen on:mousemove={activate} bind:this={element}>
   <figcaption class="title"><slot name="title" /></figcaption>
 
   <video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} autoplay

@@ -72,7 +72,6 @@
 	<title>{film.fields.title}</title>
 </svelte:head>
 
-
 <Video poster={film.fields.poster} srcs={film.fields.video} full controls grabs={film.fields.screenGrabs}>
 	<h6 slot="title">
 		{film.fields.title} • <Tags tags={film.fields.tags} path="films" />
