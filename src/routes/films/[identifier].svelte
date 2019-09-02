@@ -88,7 +88,7 @@
 	<article>
 		<Document body={film.fields.description} />
 
-		<p><Credits credits={film.fields.creditList} /></p>
+		{#if film.fields.creditList}<p><Credits credits={film.fields.creditList} /></p>{/if}
 	</article>
 </section>
 

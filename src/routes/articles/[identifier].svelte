@@ -89,7 +89,7 @@
 		<article>
 			<Document body={article.fields.body} />
 
-			<p><Credits credits={article.fields.creditList} /></p>
+			{#if article.fields.creditList}<p><Credits credits={article.fields.creditList} /></p>{/if}
 		</article>
 	</div>
 </section>
