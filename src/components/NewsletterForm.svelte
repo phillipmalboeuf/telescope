@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte'
 
   export let id
-  let popup = true
+  let popup = false
   let success = false
 
 	onMount(async () => {
@@ -79,7 +79,7 @@
 {#if popup}
 <aside transition:fade>
   <button on:click={() => popup = false} />
-  <div transition:fly={{ opacity: 1 }}>
+  <div transition:fly={{ y: 100, opacity: 1 }}>
     <h4>Successfully Submitted.</h4>
     <h4>Thanks for subscribing to our newsletter.</h4>
     <h4>You'll be the first to know about our releases.</h4>
