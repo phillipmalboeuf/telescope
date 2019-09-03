@@ -97,9 +97,15 @@
 		font-size: var(--tiny);
 
 		display: inline-block;
-		padding: calc(var(--gutter) / 2.25) calc(var(--gutter) / 2.25);
+		padding: calc(var(--gutter) / 2.25);
 
-		text-shadow: white 2px 2px;
+		text-shadow: white 1px 1px;
+	}
+
+	@media (max-width: 900px) {
+		button {
+			padding: calc(var(--gutter) / 3);
+		}
 	}
 
 	nav {
@@ -147,6 +153,12 @@
 			transition: flex 333ms;
 		}
 
+		@media (max-width: 900px) {
+			ul > li {
+				margin-right: calc(var(--gutter) / 4);
+			}
+		}
+
 		ul > li:last-child {
 			margin-right: 0;
 		}
@@ -158,6 +170,12 @@
 		ul > li > a > h4 {
 			padding: calc(var(--gutter) - 5pt);
 			transition: transform 333ms, font-variation-settings 333ms;
+		}
+
+		@media (max-width: 900px) {
+			ul > li > a > h4 {
+				padding: calc(var(--gutter) - 7pt);
+			}
 		}
 
 		ul.selected > li > a > h4 {

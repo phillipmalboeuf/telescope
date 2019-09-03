@@ -31,6 +31,19 @@
 		width: 52.5vw;
 		margin-left: auto;
 	}
+
+	@media (max-width: 900px) {
+		nav {
+			margin-top: calc(var(--rythm) * -0.5);
+		}
+
+		section > :global(h2),
+		section > :global(h4),
+		section > :global(h6),
+		section > :global(p) {
+			width: 100%;
+		}
+	}
 </style>
 
 

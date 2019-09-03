@@ -10,12 +10,19 @@
 <style>
 	nav {
 		display: flex;
+		flex-wrap: wrap;
 		margin: calc(var(--rythm) * -2.5) 0 calc(var(--rythm) * 1) calc(var(--rythm) / -2);
 	}
 
 		nav a {
 			padding: calc(var(--rythm) / 2);
 		}
+		
+	@media (max-width: 900px) {
+		nav {
+			margin-top: calc(var(--rythm) * -0.5);
+		}
+	}
 </style>
 
 {#if nav}

@@ -44,6 +44,12 @@
 			flex: 3;
 		}
 
+    @media (max-width: 900px) {
+      ol > li.selected {
+        flex: 4;
+      }
+    }
+
     ol > li:last-child {
 			margin-right: 0;
 		}
@@ -51,6 +57,12 @@
     figure :global(img) {
       height: 25vh;
       object-fit: cover;
+    }
+
+    @media (max-width: 900px) {
+      figure :global(img) {
+        height: 10vh;
+      }
     }
 
     figure {
@@ -69,6 +81,16 @@
         left: 0;
         top: calc(100% + var(--rythm));
         width: 100vw;
+      }
+
+      @media (max-width: 900px) {
+        figure.content {
+          margin-bottom: calc(var(--rythm) * 2.5);
+        }
+
+        figcaption {
+          top: calc(100% + calc(var(--rythm) / 3));
+        }
       }
 
       figcaption :global(h6) {

@@ -22,6 +22,7 @@
   }
 
   button {
+    padding: 0;
     margin: calc(var(--rythm)*1.5) 0;
   }
 </style>

@@ -49,6 +49,7 @@
 
 	section div {
 		display: flex;
+		flex-wrap: wrap;
 		margin-bottom: calc(var(--rythm) * 2);
 	}
 
@@ -59,6 +60,12 @@
 		margin-left: calc(var(--gutter) * -1);
 	}
 
+	@media (max-width: 900px) {
+		aside {
+			width: 100%;
+		}
+	}
+
 	aside figure {
 		margin: 0 0 var(--rythm);
 	}
@@ -66,6 +73,19 @@
 	article {
 		width: 37.5vw;
 		margin: calc(var(--gutter) * 4) calc(var(--gutter) * 2) calc(var(--rythm) * 2) auto;
+	}
+
+	@media (max-width: 900px) {
+		article {
+			width: 100%;
+			margin: 0 calc(var(--gutter) * 2) calc(var(--rythm) * 2) auto;
+		}
+	}
+
+	@media (max-width: 900px) {
+		h1 {
+			font-size: var(--tiny);
+		}
 	}
 
 	button {

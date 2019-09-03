@@ -26,6 +26,18 @@
     }
   }
 
+  @media (max-width: 900px) {
+    :global(:root) {
+      --gutter: 6.5vw;
+
+      --big: 8vw;
+      --medium: 12pt;
+      --small: 9pt;
+      --tiny: 6pt;
+      --body: 12pt;
+    }
+  }
+
 	:global(html) {
     background-color: black;
   }
@@ -142,6 +154,7 @@
 
   :global(button, label, input) {
     font-family: 'Telescopique', system-ui, -apple-system;
+    font-size: var(--small);
     font-variation-settings: "wdth" 200;
     transition: font-variation-settings 333ms;
   }

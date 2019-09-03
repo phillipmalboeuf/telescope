@@ -48,6 +48,24 @@
 		margin-right: var(--gutter);
 	}
 
+	@media (max-width: 900px) {
+		aside {
+			width: 100%;
+		}
+
+		article {
+			margin-top: calc(var(--gutter));
+			margin-right: calc(var(--gutter));
+		}
+
+		article > :global(h2),
+		article > :global(h4),
+		article > :global(h6),
+		article > :global(p) {
+			width: 100%;
+		}
+	}
+
 	nav {
 		position: absolute;
 		top: 0;
@@ -66,6 +84,12 @@
 		white-space: nowrap;
 		margin: 0;
   }
+
+	@media (max-width: 900px) {
+		h1 {
+			font-size: var(--tiny);
+		}
+	}
 </style>
 
 <svelte:head>

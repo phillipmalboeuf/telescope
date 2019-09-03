@@ -66,6 +66,26 @@
         height: calc(52.5vw * 9 / 14);
       }
 
+      @media (max-width: 900px) {
+        a,
+        a.film {
+          margin-top: 0;
+          margin-bottom: calc(var(--gutter));
+        }
+
+        figure,
+        a.film figure {
+          width: 80vw;
+        }
+
+        figure :global(video),
+        figure :global(img),
+        a.film figure :global(video),
+        a.film figure :global(img) {
+          height: calc(80vw * 9 / 11);
+        }
+      }
+
       a.film.full figure {
         width: 100%;
       }
@@ -73,6 +93,18 @@
       a.film.full figure :global(video),
       a.film.full figure :global(img) {
         height: 100vh;
+      }
+
+      @media (max-width: 900px) {
+        a.film.full {
+          margin-top: calc(var(--gutter));
+          margin-bottom: calc(var(--gutter));
+        }
+
+        a.film.full figure :global(video),
+        a.film.full figure :global(img) {
+          height: 42vh;
+        }
       }
 
       li:first-child figure {
@@ -89,6 +121,16 @@
 				white-space: nowrap;
       }
 
+      figcaption h4 {
+        margin: 0;
+      }
+
+      @media (max-width: 900px) {
+        figcaption h4 {
+          font-size: var(--tiny);
+        }
+      }
+
       a.film.full figure figcaption {
         color: white;
         top: 0;
@@ -99,10 +141,28 @@
         transform: translateX(7vw);
       }
 
+      @media (max-width: 900px) {
+        a.film.full figure figcaption {
+          right: calc(var(--gutter) * 2);
+        }
+      }
+
       li:nth-child(2n) figcaption {
         right: auto;
         left: 0;
         transform: rotate(180deg) translateX(-2px);
+      }
+
+      @media (max-width: 900px) {
+        figcaption {
+          right: calc(var(--gutter) * -1);
+          transform: rotate(180deg);
+        }
+
+        li:nth-child(2n) figcaption {
+          left: calc(var(--gutter) * -1);
+          transform: rotate(180deg);
+        }
       }
 
         a :global(img),

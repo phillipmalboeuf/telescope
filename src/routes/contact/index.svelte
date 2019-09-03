@@ -45,6 +45,22 @@ ol {
 		width: 32.5vw;
     margin-bottom: calc(var(--rythm) * 2);
   }
+
+	@media (max-width: 900px) {
+		figure {
+			width: 100%;
+		}
+
+		ol {
+			width: 100%;
+			margin-top: calc(var(--gutter));
+		}
+
+		ol > li {
+			width: 100%;
+			margin-bottom: calc(var(--rythm));
+		}
+	}
 </style>
 
 

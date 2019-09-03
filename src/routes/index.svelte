@@ -39,6 +39,12 @@
 		text-align: center;
 		will-change: transform;
 	}
+
+	@media (max-width: 900px) {
+    h1 {
+      font-size: 6.33vw;
+    }
+  }
 </style>
 
 <svelte:head>

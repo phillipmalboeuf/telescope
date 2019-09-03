@@ -97,6 +97,12 @@
     margin: calc(var(--gutter) * -1) 0 0 calc(var(--gutter) * -1);
   }
 
+  @media (max-width: 900px) {
+    video.full {
+      height: 42vh;
+    }
+  }
+
   figure {
     position: relative;
     margin: 0;
@@ -134,6 +140,12 @@
     left: calc(var(--gutter));
   }
 
+  @media (max-width: 900px) {
+    figure.fullscreen figcaption.title {
+      left: calc(var(--gutter) / 2);
+    }
+  }
+
   figcaption.controls {
     position: absolute;
     left: calc(var(--rythm) / -2);
@@ -142,6 +154,12 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+  }
+
+  @media (max-width: 900px) {
+    figcaption.controls {
+      bottom: calc(var(--rythm) * 1.5);
+    }
   }
 
   figcaption.controls > span > span {
@@ -223,6 +241,40 @@
 
     figure.fullscreen .buffer {
       bottom: -6px;
+    }
+
+    @media (max-width: 900px) {
+      label[for="time"] {
+        bottom: 20px;
+      }
+
+      figure.fullscreen input[type="range"] {
+        bottom: 15px;
+      }
+
+      input[type="range"] {
+        bottom: 9px;
+      }
+
+      figure.fullscreen input[type="range"] {
+        bottom: 3px;
+      }
+
+      input[type="range"]::-webkit-slider-thumb {
+        height: 7px;  
+      }
+
+      input[type="range"]::-moz-range-thumb {
+        height: 7px;  
+      }
+
+      .buffer {
+        height: 9px;
+      }
+
+      figure.fullscreen .buffer {
+        bottom: -3px;
+      }
     }
 </style>
 
