@@ -9,7 +9,7 @@
     background: black;
     white-space: pre-line;
 
-    padding:0 var(--gutter);
+    padding: 0 var(--gutter);
     max-height: 0vh;
     overflow: auto;
 
@@ -25,6 +25,16 @@
     padding: 0;
     margin: calc(var(--rythm)*1.5) 0;
   }
+
+  @media (max-width: 900px) {
+		aside.visible {
+			padding: var(--gutter);
+		}
+
+    button {
+      margin: calc(var(--rythm)) 0;
+    }
+	}
 </style>
 
 
