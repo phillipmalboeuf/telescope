@@ -148,8 +148,9 @@
   }
 
   :global(hr) {
+    display: inline-block;
     border: none;
-    margin: calc(var(--rythm) * 1.33) 0;
+    margin: calc(var(--rythm) / 2) 0;
   }
 
 	:global(a, button, input) {
