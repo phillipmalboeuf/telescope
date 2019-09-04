@@ -111,6 +111,10 @@
         margin-top: 0;
       }
 
+      li:last-child a {
+        margin-bottom: 0 !important;
+      }
+
       figcaption {
         position: absolute;
         top: 0;

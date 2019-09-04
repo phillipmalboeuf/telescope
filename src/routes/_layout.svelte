@@ -84,6 +84,16 @@
     margin-bottom: calc(var(--rythm)/2);
   }
 
+  @media (max-width: 900px) {
+    :global(h1, h2, h3, h4, h5, h6, p) {
+      margin-bottom: calc(var(--rythm)/2);
+    }
+
+    :global(h4, h5, h6) {
+      margin-bottom: calc(var(--rythm)/4);
+    }
+  }
+
   :global(h4 a:hover, h5 a:hover, h6 a:hover) {
     font-variation-settings: "wdth" 285;
   }
