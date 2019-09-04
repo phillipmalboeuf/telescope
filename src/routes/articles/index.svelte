@@ -33,6 +33,9 @@
 
 	export let articles
 	export let tags
+
+	import { stores } from '@sapper/app'
+	const { session } = stores()
 </script>
 
 
@@ -40,6 +43,6 @@
 	<title>News</title>
 </svelte:head>
 
-<Tags {tags} path="articles" all="All News" nav />
+<Tags {tags} path="articles" all="{$session.locale === 'fr-CA' ? 'Toutes les nouvelles' : 'All News'}" nav />
 
 <List items={articles} />

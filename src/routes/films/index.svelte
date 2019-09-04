@@ -33,6 +33,9 @@
 
 	export let films
 	export let tags
+
+	import { stores } from '@sapper/app'
+	const { session } = stores()
 </script>
 
 <style>
@@ -42,6 +45,6 @@
 	<title>Films</title>
 </svelte:head>
 
-<Tags {tags} path="films" all="All Films" nav />
+<Tags {tags} path="films" all="{$session.locale === 'fr-CA' ? 'Tous les films' : 'All Films'}" nav />
 
 <List items={films} full={false} />
