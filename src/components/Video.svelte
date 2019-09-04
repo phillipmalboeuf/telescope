@@ -150,7 +150,7 @@
     position: absolute;
     left: calc(var(--rythm) / -2);
     bottom: calc(var(--rythm) * 4);
-    width: 100%;
+    width: calc(100% + (var(--rythm) / 2));
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
@@ -261,10 +261,12 @@
       }
 
       input[type="range"]::-webkit-slider-thumb {
+        width: 2px;
         height: 7px;  
       }
 
       input[type="range"]::-moz-range-thumb {
+        width: 2px;
         height: 7px;  
       }
 
