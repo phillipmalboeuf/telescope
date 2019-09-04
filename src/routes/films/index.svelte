@@ -20,7 +20,7 @@
 		tags.sort((left, right) => right[1] - left[1])
 
 		if (query.tag) {
-			return { films: films.filter(film => film.fields.tags.includes(query.tag)), tags }
+			return { films: films.filter(film => film.fields.tags.includes(query.tag)), tags, currentTag: query.tag }
 		}
 
 		return { films, tags }
@@ -33,6 +33,7 @@
 
 	export let films
 	export let tags
+	export let currentTag = undefined
 
 	import { stores } from '@sapper/app'
 	const { session } = stores()
@@ -45,6 +46,6 @@
 	<title>Films</title>
 </svelte:head>
 
-<Tags {tags} path="films" all="{$session.locale === 'fr-CA' ? 'Tous les films' : 'All Films'}" nav />
+<Tags {tags} path="films" all="{$session.locale === 'fr-CA' ? 'Tous les films' : 'All Films'}" nav {currentTag} />
 
 <List items={films} full={false} />

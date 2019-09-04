@@ -20,7 +20,7 @@
 		tags.sort((left, right) => right[1] - left[1])
 
 		if (query.tag) {
-			return { articles: articles.filter(article => article.fields.tags.includes(query.tag)), tags }
+			return { articles: articles.filter(article => article.fields.tags.includes(query.tag)), tags, currentTag: query.tag }
 		}
 
 		return { articles, tags }
@@ -33,6 +33,7 @@
 
 	export let articles
 	export let tags
+	export let currentTag = undefined
 
 	import { stores } from '@sapper/app'
 	const { session } = stores()
@@ -43,6 +44,6 @@
 	<title>News</title>
 </svelte:head>
 
-<Tags {tags} path="articles" all="{$session.locale === 'fr-CA' ? 'Toutes les nouvelles' : 'All News'}" nav />
+<Tags {tags} path="articles" all="{$session.locale === 'fr-CA' ? 'Toutes les nouvelles' : 'All News'}" nav {currentTag} />
 
 <List items={articles} />

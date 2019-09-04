@@ -3,7 +3,7 @@
   export let tags
 	export let path
 	export let all = undefined
-
+	export let currentTag = undefined
 	export let nav = false
 </script>
 
@@ -15,7 +15,12 @@
 	}
 
 		nav a {
+			opacity: 0.35;
 			padding: calc(var(--rythm) / 2);
+		}
+
+		nav a.current {
+			opacity: 1;
 		}
 		
 	@media (max-width: 900px) {
@@ -27,10 +32,10 @@
 
 {#if nav}
 <nav>
-	<a href="{path}"><h6>{all}</h6></a>
+	<a href="{path}" class:current={currentTag === undefined}><h6>{all}</h6></a>
 	{#each tags as [tag, total]}
-	{#if tag !== 'recent'}
-	<a href="{path}?tag={tag}"><h6><Tag id={tag} /></h6></a> 
+	{#if tag !== 'recent' && tag.indexOf('20') !== 0}
+	<a href="{path}?tag={tag}" class:current={tag === currentTag}><h6><Tag id={tag} /></h6></a> 
 	{/if}
 	{/each}
 </nav>
