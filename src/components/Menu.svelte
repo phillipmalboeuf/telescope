@@ -13,7 +13,7 @@
 
 	const columns = [
 		{
-			title: $session.locale === 'fr-CA' ? 'Nouveautés' : 'Latest',
+			title: $session.locale === 'fr-CA' ? 'Récents' : 'Latest',
 			path: '',
 			items: [...films, ...articles, ...products].filter(item => item.fields.tags.includes('recent'))
 		},
@@ -33,7 +33,7 @@
 			items: about,
 		},
 		{
-			title: $session.locale === 'fr-CA' ? 'Magasin' : 'Shop',
+			title: $session.locale === 'fr-CA' ? 'Boutique' : 'Shop',
 			path: 'products',
 			items: products
 		},
