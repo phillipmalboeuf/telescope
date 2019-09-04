@@ -13,6 +13,10 @@
     ...item,
     type: item.type || item.sys.contentType.sys.id
   }))
+
+  function truncate(s, max = 20) {
+    return `${s.substring(0, max)}${s.length > max ? '...' : ''}`
+  }
 </script>
 
 <style>
@@ -214,7 +218,7 @@
         <Picture media={item.fields.poster} />
         {/if}
         <figcaption>
-          <h4>{item.fields.title} {#if item.fields.tags}• <Tag id={item.fields.tags[0]} />{/if}</h4>
+          <h4>{truncate(item.fields.title)} {#if item.fields.tags}• <Tag id={item.fields.tags[0]} />{/if}</h4>
         </figcaption>
       </figure>
     </a>
