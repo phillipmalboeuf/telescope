@@ -112,6 +112,11 @@
 
   :global(h6) {
     font-size: var(--tiny);
+    font-variation-settings: "wdth" 200;
+  }
+
+  :global(h6 a:hover) {
+    font-variation-settings: "wdth" 225;
   }
 
   :global(p) {
@@ -158,9 +163,9 @@
     transition: font-variation-settings 333ms;
   }
 
-  :global(a:active, button:active) {
+  /* :global(a:active, button:active) {
     top: 1px;
-  }
+  } */
 
   :global(button, label, input) {
     font-family: 'Telescopique', system-ui, -apple-system;
