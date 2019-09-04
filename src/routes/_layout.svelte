@@ -14,7 +14,7 @@
 		--gutter: 5vw;
 
     --big: 6.5vw;
-    --medium: 15pt;
+    --medium: 18pt;
     --small: 12pt;
     --tiny: 7pt;
     --body: 15pt;
@@ -149,7 +149,7 @@
 
   :global(hr) {
     border: none;
-    margin: var(--rythm) 0;
+    margin: calc(var(--rythm) * 1.2) 0;
   }
 
 	:global(a, button, input) {
