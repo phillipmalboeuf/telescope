@@ -54,7 +54,7 @@
 
 
 
-<div on:mousemove={move} bind:this={element}>
+<div on:pointermove={move} bind:this={element}>
   {#if texts}
 
   {#each texts as t, i}
