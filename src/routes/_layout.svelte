@@ -149,7 +149,7 @@
 
   :global(hr) {
     border: none;
-    margin: calc(var(--rythm) * 1.2) 0;
+    margin: calc(var(--rythm) * 1.33) 0;
   }
 
 	:global(a, button, input) {
