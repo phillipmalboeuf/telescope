@@ -29,14 +29,14 @@
 <nav>
 	<a href="{path}"><h6>{all}</h6></a>
 	{#each tags as [tag, total]}
-	{#if tag !== 'latest'}
+	{#if tag !== 'recent'}
 	<a href="{path}?tag={tag}"><h6><Tag id={tag} /></h6></a> 
 	{/if}
 	{/each}
 </nav>
 {:else}
 {#each tags as tag, index}
-{#if tag !== 'latest'}
+{#if tag !== 'recent'}
 {#if index}&nbsp;• {/if}<a href="{path}?tag={tag}"><Tag id={tag} /></a> 
 {/if}
 {/each}

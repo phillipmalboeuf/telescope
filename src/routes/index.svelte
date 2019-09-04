@@ -21,7 +21,7 @@
 	export let loose
 
 	let items = [...films, ...articles, ...products]
-		.filter(item => item.fields.tags.includes('latest'))
+		.filter(item => item.fields.tags.includes('recent'))
 		.sort((left, right) => {
 			return new Date(right.fields.publishedDate) - new Date(left.fields.publishedDate)
 		})

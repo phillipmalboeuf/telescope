@@ -15,7 +15,7 @@
 		{
 			title: $session.locale === 'fr-CA' ? 'Nouveautés' : 'Latest',
 			path: '',
-			items: [...films, ...articles, ...products].filter(item => item.fields.tags.includes('latest'))
+			items: [...films, ...articles, ...products].filter(item => item.fields.tags.includes('recent'))
 		},
 		{
 			title: $session.locale === 'fr-CA' ? 'Films' : 'Films',
