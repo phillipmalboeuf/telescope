@@ -22,6 +22,7 @@
   }
 
   button {
+    font-size: var(--tiny);
     padding: 0;
     margin: calc(var(--rythm)*1.5) 0;
   }
