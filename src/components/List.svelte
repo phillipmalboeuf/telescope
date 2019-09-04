@@ -1,6 +1,9 @@
 <script>
   import { fade, fly } from 'svelte/transition'
 
+  import { stores } from '@sapper/app'
+	const { session } = stores()
+
   import Picture from './Picture.svelte'
   import Video from './Video.svelte'
   import Tag from './Tag.svelte'
@@ -206,10 +209,10 @@
     <Document body={item.fields.body} />
 
     {:else}
-    <a class={item.type} class:full rel='prefetch' href='{item.type}s/{item.fields.identifier}'>
+    <a class={item.type} class:full={!$session.isMobile && full} rel='prefetch' href='{item.type}s/{item.fields.identifier}'>
       <figure>
         {#if item.type === 'film'}
-        {#if item.fields.teaser}
+        {#if !$session.isMobile && item.fields.teaser}
         <Video srcs={[item.fields.teaser]} poster={item.fields.poster} {full} />
         {:else}
         <Picture media={item.fields.poster} />
