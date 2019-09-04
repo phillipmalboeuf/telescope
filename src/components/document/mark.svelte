@@ -15,7 +15,7 @@
 {mark.value}
 {/if}
 {:else if mark.nodeType === 'hyperlink'}
-<a href="{mark.data.uri}" target="_blank">
+<a href="{mark.data.uri}" target="{mark.data.uri.indexOf('http') === 0 ? '_blank' : '_self'}">
   {#each mark.content as mark}<svelte:self mark={mark} />{/each}
 </a>
 {:else if mark.nodeType === 'entry-hyperlink'}

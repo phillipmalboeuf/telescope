@@ -134,6 +134,7 @@
   }
 
   :global(blockquote) {
+    white-space: pre-line;
     margin: var(--gutter) 0;
   }
 
