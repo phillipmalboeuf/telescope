@@ -14,7 +14,7 @@
 		--gutter: 5vw;
 
     --big: 6.5vw;
-    --medium: 18pt;
+    --medium: 19pt;
     --small: 12pt;
     --tiny: 7pt;
     --body: 15pt;
