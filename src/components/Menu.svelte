@@ -173,6 +173,11 @@
 		}
 
 		@media (max-width: 900px) {
+			ul > li > a {
+				height: 100%;
+				text-align: right;
+			}
+
 			ul > li > a > h4 {
 				padding: calc(var(--gutter) - 7pt);
 			}
@@ -212,10 +217,10 @@
 <nav transition:fade>
 	<ul on:mouseleave={leave} class:selected={selected !== undefined}>
 		{#each columns as column, index}
-		<li class:selected={selected === index} on:mouseenter={()=> enter(index)} in:fly={{ y: ys[index], opacity: 1 }}>
+		<li class:selected={selected === index} on:mouseenter={()=> !$session.isMobile && enter(index)} in:fly={{ y: ys[index], opacity: 1 }}>
 			<a href='{column.path}' on:click={toggle}><h4>{column.title}</h4></a>
 
-			<MenuItems items={column.items} on:click={toggle} />
+			{#if !$session.isMobile}<MenuItems items={column.items} on:click={toggle} />{/if}
 		</li>
 		{/each}
 	</ul>
@@ -224,10 +229,10 @@
 <nav class="bottom">
 	<ul on:mouseleave={leave} class:selected={selected !== undefined}>
 		{#each columns as column, index}
-		<li class:selected={selected === index} on:mouseenter={()=> enter(index)}>
+		<li class:selected={selected === index} on:mouseenter={()=> !$session.isMobile && enter(index)}>
 			<a href='{column.path}'><h4>{column.title}</h4></a>
 
-			<MenuItems items={column.items} />
+			{#if !$session.isMobile}<MenuItems items={column.items} />{/if}
 		</li>
 		{/each}
 	</ul>
