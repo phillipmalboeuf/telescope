@@ -117,5 +117,8 @@
 </section>
 
 {#if film.fields.relatedContent}
-<List items={film.fields.relatedContent} full={false} />
+<List items={film.fields.relatedContent.map(item => ({
+    ...item,
+    type: item.type || item.sys.contentType.sys.id
+  }))} full={false} />
 {/if}

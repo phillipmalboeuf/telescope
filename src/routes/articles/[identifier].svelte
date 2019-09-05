@@ -115,5 +115,8 @@
 </section>
 
 {#if article.fields.relatedContent}
-<List items={article.fields.relatedContent} full={false} />
+<List items={article.fields.relatedContent.map(item => ({
+    ...item,
+    type: item.type || item.sys.contentType.sys.id
+  }))} full={false} />
 {/if}

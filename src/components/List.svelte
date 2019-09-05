@@ -12,11 +12,6 @@
   export let items
   export let full = true
 
-  items = items.map(item => ({
-    ...item,
-    type: item.type || item.sys.contentType.sys.id
-  }))
-
   function truncate(s, max = 20) {
     return `${s.substring(0, max)}${s.length > max ? '...' : ''}`
   }
