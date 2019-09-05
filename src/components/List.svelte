@@ -12,6 +12,11 @@
   export let items
   export let full = true
 
+  items = items.map(item => ({
+    ...item,
+    type: item.type || item.sys.contentType.sys.id
+  }))
+
   function truncate(s, max = 20) {
     return `${s.substring(0, max)}${s.length > max ? '...' : ''}`
   }
@@ -31,6 +36,10 @@
     a {
       display: inline-block;
       margin-top: calc(var(--gutter) * -2);
+    }
+
+    li.loose + li a {
+      margin-top: 0;
     }
 
     a.film {
@@ -198,7 +207,7 @@
 <ol>
 	{#each items as item, index (item.sys.id)}
   
-	<li in:fly|local="{{ x: 200 * (index % 2 ? 1 : -1), delay: 666, duration: 666 }}" out:fly|local="{{ x: 200 * (index % 2 ? 1 : -1), duration: 666 }}">
+	<li in:fly|local="{{ x: 200 * (index % 2 ? 1 : -1), delay: 666, duration: 666 }}" out:fly|local="{{ x: 200 * (index % 2 ? 1 : -1), duration: 666 }}" class:loose={item.type === 'looseText'}>
     {#if item.type === 'looseText'}
     
     <Document body={item.fields.body} />
