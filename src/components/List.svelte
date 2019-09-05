@@ -153,7 +153,7 @@
 
         transition: transform 333ms;
         will-change: transform;
-        transform: translateX(7vw);
+        transform: translateX(7vw) rotate(180deg);
       }
 
       @media (max-width: 900px) {
@@ -200,7 +200,7 @@
         }
 
         a.film.full:hover figure figcaption {
-          transform: translateX(0);
+          transform: translateX(0) rotate(180deg);
         }
 </style>
 
