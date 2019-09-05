@@ -2,6 +2,9 @@
   import { onMount } from 'svelte'
   import { interpolate, interpolateBasis } from 'd3-interpolate'
 
+  // import { stores } from '@sapper/app'
+	// const { session } = stores()
+
   export let text = undefined
   export let texts = undefined
   let variants
@@ -54,7 +57,7 @@
 
 
 
-<div on:pointermove={move} bind:this={element}>
+<div on:pointermove={move} on:mousemove={move} bind:this={element}>
   {#if texts}
 
   {#each texts as t, i}
