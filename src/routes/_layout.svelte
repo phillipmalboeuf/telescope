@@ -154,6 +154,13 @@
     margin: calc(var(--rythm) / 2) 0;
   }
 
+  :global(iframe) {
+    max-width: 100%;
+    margin: calc(var(--rythm)) 0;
+    border: none;
+    background: black;
+  }
+
 	:global(a, button, input) {
     outline: none;
     cursor: pointer;

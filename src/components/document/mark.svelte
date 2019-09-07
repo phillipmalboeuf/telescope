@@ -9,7 +9,7 @@
   {:else if mark.marks[0].type === 'bold'}
   <strong><svelte:self mark={{ ...mark, marks: mark.marks.slice(1) }} /></strong>
   {:else if mark.marks[0].type === 'code'}
-  <code><svelte:self mark={{ ...mark, marks: mark.marks.slice(1) }} /></code>
+  {@html mark.value}
   {/if}
 {:else}
 {mark.value}
