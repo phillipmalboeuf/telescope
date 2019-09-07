@@ -15,7 +15,11 @@
 		{
 			title: $session.locale === 'fr-CA' ? 'Récents' : 'Latest',
 			path: '',
-			items: [...films, ...articles, ...products].filter(item => item.fields.tags.includes('recent'))
+			items: [...films, ...articles, ...products]
+				.filter(item => item.fields.tags.includes('recent'))
+				.sort((left, right) => {
+					return new Date(right.fields.publishedDate) - new Date(left.fields.publishedDate)
+				})
 		},
 		{
 			title: $session.locale === 'fr-CA' ? 'Films' : 'Films',
