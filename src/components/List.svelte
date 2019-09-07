@@ -149,6 +149,7 @@
       a.film.full figure figcaption {
         color: white;
         top: 0;
+        left: auto;
         right: var(--gutter);
 
         transition: transform 333ms;
@@ -225,7 +226,7 @@
         <Picture media={item.fields.poster} />
         {/if}
         <figcaption>
-          <h4>{truncate(item.fields.title)} {#if item.fields.tags}• <Tag id={item.fields.tags[0]} />{/if}</h4>
+          <h4>{truncate(item.fields.title, !$session.isMobile && (item.type === 'article' || full) ? 40 : 20)} {#if item.fields.tags}• <Tag id={item.fields.tags[0]} />{/if}</h4>
         </figcaption>
       </figure>
     </a>
