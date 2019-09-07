@@ -286,7 +286,7 @@
 <figure class:inactive class:fullscreen on:mousemove={activate} bind:this={element}>
   <figcaption class="title"><slot name="title" /></figcaption>
 
-  <video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} autoplay
+  <video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} autoplay disableRemotePlayback
     bind:currentTime={time}
     bind:duration
     bind:buffered
@@ -331,5 +331,5 @@
   <Gallery images={grabs.map(grab => ({ thumbnail: grab.fields.thumbnail }))} on:pick={event => grab(event.detail)} />
 {/if}
 {:else}
-<video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} loop muted autoplay />
+<video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} loop muted autoplay disableRemotePlayback />
 {/if}
