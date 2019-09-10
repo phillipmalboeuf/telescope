@@ -14,6 +14,7 @@
 	const columns = [
 		{
 			title: $session.locale === 'fr-CA' ? 'Récents' : 'Latest',
+			all: $session.locale === 'fr-CA' ? 'Page d\'acceuil' : 'Homepage',
 			path: '',
 			items: [...films, ...articles, ...products]
 				.filter(item => item.fields.tags.includes('recent'))
@@ -23,11 +24,13 @@
 		},
 		{
 			title: $session.locale === 'fr-CA' ? 'Films' : 'Films',
+			all: $session.locale === 'fr-CA' ? 'Aperçu des Films' : 'Overview of all Films',
 			path: 'films',
 			items: films
 		},
 		{
 			title: $session.locale === 'fr-CA' ? 'Nouvelles' : 'News',
+			all: $session.locale === 'fr-CA' ? 'Aperçu des Nouvelles' : 'Overview of all News',
 			path: 'articles',
 			items: articles
 		},
@@ -38,6 +41,7 @@
 		},
 		{
 			title: $session.locale === 'fr-CA' ? 'Boutique' : 'Shop',
+			all: $session.locale === 'fr-CA' ? 'Aperçu de la Boutique' : 'Overview of the Shop',
 			path: 'products',
 			items: products
 		},
@@ -224,7 +228,7 @@
 		<li class:selected={selected === index} on:mouseenter={()=> !$session.isMobile && enter(index)} in:fly={{ y: ys[index], opacity: 1 }}>
 			<a href='{column.path}' on:click={toggle}><h4>{column.title}</h4></a>
 
-			{#if !$session.isMobile}<MenuItems items={column.items} on:click={toggle} />{/if}
+			{#if !$session.isMobile}<MenuItems items={column.items} all={column.all && { title: column.all, path: column.path }} on:click={toggle} />{/if}
 		</li>
 		{/each}
 	</ul>
@@ -236,7 +240,7 @@
 		<li class:selected={selected === index} on:mouseenter={()=> !$session.isMobile && enter(index)}>
 			<a href='{column.path}'><h4>{column.title}</h4></a>
 
-			{#if !$session.isMobile}<MenuItems items={column.items} />{/if}
+			{#if !$session.isMobile}<MenuItems items={column.items} all={column.all && { title: column.all, path: column.path }} />{/if}
 		</li>
 		{/each}
 	</ul>

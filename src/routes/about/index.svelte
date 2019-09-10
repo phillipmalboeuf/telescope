@@ -12,6 +12,9 @@
 <script>
   import Document from '../../components/document/index.svelte'
 	export let about
+
+	import { stores } from '@sapper/app'
+	const { session } = stores()
 </script>
 
 <style>
@@ -21,7 +24,12 @@
 	}
 
 		nav a {
+			opacity: 0.35;
 			padding: calc(var(--rythm) / 2);
+		}
+
+		nav a.current {
+			opacity: 1;
 		}
 
 	section > :global(h2),
@@ -52,7 +60,8 @@
 </svelte:head>
 
 <nav>
-	<a href="about"><h6>About</h6></a>
+	<a href=""><h6>Telescope</h6></a>
+	<a href="about" class="current"><h6>{$session.locale === 'fr-CA' ? 'À propos' : 'About'}</h6></a>
 	{#each about as piece}
 	<a href="about#{piece.fields.identifier}"><h6>{piece.fields.title}</h6></a>
 	{/each}

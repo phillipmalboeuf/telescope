@@ -98,7 +98,7 @@
 
 <Video poster={film.fields.poster} srcs={film.fields.video} full controls grabs={film.fields.screenGrabs}>
 	<h6 slot="title">
-		{film.fields.title} • <Tags tags={film.fields.tags} path="films" />
+		<a href="" rel=prefetch>Telescope</a> • <a href="/films" rel=prefetch>Films</a> • {film.fields.title} • <Tags tags={film.fields.tags} path="films" />
 	</h6>
 </Video>
 

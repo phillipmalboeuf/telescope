@@ -23,6 +23,9 @@
 	import Document from '../../components/document/index.svelte'
 
 	export let article
+
+	import { stores } from '@sapper/app'
+	const { session } = stores()
 </script>
 
 <style>
@@ -35,6 +38,15 @@
 		top: 0;
 		right: 0;
 		height: 100%;
+	}
+
+	nav + nav {
+		top: calc(var(--gutter) / -2);
+		left: calc(var(--gutter) / -2);
+		right: auto;
+		height: auto;
+		color: white;
+		max-width: calc(42.5vw - var(--gutter));
 	}
 
 	h1 {
@@ -96,6 +108,7 @@
 
 <section>
 	<nav><h1>{article.fields.title} • <Tags tags={article.fields.tags} path="articles" /></h1></nav>
+	<nav><h6><a href="" rel=prefetch>Telescope</a> • <a rel=prefetch href="articles">{$session.locale === 'fr-CA' ? 'Nouvelles' : 'News'}</a> • {article.fields.title} • <Tags tags={article.fields.tags} path="articles" /></h6></nav>
 
 	<div>
 		<aside>

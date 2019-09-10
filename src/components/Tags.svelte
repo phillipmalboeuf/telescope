@@ -32,15 +32,16 @@
 
 {#if nav}
 <nav>
+	<a href="" rel=prefetch><h6>Telescope</h6></a>
 	<a href="{path}" class:current={currentTag === undefined}><h6>{all}</h6></a>
-	{#each tags as [tag, total]}
+	{#each tags as [tag, total] (tag)}
 	{#if tag !== 'recent' && tag.indexOf('20') !== 0}
 	<a href="{path}?tag={tag}" class:current={tag === currentTag}><h6><Tag id={tag} /></h6></a> 
 	{/if}
 	{/each}
 </nav>
 {:else}
-{#each tags as tag, index}
+{#each tags as tag, index (tag)}
 {#if tag !== 'recent'}
 {#if index}&nbsp;• {/if}<a href="{path}?tag={tag}"><Tag id={tag} /></a> 
 {/if}

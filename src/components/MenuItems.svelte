@@ -2,6 +2,7 @@
   import NewsletterForm from './NewsletterForm.svelte'
   import Tags from './Tags.svelte'
 	export let items
+  export let all
 </script>
 
 <style>
@@ -26,6 +27,13 @@ ol {
 
 
 <ol>
+{#if all}
+<li>
+  <a rel=prefetch href={all.path} on:click>
+    <h4>{all.title}</h4>
+  </a>
+</li>
+{/if}
 {#if items}
 {#each items as item}
 <li>
