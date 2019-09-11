@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from 'svelte'
+	import { onMount, tick } from 'svelte'
 	import { fade, fly } from 'svelte/transition'
 	import { elasticOut, bounceOut, backOut } from 'svelte/easing'
 
@@ -40,8 +40,18 @@
 		window.scrollTo({ top: 0, behavior: 'smooth' })
 	}
 
-	onMount(() => {
+	function updateHeight() {
 		height = document.body.offsetHeight - window.innerHeight
+		console.log(height)
+	}
+
+	onMount(() => {
+		updateHeight()
+
+		page.subscribe(async ()=> {
+			await tick()
+			updateHeight()
+		})
 	})
 
 	function columns(page) {
