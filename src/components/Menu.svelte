@@ -11,52 +11,6 @@
 	export let segment
 	let { films, articles, products, about, contact } = $session.navigation
 
-	const columns = [
-		{
-			title: $session.locale === 'fr-CA' ? 'Récents' : 'Latest',
-			all: $session.locale === 'fr-CA' ? 'Page d\'acceuil' : 'Homepage',
-			path: '',
-			items: [...films, ...articles, ...products]
-				.filter(item => item.fields.tags.includes('recent'))
-				.sort((left, right) => {
-					return new Date(right.fields.publishedDate) - new Date(left.fields.publishedDate)
-				})
-		},
-		{
-			title: $session.locale === 'fr-CA' ? 'Films' : 'Films',
-			all: $session.locale === 'fr-CA' ? 'Aperçu de tout les Films' : 'Overview of all Films',
-			path: 'films',
-			items: films
-		},
-		{
-			title: $session.locale === 'fr-CA' ? 'Nouvelles' : 'News',
-			all: $session.locale === 'fr-CA' ? 'Aperçu de toutes les Nouvelles' : 'Overview of all News',
-			path: 'articles',
-			items: articles
-		},
-		{
-			title: $session.locale === 'fr-CA' ? 'À propos' : 'About',
-			path: 'about',
-			items: about,
-		},
-		{
-			title: $session.locale === 'fr-CA' ? 'Boutique' : 'Shop',
-			all: $session.locale === 'fr-CA' ? 'Aperçu de toute la Boutique' : 'Overview of all Items',
-			path: 'products',
-			items: products
-		},
-		{
-			title: 'Contact',
-			path: 'contact',
-			items: [{ type: 'newsletter' }, ...contact]
-		},
-		{
-			title: $session.locale === 'fr-CA' ? 'English' : 'Français',
-			path: $session.locale === 'fr-CA' ? `/en${$page.path}` : $page.path,
-			items: [{ type: 'locales', current: $session.locale, path: $page.path }]
-		}
-	]
-
 	let visible = false
 	let ys = new Array(7).fill(0)
 
@@ -89,6 +43,54 @@
 	onMount(() => {
 		height = document.body.offsetHeight - window.innerHeight
 	})
+
+	function columns(page) {
+		return [
+			{
+				title: $session.locale === 'fr-CA' ? 'Récents' : 'Latest',
+				all: $session.locale === 'fr-CA' ? 'Page d\'acceuil' : 'Homepage',
+				path: '',
+				items: [...films, ...articles, ...products]
+					.filter(item => item.fields.tags.includes('recent'))
+					.sort((left, right) => {
+						return new Date(right.fields.publishedDate) - new Date(left.fields.publishedDate)
+					})
+			},
+			{
+				title: $session.locale === 'fr-CA' ? 'Films' : 'Films',
+				all: $session.locale === 'fr-CA' ? 'Aperçu de tout les Films' : 'Overview of all Films',
+				path: 'films',
+				items: films
+			},
+			{
+				title: $session.locale === 'fr-CA' ? 'Nouvelles' : 'News',
+				all: $session.locale === 'fr-CA' ? 'Aperçu de toutes les Nouvelles' : 'Overview of all News',
+				path: 'articles',
+				items: articles
+			},
+			{
+				title: $session.locale === 'fr-CA' ? 'À propos' : 'About',
+				path: 'about',
+				items: about,
+			},
+			{
+				title: $session.locale === 'fr-CA' ? 'Boutique' : 'Shop',
+				all: $session.locale === 'fr-CA' ? 'Aperçu de toute la Boutique' : 'Overview of all Items',
+				path: 'products',
+				items: products
+			},
+			{
+				title: 'Contact',
+				path: 'contact',
+				items: [{ type: 'newsletter' }, ...contact]
+			},
+			{
+				title: $session.locale === 'fr-CA' ? 'English' : 'Français',
+				path: $session.locale === 'fr-CA' ? `/en${page.path}` : page.path,
+				items: [{ type: 'locales', current: $session.locale, path: page.path }]
+			}
+		]
+	}
 </script>
 
 <style>
@@ -224,7 +226,7 @@
 {#if visible}
 <nav transition:fade>
 	<ul on:mouseleave={leave} class:selected={selected !== undefined}>
-		{#each columns as column, index}
+		{#each columns($page) as column, index}
 		<li class:selected={selected === index} on:mouseenter={()=> !$session.isMobile && enter(index)} in:fly={{ y: ys[index], opacity: 1 }}>
 			<a href='{column.path}' on:click={toggle}><h4>{column.title}</h4></a>
 
@@ -236,7 +238,7 @@
 {:else}
 <nav class="bottom">
 	<ul on:mouseleave={leave} class:selected={selected !== undefined}>
-		{#each columns as column, index}
+		{#each columns($page) as column, index}
 		<li class:selected={selected === index} on:mouseenter={()=> !$session.isMobile && enter(index)}>
 			<a href='{column.path}'><h4>{column.title}</h4></a>
 
