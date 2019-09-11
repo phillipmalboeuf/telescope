@@ -24,13 +24,13 @@
 		},
 		{
 			title: $session.locale === 'fr-CA' ? 'Films' : 'Films',
-			all: $session.locale === 'fr-CA' ? 'Aperçu des Films' : 'Overview of all Films',
+			all: $session.locale === 'fr-CA' ? 'Aperçu de tout les Films' : 'Overview of all Films',
 			path: 'films',
 			items: films
 		},
 		{
 			title: $session.locale === 'fr-CA' ? 'Nouvelles' : 'News',
-			all: $session.locale === 'fr-CA' ? 'Aperçu des Nouvelles' : 'Overview of all News',
+			all: $session.locale === 'fr-CA' ? 'Aperçu de toutes les Nouvelles' : 'Overview of all News',
 			path: 'articles',
 			items: articles
 		},
@@ -41,7 +41,7 @@
 		},
 		{
 			title: $session.locale === 'fr-CA' ? 'Boutique' : 'Shop',
-			all: $session.locale === 'fr-CA' ? 'Aperçu de la Boutique' : 'Overview of the Shop',
+			all: $session.locale === 'fr-CA' ? 'Aperçu de toute la Boutique' : 'Overview of all Items',
 			path: 'products',
 			items: products
 		},

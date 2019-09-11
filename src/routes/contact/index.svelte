@@ -33,6 +33,14 @@ figure {
 	margin-left: calc(var(--gutter) * -1);
 }
 
+nav {
+	position: absolute;
+	top: calc(var(--gutter) / 2);
+	left: calc(var(--gutter) / 2);
+	color: white;
+	max-width: calc(32.5vw - var(--gutter));
+}
+
 ol {
 	width: 50vw;
 	padding: 0;
@@ -71,6 +79,8 @@ ol {
 <figure>
 	<Picture media={photo} />
 </figure>
+
+<nav><h6><a href="" rel=prefetch>Telescope</a> • <a rel=prefetch href="contact">Contact</a></h6></nav>
 
 <ol>
 	<li>
