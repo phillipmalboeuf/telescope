@@ -129,7 +129,7 @@
 		background: white;
 	}
 
-	nav :global(a:hover h4, a:hover h6) {
+	nav :global(a:hover h4), nav :global(a:hover h6) {
     font-variation-settings: "wdth" 285;
   }
 

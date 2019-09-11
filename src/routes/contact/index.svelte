@@ -54,6 +54,10 @@ ol {
     margin-bottom: calc(var(--rythm) * 2);
   }
 
+	ol > li :global(a:hover h4), ol > li :global(a:hover h6) {
+    font-variation-settings: "wdth" 285;
+  }
+
 	@media (max-width: 900px) {
 		figure {
 			width: 100%;
