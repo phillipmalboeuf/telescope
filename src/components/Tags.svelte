@@ -33,10 +33,10 @@
 {#if nav}
 <nav>
 	<a href="" rel=prefetch><h6>Telescope</h6></a>
-	<a href="{path}" class:current={currentTag === undefined}><h6>{all}</h6></a>
+	<a href="{path}" rel=prefetch class:current={currentTag === undefined}><h6>{all}</h6></a>
 	{#each tags as [tag, total] (tag)}
 	{#if tag !== 'recent' && tag.indexOf('20') !== 0}
-	<a href="{path}?tag={tag}" class:current={tag === currentTag}><h6><Tag id={tag} /></h6></a> 
+	<a href="{path}?tag={tag}" rel=prefetch class:current={tag === currentTag}><h6><Tag id={tag} /></h6></a> 
 	{/if}
 	{/each}
 </nav>

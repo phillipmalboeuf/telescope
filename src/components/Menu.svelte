@@ -42,7 +42,6 @@
 
 	function updateHeight() {
 		height = document.body.offsetHeight - window.innerHeight
-		console.log(height)
 	}
 
 	onMount(() => {
@@ -238,7 +237,7 @@
 	<ul on:mouseleave={leave} class:selected={selected !== undefined}>
 		{#each columns($page) as column, index}
 		<li class:selected={selected === index} on:mouseenter={()=> !$session.isMobile && enter(index)} in:fly={{ y: ys[index], opacity: 1 }}>
-			<a href='{column.path}' on:click={toggle}><h4>{column.title}</h4></a>
+			<a rel=prefetch href='{column.path}' on:click={toggle}><h4>{column.title}</h4></a>
 
 			{#if !$session.isMobile}<MenuItems items={column.items} all={column.all && { title: column.all, path: column.path }} on:click={toggle} />{/if}
 		</li>
@@ -250,7 +249,7 @@
 	<ul on:mouseleave={leave} class:selected={selected !== undefined}>
 		{#each columns($page) as column, index}
 		<li class:selected={selected === index} on:mouseenter={()=> !$session.isMobile && enter(index)}>
-			<a href='{column.path}'><h4>{column.title}</h4></a>
+			<a rel=prefetch href='{column.path}'><h4>{column.title}</h4></a>
 
 			{#if !$session.isMobile}<MenuItems items={column.items} all={column.all && { title: column.all, path: column.path }} />{/if}
 		</li>

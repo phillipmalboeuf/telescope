@@ -46,8 +46,8 @@ ol {
   <NewsletterForm id="menu-newsletter-form" />
   {:else if item.type === 'locales'}
   <h4>
-    <a href="{item.path}" class:disabled={item.current === 'fr-CA'}>Français</a><br />
-    <a href="/en{item.path}" class:disabled={item.current === 'en-US'}>English</a>
+    <a rel=prefetch href="{item.path}" class:disabled={item.current === 'fr-CA'}>Français</a><br />
+    <a rel=prefetch href="/en{item.path}" class:disabled={item.current === 'en-US'}>English</a>
   </h4>
   <h6>Languages • Langues</h6>
   {:else}
