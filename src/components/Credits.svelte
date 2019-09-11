@@ -1,6 +1,9 @@
 <script>
   export let credits
   let visible = false
+
+  import { stores } from '@sapper/app'
+	const { session } = stores()
 </script>
 
 <style>
@@ -39,7 +42,7 @@
 </style>
 
 
-<button on:click={() => visible = !visible}>Full Credit List {#if visible}↑{:else}↓{/if}</button>
+<button on:click={() => visible = !visible}>{$session.locale === 'fr-CA' ? 'Liste complète des crédits' : 'Full Credit List'} {#if visible}↑{:else}↓{/if}</button>
 
 <aside class:visible>
   {credits}
