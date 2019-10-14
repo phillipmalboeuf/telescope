@@ -9,8 +9,8 @@
 ol {
   position: absolute;
   top: var(--gutter);
-  right: calc(var(--gutter) * 2.25);
-  width: calc(var(--gutter) * 5);
+  right: calc(var(--gutter) * 2.75);
+  width: calc(var(--gutter) * 5.5);
 
   list-style: none;
 }
