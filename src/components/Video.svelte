@@ -61,6 +61,10 @@
     fullscreen = !fullscreen
   }
 
+  function scrollPastVideo() {
+		window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })
+	}
+
   function keydown(e) {
     if (controls && e.key === ' ') {
       e.preventDefault()
@@ -309,6 +313,7 @@
       </span>
       <button on:click={requestToggleFullscreen}>{#if fullscreen}╻{:else}╹{/if}</button>
       <button on:click={toggleVolume}>{#if volume}⌑{:else}⊠{/if}</button>
+      <button on:click={scrollPastVideo} style="transform: rotate(90deg)">→</button>
     </span>
   </figcaption>
 
