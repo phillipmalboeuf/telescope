@@ -23,10 +23,10 @@ const ua = (req, res, next) => {
 polka()
 	.use(
 		'/en',
-		compression({ threshold: 0 }),
-		sirv('static', { dev }),
 		ua,
 		content('en-US'),
+		compression({ threshold: 0 }),
+		sirv('static', { dev }),
 		sapper.middleware({
 			session: (req, res) => {
 				return {
@@ -38,10 +38,10 @@ polka()
 		})
 	)
 	.use(
-		compression({ threshold: 0 }),
-		sirv('static', { dev }),
 		ua,
 		content('fr-CA'),
+		compression({ threshold: 0 }),
+		sirv('static', { dev }),
 		sapper.middleware({
 			session: (req, res) => {
 				return {

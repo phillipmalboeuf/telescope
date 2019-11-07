@@ -35,49 +35,156 @@
 
     a {
       display: inline-block;
-      margin-top: calc(var(--gutter) * -2);
-    }
-
-    li.loose + li a {
-      margin-top: 0;
-    }
-
-    a.film {
-      margin-top: 0;
-      margin-bottom: calc(var(--rythm) * 3);
-    }
-
-    a.film.full {
-      margin-top: calc(var(--gutter) * 2);
-      margin-bottom: calc(var(--gutter) * 3);
-    }
-
-    li:first-child a {
-      margin-top: 0;
     }
 
       figure {
         position: relative;
-        margin: 0;
-        width: 32.5vw;
+        margin: 0 0 calc(var(--gutter) / 1.5);
       }
+
+        li:last-child figure {
+          margin-bottom: 0;
+        }
 
       figure :global(video),
       figure :global(img) {
-        height: calc(32.5vw * 14 / 9);
+        height: calc(50vw - (var(--gutter) * 1.5));
+        width: calc(50vw - (var(--gutter) * 1.5));
         object-fit: cover;
-      }
-
-      a.film figure {
-        width: 52.5vw;
+        object-position: center center;
+        transition: width 420ms;
+        
+        position: relative;
+        z-index: 1;
       }
 
       a.film figure :global(video),
       a.film figure :global(img) {
+        width: 52.5vw;
         height: calc(52.5vw * 9 / 14);
       }
 
-      @media (max-width: 900px) {
+      a.film.full figure {
+        margin: calc(var(--gutter) * 1.25) 0 var(--gutter);
+      }
+
+        li:first-child a.film.full figure {
+          margin-top: 0;
+        }
+
+        li:last-child a.film.full figure {
+          margin-bottom: 0;
+        }
+
+      a.film.full figure :global(video),
+      a.film.full figure :global(img) {
+        width: 100vw;
+        height: 100vh;
+      }
+
+        figcaption {
+          position: absolute;
+          top: 0;
+          left: 100%;
+          width: 32.5vw;
+          height: 100%;
+          padding: 0 calc(var(--gutter) / 2) var(--gutter);
+          transform: translateX(-100%);
+          opacity: 0;
+
+          transition: transform 420ms, opacity 420ms;
+          will-change: transform;
+        }
+
+          figcaption h4 {
+            margin: 0;
+          }
+
+          figcaption h6 {
+            transform: translateX(-25%);
+
+            transition: transform 420ms;
+            will-change: transform;
+          }
+
+        li:nth-child(2n) figcaption {
+          right: 100%;
+          left: auto;
+          transform: translateX(100%);
+        }
+
+          li:nth-child(2n) figcaption h6 {
+            transform: translateX(25%);
+          }
+
+        @media (max-width: 900px) {
+          figcaption,
+          li:nth-child(2n) figcaption {
+            transform: none;
+            opacity: 1;
+          }
+
+          figcaption h6,
+          li:nth-child(2n) figcaption h6 {
+            transform: none;
+          }
+        }
+
+        a.film.full figcaption {
+          color: white;
+          text-align: center;
+          z-index: 2;
+          opacity: 1;
+
+          top: auto;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: auto;
+          width: 100%;
+
+          transform: translateY(100%);
+        }
+
+          a.film.full figcaption h6 {
+            transform: translateY(-25%);
+          }
+
+        a:hover figcaption {
+          transform: translateX(0);
+          opacity: 1;
+        }
+
+          a:hover figcaption h6 {
+            transform: translateX(0);
+          }
+
+        a:hover figure :global(video),
+        a:hover figure :global(img) {
+          width: calc(52.5vw - (var(--gutter) * 1.5));
+        }
+
+        a.film:not(.full):hover figure :global(video),
+        a.film:not(.full):hover figure :global(img) {
+          width: 55vw;
+        }
+
+        a.film.full:hover figcaption {
+          transform: translateY(0);
+        }
+
+          a.film.full:hover figcaption h6 {
+            transform: translateY(0);
+          }
+      
+    li.loose {
+      margin: 0 0 calc(var(--gutter) / 1.5);
+    }
+    
+      li.loose :global(blockquote) {
+        margin: 0;
+      }
+      /* @media (max-width: 900px) {
         a,
         a.film {
           margin-top: 0;
@@ -95,18 +202,11 @@
         a.film figure :global(img) {
           height: calc(80vw * 9 / 11);
         }
-      }
+      } */
 
-      a.film.full figure {
-        width: 100%;
-      }
+      
 
-      a.film.full figure :global(video),
-      a.film.full figure :global(img) {
-        height: 100vh;
-      }
-
-      @media (max-width: 900px) {
+      /* @media (max-width: 900px) {
         a.film.full {
           margin-top: calc(var(--gutter));
           margin-bottom: calc(var(--gutter));
@@ -116,31 +216,18 @@
         a.film.full figure :global(img) {
           height: 42vh;
         }
-      }
+      } */
 
-      li:first-child figure {
+      /* li:first-child figure {
         margin-top: 0;
       }
 
       li:last-child a {
         margin-bottom: 0 !important;
-      }
+      } */
+      
 
-      figcaption {
-        position: absolute;
-        top: 0;
-        right: 0;
-
-        writing-mode: vertical-rl;
-				transform: rotate(180deg) translateX(2px);
-				white-space: nowrap;
-      }
-
-      figcaption h4 {
-        margin: 0;
-      }
-
-      @media (max-width: 900px) {
+      /* @media (max-width: 900px) {
         figcaption h4 {
           font-size: var(--tiny);
         }
@@ -161,15 +248,11 @@
         a.film.full figure figcaption {
           right: calc(var(--gutter) * 2);
         }
-      }
+      } */
 
-      li:nth-child(2n) figcaption {
-        right: auto;
-        left: 0;
-        transform: rotate(180deg) translateX(-2px);
-      }
+      
 
-      @media (max-width: 900px) {
+      /* @media (max-width: 900px) {
         figcaption {
           right: calc(var(--gutter) * -1);
           transform: rotate(180deg);
@@ -179,9 +262,9 @@
           left: calc(var(--gutter) * -1);
           transform: rotate(180deg);
         }
-      }
+      } */
 
-        a :global(img),
+        /* a :global(img),
         a.film:not(.full) :global(video) {
           position: relative;
           z-index: 1;
@@ -202,7 +285,7 @@
 
         a.film.full:hover figure figcaption {
           transform: translateX(0) rotate(180deg);
-        }
+        } */
 </style>
 
 <ol>
@@ -226,7 +309,8 @@
         <Picture media={item.fields.poster} />
         {/if}
         <figcaption>
-          <h4>{truncate(item.fields.title, !$session.isMobile && (item.type === 'article' || full) ? 40 : 20)} {#if item.fields.tags}• <Tag id={item.fields.tags[0]} />{/if}</h4>
+          {#if item.fields.tags}<h6><Tag id={item.fields.tags[0]} /></h6>{/if}
+          <h4>{item.fields.title}</h4>
         </figcaption>
       </figure>
     </a>

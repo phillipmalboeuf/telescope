@@ -51,8 +51,8 @@
 	<title>Telescope</title>
 </svelte:head>
 
-<h1>
+<!-- <h1>
 	<Hover texts={['TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE']} />
-</h1>
+</h1> -->
 
 <List {items} />
