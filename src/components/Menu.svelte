@@ -203,7 +203,7 @@
 		}
 
 		ul.selected > li > a > h4 {
-			transform: translateX(calc(var(--gutter) * -0.5));
+			transform: translateX(calc(var(--gutter) * -0.66));
 		}
 
 		ul.selected > li.selected > a > h4 {

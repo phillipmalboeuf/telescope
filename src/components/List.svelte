@@ -316,5 +316,7 @@
     </a>
     {/if}
   </li>
+  {:else}
+  <h6><em>{$session.locale === 'fr-CA' ? 'Aucun résultats.' : 'No results.'}</em></h6>
 	{/each}
 </ol>

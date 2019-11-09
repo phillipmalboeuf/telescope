@@ -46,7 +46,7 @@
 		right: auto;
 		height: auto;
 		color: white;
-		max-width: calc(42.5vw - var(--gutter));
+		/* max-width: calc(42.5vw - var(--gutter)); */
 	}
 
 	nav + nav a {

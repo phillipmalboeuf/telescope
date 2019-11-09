@@ -1,0 +1,125 @@
+<script>
+  import { stores } from '@sapper/app'
+	const { session } = stores()
+  
+	import Tag from './Tag.svelte'
+  export let tags
+	export let path
+	export let all = undefined
+	export let currentTag = undefined
+  export let currentCollaborator = undefined
+
+  let showTags = false
+  let showCollaborators = false
+
+  let contentTags = $session.navigation.tags.reduce((contentTags, tag) => {
+    return { ...contentTags, [tag.fields.identifier]: tag.fields }
+  }, {})
+</script>
+
+<style>
+	nav {
+		display: flex;
+		flex-wrap: wrap;
+		margin: calc(var(--rythm) * -2.5) 0 calc(var(--rythm) * 1) calc(var(--rythm) / -2);
+	}
+
+		nav a,
+    nav > span {
+      cursor: pointer;
+			opacity: 0.35;
+      display: inline-block;
+			padding: calc(var(--rythm) / 2);
+		}
+
+      nav a:hover,
+      nav a:focus,
+      nav > span:hover {
+        opacity: 1;
+      }
+
+        nav a:hover h6,
+        nav a:focus h6,
+        nav > span:hover h6 {
+          font-variation-settings: "wdth" 235;
+        }
+
+		nav a.current,
+    nav > span.current {
+			opacity: 1;
+		}
+
+    nav > div {
+      width: 100%;
+    }
+
+  @media (max-width: 1200px) {
+		nav {
+			margin-top: calc(var(--rythm) * -1.5);
+		}
+	}
+		
+	@media (max-width: 900px) {
+		nav {
+			margin-top: calc(var(--rythm) * -0.5);
+		}
+	}
+</style>
+
+<nav on:pointerleave={() => {
+  if (!$session.isMobile) {
+    showTags = false
+    showCollaborators = false
+  }
+}}>
+	<a href="" rel=prefetch><h6>Telescope</h6></a>
+	<span
+    class:current={true}
+    on:click={() => {
+      showTags = !showTags
+      showCollaborators = false
+    }}
+    on:pointerenter={() => {
+      if (!$session.isMobile) {
+        showTags = true
+        showCollaborators = false
+      }
+    }}><h6>{#if currentTag}<Tag id={currentTag} />{:else}{all}{/if} ↓</h6></span>
+
+  {#if tags.filter(([tag, total]) => contentTags[tag] && contentTags[tag].isACollaborator).length}<span
+    class:current={true}
+    on:click={() => {
+      showCollaborators = !showCollaborators
+      showTags = false
+    }}
+    on:pointerenter={() => {
+      if (!$session.isMobile) {
+        showCollaborators = true
+        showTags = false
+      }
+    }}><h6>{#if currentCollaborator}<Tag id={currentCollaborator} />{:else}{$session.locale === 'fr-CA' ? 'Tous les collaborateurs' : 'All Collaborators'}{/if} ↓</h6></span>{/if}
+
+  {#if showTags}
+  <div>
+  <a href="{path}{currentCollaborator ? `?collaborator=${currentCollaborator}` : ''}" rel=prefetch
+    class:current={currentTag === undefined}><h6>{all}</h6></a>
+
+	{#each tags.filter(([tag, total]) => !contentTags[tag] || !contentTags[tag].isACollaborator) as [tag, total] (tag)}
+	{#if tag !== 'recent' && tag.indexOf('20') !== 0}
+	<a href="{path}?tag={tag}{currentCollaborator ? `&collaborator=${currentCollaborator}` : ''}" rel=prefetch class:current={tag === currentTag}><h6><Tag id={tag} /></h6></a> 
+	{/if}
+	{/each}
+  </div>
+  {/if}
+
+  {#if showCollaborators}
+  <div>
+  <a href="{path}{currentTag ? `?tag=${currentTag}` : ''}" rel=prefetch
+    class:current={currentCollaborator === undefined}><h6>{$session.locale === 'fr-CA' ? 'Tous les collaborateurs' : 'All Collaborators'}</h6></a>
+
+	{#each tags.filter(([tag, total]) => contentTags[tag] && contentTags[tag].isACollaborator) as [tag, total] (tag)}
+	<a href="{path}?collaborator={tag}{currentTag ? `&tag=${currentTag}` : ''}" rel=prefetch class:current={tag === currentCollaborator}><h6><Tag id={tag} /></h6></a>
+	{/each}
+  </div>
+  {/if}
+</nav>

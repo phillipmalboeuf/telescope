@@ -62,9 +62,9 @@
 <nav>
 	<a href=""><h6>Telescope</h6></a>
 	<a href="about" class="current"><h6>{$session.locale === 'fr-CA' ? 'À propos' : 'About'}</h6></a>
-	{#each about as piece}
+	<!-- {#each about as piece}
 	<a href="about#{piece.fields.identifier}"><h6>{piece.fields.title}</h6></a>
-	{/each}
+	{/each} -->
 </nav>
 
 {#each about as piece}

@@ -19,21 +19,33 @@
 		tags = Object.entries(tags)
 		tags.sort((left, right) => right[1] - left[1])
 
-		if (query.tag) {
-			return { articles: articles.filter(article => article.fields.tags.includes(query.tag)), tags, currentTag: query.tag }
-		}
+		return {
+			articles: articles.filter(article => {
+				if (query.tag && query.collaborator) {
+					return article.fields.tags.includes(query.tag) && article.fields.tags.includes(query.collaborator)
+				} else if (query.tag) {
+					return article.fields.tags.includes(query.tag)
+				} else if (query.collaborator) {
+					return article.fields.tags.includes(query.collaborator)
+				}
 
-		return { articles, tags }
+				return true
+			}),
+			...query.tag && { currentTag: query.tag },
+			...query.collaborator && { currentCollaborator: query.collaborator },
+			tags
+		}
 	}
 </script>
 
 <script>
 	import List from '../../components/List.svelte'
-	import Tags from '../../components/Tags.svelte'
+	import Filters from '../../components/Filters.svelte'
 
 	export let articles
 	export let tags
 	export let currentTag = undefined
+	export let currentCollaborator = undefined
 
 	import { stores } from '@sapper/app'
 	const { session } = stores()
@@ -44,6 +56,6 @@
 	<title>News</title>
 </svelte:head>
 
-<Tags {tags} path="articles" all="{$session.locale === 'fr-CA' ? 'Toutes les nouvelles' : 'All News'}" nav {currentTag} />
+<Filters {tags} path="articles" all="{$session.locale === 'fr-CA' ? 'Toutes les nouvelles' : 'All News'}" {currentTag} {currentCollaborator} />
 
 <List items={articles} />
