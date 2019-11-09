@@ -42,11 +42,15 @@
 
 	nav + nav {
 		top: calc(var(--gutter) / -2);
-		left: calc(var(--gutter) / -2);
+		left: calc(var(--gutter) / -1.5);
 		right: auto;
 		height: auto;
 		color: white;
 		max-width: calc(42.5vw - var(--gutter));
+	}
+
+	nav + nav a {
+		padding: calc(var(--gutter) / 4);
 	}
 
 	h1 {
@@ -108,7 +112,7 @@
 
 <section>
 	<nav><h1>{article.fields.title} • <Tags tags={article.fields.tags} path="articles" /></h1></nav>
-	<nav><h6><a href="" rel=prefetch>Telescope</a> • <a rel=prefetch href="articles">{$session.locale === 'fr-CA' ? 'Nouvelles' : 'News'}</a> • {article.fields.title} • <Tags tags={article.fields.tags} path="articles" /></h6></nav>
+	<nav><h6><a href="" rel=prefetch>Telescope</a> <a rel=prefetch href="articles">{$session.locale === 'fr-CA' ? 'Retour aux Nouvelles' : 'Back to News'}</a></nav>
 
 	<div>
 		<aside>

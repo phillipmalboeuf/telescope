@@ -169,7 +169,7 @@
     position: relative;
     border: none;
     background: transparent;
-    transition: font-variation-settings 333ms;
+    transition: font-variation-settings 333ms, opacity 333ms;
   }
 
   /* :global(a:active, button:active) {

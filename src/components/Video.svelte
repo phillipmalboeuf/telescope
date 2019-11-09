@@ -132,14 +132,31 @@
     opacity: 0;
   }
 
-  figcaption.title {
+  figcaption.breadcrumbs {
     position: absolute;
     top: calc(var(--gutter) * -0.5);
-    left: 0;
+    left: calc(var(--gutter) * -0.5);
     z-index: 2;
   }
 
-  figure.fullscreen figcaption.title {
+    figcaption.breadcrumbs a {
+      opacity: 0.5;
+      padding: calc(var(--gutter) / 4);
+    }
+
+      figcaption.breadcrumbs a:hover {
+        opacity: 1;
+      }
+
+  figcaption.title {
+    position: absolute;
+    bottom: calc(var(--rythm) * 4);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+  /* figure.fullscreen figcaption.title {
     top: calc(var(--gutter));
     left: calc(var(--gutter));
   }
@@ -148,7 +165,7 @@
     figure.fullscreen figcaption.title {
       left: calc(var(--gutter) / 2);
     }
-  }
+  } */
 
   figcaption.controls {
     position: absolute;
@@ -288,6 +305,9 @@
 
 {#if controls}
 <figure class:inactive class:fullscreen on:mousemove={activate} bind:this={element}>
+  <figcaption class="breadcrumbs">
+    <h6><a href="" rel=prefetch>Telescope</a> <a href="/films" rel=prefetch>Retour aux Films</a></h6>
+  </figcaption>
   <figcaption class="title"><slot name="title" /></figcaption>
 
   <video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} autoplay disableRemotePlayback
