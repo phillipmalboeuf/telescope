@@ -99,10 +99,14 @@
 </style>
 
 <ol>
-  {#each images as { thumbnail, content }, index}
+  {#each images as { thumbnail, content, href }, index}
   <li class:selected={selected === index} on:mouseenter={()=> enter(index)} on:click={() => pick(index)}>
     <figure class:content>
+      {#if href}
+      <a href={href}><Picture media={thumbnail} small /></a>
+      {:else}
       <Picture media={thumbnail} small />
+      {/if}
       {#if content && selected === index}
       <figcaption transition:fly>
         <slot name="content" {content} />

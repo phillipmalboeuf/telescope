@@ -28,10 +28,11 @@
   {#if node.data.target.sys.contentType.sys.id === 'collaboratorSlider'}
   <Gallery images={node.data.target.fields.collaborators.map(collaborator => ({
     thumbnail: collaborator.fields.photo,
-    content: collaborator.fields
+    content: collaborator.fields,
+    href: collaborator.fields.tagIdentifier && `films?collaborator=${collaborator.fields.tagIdentifier}`
   }))}>
     <h6 slot="content" let:content={content}>
-      {content.name}<br />
+      {#if content.tagIdentifier}<a href={`films?collaborator=${content.tagIdentifier}`}>{content.name}</a>{:else}{content.name}{/if}<br />
       {content.profession}<br />
       <a href={content.link} target="_blank">{content.linkLabel} →</a>
     </h6>
