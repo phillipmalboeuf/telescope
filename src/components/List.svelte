@@ -150,6 +150,7 @@
             transform: translateY(-25%);
           }
 
+      @media (hover: hover) {
         a:hover figcaption {
           transform: translateX(0);
           opacity: 1;
@@ -176,6 +177,7 @@
           a.film.full:hover figcaption h6 {
             transform: translateY(0);
           }
+      }
       
     li.loose {
       margin: 0 0 calc(var(--gutter) / 1.5);

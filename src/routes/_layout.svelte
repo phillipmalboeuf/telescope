@@ -75,10 +75,6 @@
     transition: font-variation-settings 333ms;
   }
 
-  :global(h1 a:hover, h2 a:hover, h3 a:hover) {
-    font-variation-settings: "wdth" 235;
-  }
-
 	:global(h4, h5, h6) {
     font-variation-settings: "wdth" 250;
     margin-bottom: calc(var(--rythm)/2);
@@ -92,14 +88,6 @@
     :global(h4, h5, h6) {
       margin-bottom: calc(var(--rythm)/4);
     }
-  }
-
-  :global(h4 a:hover, h5 a:hover, h6 a:hover) {
-    font-variation-settings: "wdth" 285;
-  }
-
-  :global(blockquote a:hover) {
-    font-variation-settings: "wdth" 285;
   }
 
   :global(h1, blockquote p) {
@@ -119,8 +107,22 @@
     font-variation-settings: "wdth" 200;
   }
 
-  :global(h6 a:hover) {
-    font-variation-settings: "wdth" 225;
+  @media (hover: hover) {
+    :global(h1 a:hover, h2 a:hover, h3 a:hover) {
+      font-variation-settings: "wdth" 235;
+    }
+
+    :global(h4 a:hover, h5 a:hover, h6 a:hover) {
+      font-variation-settings: "wdth" 285;
+    }
+
+    :global(blockquote a:hover) {
+      font-variation-settings: "wdth" 285;
+    }
+
+    :global(h6 a:hover) {
+      font-variation-settings: "wdth" 225;
+    }
   }
 
   :global(p) {
