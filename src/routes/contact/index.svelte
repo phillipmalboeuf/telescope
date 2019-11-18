@@ -26,6 +26,12 @@
 </script>
 
 <style>
+
+section {
+	display: flex;
+	flex-wrap: wrap;
+}
+
 figure {
 	width: 32.5vw;
 	margin: 0;
@@ -36,17 +42,19 @@ figure {
 nav {
 	position: absolute;
 	top: calc(var(--gutter) / 2);
-	left: calc(var(--gutter) / 2);
+	left: calc(var(--gutter) / 3);
 	color: white;
-	max-width: calc(32.5vw - var(--gutter));
+	/* max-width: calc(32.5vw - var(--gutter)); */
 }
+
+	nav a {
+		padding: calc(var(--gutter) / 4);
+	}
 
 ol {
 	width: 50vw;
-	padding: 0;
+	padding: calc(var(--gutter));
   list-style: none;
-	margin-left: auto;
-	margin-top: calc(var(--gutter) * -4);
 }
 
   ol > li {
@@ -80,22 +88,25 @@ ol {
 	<title>Contact</title>
 </svelte:head>
 
-<figure>
-	<Picture media={photo} />
-</figure>
 
-<nav><h6><a href="" rel=prefetch>Telescope</a> • <a rel=prefetch href="contact">Contact</a></h6></nav>
+<section>
+	<figure>
+		<Picture media={photo} />
+	</figure>
 
-<ol>
-	<li>
-		<NewsletterForm id="contact-page-newsletter-form" />
-	</li>
-{#each contact as point}
-	<li>
-		<a href={point.fields.link} target="_blank">
-			<h4>{point.fields.title}</h4>
-			<h6>{point.fields.linkLabel}</h6>
-		</a>
-	</li>
-{/each}
-</ol>
+	<nav><h6><a href="" rel=prefetch>Telescope</a> <a rel=prefetch href="contact">Contact</a></h6></nav>
+
+	<ol>
+		<li>
+			<NewsletterForm id="contact-page-newsletter-form" />
+		</li>
+	{#each contact as point}
+		<li>
+			<a href={point.fields.link} target="_blank">
+				<h4>{point.fields.title}</h4>
+				<h6>{point.fields.linkLabel}</h6>
+			</a>
+		</li>
+	{/each}
+	</ol>
+</section>
