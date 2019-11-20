@@ -35,6 +35,7 @@
 
     a {
       display: inline-block;
+      cursor: default;
     }
 
       figure {
@@ -103,7 +104,7 @@
           figcaption h6 {
             transform: translateX(-25%);
 
-            transition: transform 420ms;
+            transition: transform 420ms, font-variation-settings 333ms;
             will-change: transform;
           }
 
@@ -163,6 +164,21 @@
         a:hover figure :global(video),
         a:hover figure :global(img) {
           width: calc(52.5vw - (var(--gutter) * 1.5));
+        }
+
+        a:hover :global(video:hover),
+        a:hover :global(img:hover) {
+          cursor: pointer;
+        }
+
+        a:hover :global(h6:hover),
+        a:hover :global(h4:hover) {
+          cursor: pointer;
+          font-variation-settings: "wdth" 285;
+        }
+
+        a:hover :global(h6:hover) {
+          font-variation-settings: "wdth" 235;
         }
 
         a.film:not(.full):hover figure :global(video),
