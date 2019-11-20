@@ -66,38 +66,21 @@
 	}
 </style>
 
-<nav on:pointerleave={() => {
-  if (!$session.isMobile) {
-    showTags = false
-    showCollaborators = false
-  }
-}}>
+<nav>
 	<a href="" rel=prefetch><h6>Telescope</h6></a>
 	<span
     class:current={true}
     on:click={() => {
       showTags = !showTags
       showCollaborators = false
-    }}
-    on:pointerenter={() => {
-      if (!$session.isMobile) {
-        showTags = true
-        showCollaborators = false
-      }
-    }}><h6>{#if currentTag}<Tag id={currentTag} />{:else}{all}{/if} ↓</h6></span>
+    }}><h6>{#if currentTag}<Tag id={currentTag} />{:else}{all}{/if} {#if showTags}<span style="display:inline-block;transform:rotate(180deg)">↓</span>{:else}↓{/if}</h6></span>
 
   {#if tags.filter(([tag, total]) => contentTags[tag] && contentTags[tag].isACollaborator).length}<span
     class:current={true}
     on:click={() => {
       showCollaborators = !showCollaborators
       showTags = false
-    }}
-    on:pointerenter={() => {
-      if (!$session.isMobile) {
-        showCollaborators = true
-        showTags = false
-      }
-    }}><h6>{#if currentCollaborator}<Tag id={currentCollaborator} />{:else}{$session.locale === 'fr-CA' ? 'Tous les collaborateurs' : 'All Collaborators'}{/if} ↓</h6></span>{/if}
+    }}><h6>{#if currentCollaborator}<Tag id={currentCollaborator} />{:else}{$session.locale === 'fr-CA' ? 'Tous les collaborateurs' : 'All Collaborators'}{/if} {#if showCollaborators}<span style="display:inline-block;transform:rotate(180deg)">↓</span>{:else}↓{/if}</h6></span>{/if}
 
   {#if showTags}
   <div>
