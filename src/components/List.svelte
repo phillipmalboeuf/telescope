@@ -132,23 +132,28 @@
         }
 
         a.film.full figcaption {
+          cursor: pointer;
           color: white;
-          text-align: center;
+          text-align: right;
+          writing-mode: vertical-rl;
           z-index: 2;
           opacity: 1;
 
-          top: auto;
-          bottom: 0;
-          left: 0;
+          top: 0;
+          bottom: auto;
+          left: auto;
           right: 0;
           height: auto;
-          width: 100%;
+          width: auto;
+          padding-bottom: 0;
 
-          transform: translateY(100%);
+          transform: translateX(100%) rotate(180deg);
         }
 
           a.film.full figcaption h6 {
-            transform: translateY(-25%);
+            margin-bottom: 0;
+            margin-left: calc(var(--rythm) / 2);
+            transform: none;
           }
 
       @media (hover: hover) {
@@ -187,11 +192,11 @@
         }
 
         a.film.full:hover figcaption {
-          transform: translateY(0);
+          transform: translateX(0) rotate(180deg);
         }
 
           a.film.full:hover figcaption h6 {
-            transform: translateY(0);
+            transform: none;
           }
       }
       
@@ -202,108 +207,6 @@
       li.loose :global(blockquote) {
         margin: 0;
       }
-      /* @media (max-width: 900px) {
-        a,
-        a.film {
-          margin-top: 0;
-          margin-bottom: calc(var(--gutter));
-        }
-
-        figure,
-        a.film figure {
-          width: 80vw;
-        }
-
-        figure :global(video),
-        figure :global(img),
-        a.film figure :global(video),
-        a.film figure :global(img) {
-          height: calc(80vw * 9 / 11);
-        }
-      } */
-
-      
-
-      /* @media (max-width: 900px) {
-        a.film.full {
-          margin-top: calc(var(--gutter));
-          margin-bottom: calc(var(--gutter));
-        }
-
-        a.film.full figure :global(video),
-        a.film.full figure :global(img) {
-          height: 42vh;
-        }
-      } */
-
-      /* li:first-child figure {
-        margin-top: 0;
-      }
-
-      li:last-child a {
-        margin-bottom: 0 !important;
-      } */
-      
-
-      /* @media (max-width: 900px) {
-        figcaption h4 {
-          font-size: var(--tiny);
-        }
-      }
-
-      a.film.full figure figcaption {
-        color: white;
-        top: 0;
-        left: auto;
-        right: var(--gutter);
-
-        transition: transform 333ms;
-        will-change: transform;
-        transform: translateX(7vw) rotate(180deg);
-      }
-
-      @media (max-width: 900px) {
-        a.film.full figure figcaption {
-          right: calc(var(--gutter) * 2);
-        }
-      } */
-
-      
-
-      /* @media (max-width: 900px) {
-        figcaption {
-          right: calc(var(--gutter) * -1);
-          transform: rotate(180deg);
-        }
-
-        li:nth-child(2n) figcaption {
-          left: calc(var(--gutter) * -1);
-          transform: rotate(180deg);
-        }
-      } */
-
-        /* a :global(img),
-        a.film:not(.full) :global(video) {
-          position: relative;
-          z-index: 1;
-
-          transition: transform 333ms;
-          will-change: transform;
-        }
-
-        a:hover :global(img),
-        a.film:not(.full):hover :global(video) {
-          transform: translateX(-5vw);
-        }
-
-        li:nth-child(2n) a:hover :global(img),
-        li:nth-child(2n) a.film:not(.full):hover :global(video) {
-          transform: translateX(5vw);
-        }
-
-        a.film.full:hover figure figcaption {
-          transform: translateX(0) rotate(180deg);
-        } */
 </style>
 
 <ol>
