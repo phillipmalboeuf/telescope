@@ -147,7 +147,7 @@
           width: auto;
           padding-bottom: 0;
 
-          transform: translateX(100%) rotate(180deg);
+          transform: translateX(102%) rotate(180deg);
         }
 
           a.film.full figcaption h6 {
