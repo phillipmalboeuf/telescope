@@ -132,10 +132,6 @@
         }
 
         a.film.full figcaption {
-          cursor: pointer;
-          color: white;
-          text-align: right;
-          writing-mode: vertical-rl;
           z-index: 2;
           opacity: 1;
 
@@ -147,8 +143,16 @@
           width: auto;
           padding-bottom: 0;
 
-          transform: translateX(102%) rotate(180deg);
+          transform: translateX(100%);
         }
+          a.film.full figcaption > div {
+            cursor: pointer;
+            color: white;
+            text-align: right;
+            writing-mode: vertical-rl;
+
+            transform: rotate(180deg);
+          }
 
           a.film.full figcaption h6 {
             margin-bottom: 0;
@@ -192,7 +196,7 @@
         }
 
         a.film.full:hover figcaption {
-          transform: translateX(0) rotate(180deg);
+          transform: none;
         }
 
           a.film.full:hover figcaption h6 {
@@ -230,8 +234,10 @@
         <Picture media={item.fields.poster} />
         {/if}
         <figcaption>
-          {#if item.fields.tags}<h6><Tag id={item.fields.tags[0]} /></h6>{/if}
-          <h4>{item.fields.title}</h4>
+          <div>
+            {#if item.fields.tags}<h6><Tag id={item.fields.tags[0]} /></h6>{/if}
+            <h4>{item.fields.title}</h4>
+          </div>
         </figcaption>
       </figure>
     </a>
