@@ -1,11 +1,12 @@
 <script>
   import { fade, fly } from 'svelte/transition'
+  import { onMount, tick } from 'svelte'
 
   import { stores } from '@sapper/app'
 	const { session } = stores()
 
   import Picture from './Picture.svelte'
-  import Video from './Video.svelte'
+  import ListVideo from './ListVideo.svelte'
   import Tag from './Tag.svelte'
   import Document from './document/index.svelte'
 
@@ -17,9 +18,8 @@
     type: item.type || item.sys.contentType.sys.id
   }))
 
-  function truncate(s, max = 20) {
-    return `${s.substring(0, max)}${s.length > max ? '...' : ''}`
-  }
+  let scrollY = 0
+  let windowHeight
 </script>
 
 <style>
@@ -81,6 +81,7 @@
       a.film.full figure :global(img) {
         width: 100vw;
         height: 100vh;
+        margin: calc(var(--gutter) * -1) 0 0 calc(var(--gutter) * -1);
       }
 
         figcaption {
@@ -213,6 +214,8 @@
       }
 </style>
 
+<svelte:window bind:scrollY={scrollY} bind:innerHeight={windowHeight} />
+
 <ol>
 	{#each items as item, index (item.sys.id)}
   
@@ -226,7 +229,7 @@
       <figure>
         {#if item.type === 'film'}
         {#if !$session.isMobile && item.fields.teaser}
-        <Video srcs={[item.fields.teaser]} poster={item.fields.poster} {full} />
+        <ListVideo {scrollY} {windowHeight} src={item.fields.teaser} />
         {:else}
         <Picture media={item.fields.poster} />
         {/if}

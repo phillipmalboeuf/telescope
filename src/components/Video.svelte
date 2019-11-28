@@ -3,14 +3,11 @@
 
   import Gallery from './Gallery.svelte'
 
-  export let poster
+  // export let poster
   export let srcs
   export let title = undefined
   export let tags = undefined
   export let grabs = undefined
-
-  export let full = true
-  export let controls = false
 
   let time = 0
 	let duration
@@ -95,14 +92,14 @@
     background: black;
   }
 
-  video.full {
+  video {
     width: 100vw;
     height: 100vh;
     margin: calc(var(--gutter) * -1) 0 0 calc(var(--gutter) * -1);
   }
 
   @media (max-width: 900px) {
-    video.full {
+    video {
       height: 42vh;
     }
   }
@@ -119,7 +116,7 @@
     cursor: none;
   }
 
-  figure.fullscreen video.full {
+  figure.fullscreen video {
     margin: 0
   }
 
@@ -304,14 +301,13 @@
 
 <svelte:window on:keydown={keydown} />
 
-{#if controls}
 <figure class:inactive class:fullscreen on:mousemove={activate} bind:this={element}>
   <figcaption class="breadcrumbs">
     <h6><a href="" rel=prefetch>Telescope</a> <a href="/films" rel=prefetch>Retour aux Films</a></h6>
   </figcaption>
   <figcaption class="title"><slot name="title" /></figcaption>
 
-  <video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} autoplay disableRemotePlayback
+  <video src={srcs ? srcs[resolution].fields.file.url : undefined} autoplay disableRemotePlayback
     bind:currentTime={time}
     bind:duration
     bind:buffered
@@ -355,7 +351,4 @@
 
 {#if grabs}
   <Gallery images={grabs.map(grab => ({ thumbnail: grab.fields.thumbnail }))} on:pick={event => grab(event.detail)} />
-{/if}
-{:else}
-<video class:full src={srcs ? srcs[resolution].fields.file.url : undefined} loop muted autoplay disableRemotePlayback />
 {/if}
