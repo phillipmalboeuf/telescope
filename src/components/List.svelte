@@ -136,23 +136,23 @@
           z-index: 2;
           opacity: 1;
 
-          top: 0;
-          bottom: auto;
-          left: auto;
-          right: 0;
+          top: auto;
+          bottom: calc(var(--gutter));
+          left: 50%;
+          right: auto;
           height: auto;
           width: auto;
           padding-bottom: 0;
 
-          transform: translateX(100%);
+          transform: translateX(-50%);
         }
           a.film.full figcaption > div {
             cursor: pointer;
             color: white;
-            text-align: right;
-            writing-mode: vertical-rl;
+            text-align: center;
+            /* writing-mode: vertical-rl;
 
-            transform: rotate(180deg);
+            transform: rotate(180deg); */
           }
 
           a.film.full figcaption h6 {
@@ -197,7 +197,7 @@
         }
 
         a.film.full:hover figcaption {
-          transform: none;
+          transform: translateX(-50%);
         }
 
           a.film.full:hover figcaption h6 {
