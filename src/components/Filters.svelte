@@ -15,6 +15,16 @@
   let contentTags = $session.navigation.tags.reduce((contentTags, tag) => {
     return { ...contentTags, [tag.fields.identifier]: tag.fields }
   }, {})
+
+  function toggleTags() {
+    showTags = !showTags
+    showCollaborators = false
+  }
+
+  function toggleCollaborators() {
+    showCollaborators = !showCollaborators
+    showTags = false
+  }
 </script>
 
 <style>
@@ -70,26 +80,21 @@
 	<a href="" rel=prefetch><h6>Telescope</h6></a>
 	<span
     class:current={true}
-    on:click={() => {
-      showTags = !showTags
-      showCollaborators = false
-    }}><h6>{#if currentTag}<Tag id={currentTag} />{:else}{all}{/if} {#if showTags}<span style="display:inline-block;transform:rotate(180deg)">↓</span>{:else}↓{/if}</h6></span>
+    on:click={toggleTags}><h6>{#if currentTag}<Tag id={currentTag} />{:else}{all}{/if} {#if showTags}<span style="display:inline-block;transform:rotate(180deg)">↓</span>{:else}↓{/if}</h6></span>
 
   {#if tags.filter(([tag, total]) => contentTags[tag] && contentTags[tag].isACollaborator).length}<span
     class:current={true}
-    on:click={() => {
-      showCollaborators = !showCollaborators
-      showTags = false
-    }}><h6>{#if currentCollaborator}<Tag id={currentCollaborator} />{:else}{$session.locale === 'fr-CA' ? 'Tous les collaborateurs' : 'All Collaborators'}{/if} {#if showCollaborators}<span style="display:inline-block;transform:rotate(180deg)">↓</span>{:else}↓{/if}</h6></span>{/if}
+    on:click={toggleCollaborators}><h6>{#if currentCollaborator}<Tag id={currentCollaborator} />{:else}{$session.locale === 'fr-CA' ? 'Tous les collaborateurs' : 'All Collaborators'}{/if} {#if showCollaborators}<span style="display:inline-block;transform:rotate(180deg)">↓</span>{:else}↓{/if}</h6></span>{/if}
 
   {#if showTags}
   <div>
   <a href="{path}{currentCollaborator ? `?collaborator=${currentCollaborator}` : ''}" rel=prefetch
+    on:click={toggleTags}
     class:current={currentTag === undefined}><h6>{all}</h6></a>
 
 	{#each tags.filter(([tag, total]) => !contentTags[tag] || !contentTags[tag].isACollaborator) as [tag, total] (tag)}
 	{#if tag !== 'recent' && tag.indexOf('20') !== 0}
-	<a href="{path}?tag={tag}{currentCollaborator ? `&collaborator=${currentCollaborator}` : ''}" rel=prefetch class:current={tag === currentTag}><h6><Tag id={tag} /></h6></a> 
+	<a href="{path}?tag={tag}{currentCollaborator ? `&collaborator=${currentCollaborator}` : ''}" rel=prefetch class:current={tag === currentTag} on:click={toggleTags}><h6><Tag id={tag} /></h6></a> 
 	{/if}
 	{/each}
   </div>
@@ -98,10 +103,10 @@
   {#if showCollaborators}
   <div>
   <a href="{path}{currentTag ? `?tag=${currentTag}` : ''}" rel=prefetch
-    class:current={currentCollaborator === undefined}><h6>{$session.locale === 'fr-CA' ? 'Tous les collaborateurs' : 'All Collaborators'}</h6></a>
+    class:current={currentCollaborator === undefined} on:click={toggleCollaborators}><h6>{$session.locale === 'fr-CA' ? 'Tous les collaborateurs' : 'All Collaborators'}</h6></a>
 
 	{#each tags.filter(([tag, total]) => contentTags[tag] && contentTags[tag].isACollaborator) as [tag, total] (tag)}
-	<a href="{path}?collaborator={tag}{currentTag ? `&tag=${currentTag}` : ''}" rel=prefetch class:current={tag === currentCollaborator}><h6><Tag id={tag} /></h6></a>
+	<a href="{path}?collaborator={tag}{currentTag ? `&tag=${currentTag}` : ''}" rel=prefetch class:current={tag === currentCollaborator} on:click={toggleCollaborators}><h6><Tag id={tag} /></h6></a>
 	{/each}
   </div>
   {/if}
