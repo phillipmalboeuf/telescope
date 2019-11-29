@@ -117,7 +117,8 @@
   }
 
   figure.fullscreen video {
-    margin: 0
+    height: 100vh;
+    margin: 0;
   }
 
   figcaption {
