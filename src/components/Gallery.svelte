@@ -55,13 +55,13 @@
 		}
 
     figure :global(img) {
-      height: 25vh;
+      height: 42vh;
       object-fit: cover;
     }
 
     @media (max-width: 900px) {
       figure :global(img) {
-        height: 10vh;
+        height: 42vh;
       }
     }
 
