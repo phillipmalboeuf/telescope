@@ -56,7 +56,7 @@ ol {
     : `${item.type}s/${item.fields.identifier}`} on:click>
     <h4>{item.fields.title}</h4>
   </a>
-  <h6><Tags tags={item.fields.tags} path={`${item.type}s`} /></h6>
+  <h6><Tags tags={item.fields.tags} path={`${item.type}s`} />{#if item.fields.ralisateur}&nbsp;• {item.fields.ralisateur}{/if}</h6>
   {/if}
 </li>
 {/each}
