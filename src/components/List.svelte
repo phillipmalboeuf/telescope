@@ -238,7 +238,7 @@
         {/if}
         <figcaption>
           <div>
-            {#if item.fields.tags}<h6><Tag id={item.fields.tags[0]} /></h6>{/if}
+            <h6>{#if item.fields.tags}<Tag id={item.fields.tags[0]} />{/if}{#if item.fields.ralisateur}&nbsp;• {item.fields.ralisateur}{/if}</h6>
             <h4>{item.fields.title}</h4>
           </div>
         </figcaption>

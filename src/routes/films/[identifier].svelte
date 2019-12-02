@@ -98,7 +98,7 @@
 
 <Video poster={film.fields.poster} srcs={film.fields.video} full controls grabs={film.fields.screenGrabs}>
 	<h6 slot="title">
-		{film.fields.title} • <Tags tags={film.fields.tags} path="films" />
+		{film.fields.title}{#if film.fields.ralisateur}&nbsp;• {film.fields.ralisateur}{/if} • <Tags tags={film.fields.tags} path="films" />
 	</h6>
 </Video>
 
