@@ -2,6 +2,9 @@
   import Gallery from '../Gallery.svelte'
   import Mark from './mark.svelte'
 
+  import { stores } from '@sapper/app'
+	const { session } = stores()
+
   export let node
 </script>
 
@@ -26,6 +29,7 @@
 
 {:else if node.nodeType === 'embedded-entry-block'}
   {#if node.data.target.sys.contentType.sys.id === 'collaboratorSlider'}
+  {#if !$session.isMobile}
   <Gallery images={node.data.target.fields.collaborators.map(collaborator => ({
     thumbnail: collaborator.fields.photo,
     content: collaborator.fields,
@@ -37,5 +41,14 @@
       <a href={content.link} target="_blank">{content.linkLabel} →</a>
     </h6>
   </Gallery>
+  {:else}
+  <div style="margin: 2rem 0">
+  {#each node.data.target.fields.collaborators as collaborator}
+  <a href="{collaborator.fields.tagIdentifier && `films?collaborator=${collaborator.fields.tagIdentifier}`}">
+    <h2>{collaborator.fields.name}</h2>
+  </a>
+  {/each}
+  </div>
+  {/if}
   {/if}
 {/if}
