@@ -3,15 +3,15 @@
 
 	export async function preload({ params, query }) {
 		const res = await this.fetch(`loose.json`)
-		const { loose } = json.decode(await res.text())
+		const { loose, animation } = json.decode(await res.text())
 
-		return { loose }
+		return { loose, animation }
 	}
 </script>
 
 <script>
-	import { fade } from 'svelte/transition'
 	import Hover from '../components/Hover.svelte'
+	import Picture from '../components/Picture.svelte'
 	import List from '../components/List.svelte'
 
 	import { stores } from '@sapper/app'
@@ -19,6 +19,7 @@
 
 	let { films, articles, products } = $session.navigation
 	export let loose
+	export let animation
 
 	let items = [...films, ...articles, ...products]
 		.filter(item => item.fields.tags.includes('recent'))
@@ -52,7 +53,11 @@
 </svelte:head>
 
 <h1>
+	{#if $session.ua.chrome || $session.isMobile}
+	<Picture media={animation} webp />
+	{:else}
 	<Hover texts={['TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE']} />
+	{/if}
 </h1>
 
 <List {items} />

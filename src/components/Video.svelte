@@ -5,8 +5,6 @@
 
   // export let poster
   export let srcs
-  export let title = undefined
-  export let tags = undefined
   export let grabs = undefined
 
   let time = 0
