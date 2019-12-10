@@ -16,7 +16,6 @@ const content = locale => async (req, res, next) => {
 
 const ua = (req, res, next) => {
 	req.ua = useragent.is(req.headers['user-agent'])
-	console.log(req.ua)
 	req.isMobile = req.ua.mobile_safari || req.ua.android
 	next()
 }
