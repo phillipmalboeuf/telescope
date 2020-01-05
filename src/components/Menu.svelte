@@ -59,7 +59,7 @@
 				title: $session.locale === 'fr-CA' ? 'Récents' : 'Latest',
 				all: $session.locale === 'fr-CA' ? 'Page d\'acceuil' : 'Homepage',
 				path: '',
-				items: [...films, ...articles, ...products]
+				items: [...films, ...articles]
 					.filter(item => item.fields.tags.includes('recent'))
 					.sort((left, right) => {
 						return new Date(right.fields.publishedDate) - new Date(left.fields.publishedDate)

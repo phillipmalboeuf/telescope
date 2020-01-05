@@ -21,7 +21,7 @@
 	export let loose
 	export let animation
 
-	let items = [...films, ...articles, ...products]
+	let items = [...films, ...articles]
 		.filter(item => item.fields.tags.includes('recent'))
 		.sort((left, right) => {
 			return new Date(right.fields.publishedDate) - new Date(left.fields.publishedDate)
@@ -53,11 +53,11 @@
 </svelte:head>
 
 <h1>
-	{#if $session.ua.chrome || $session.isMobile}
+	<!-- {#if $session.ua.chrome || $session.isMobile}
 	<Picture media={animation} webp />
-	{:else}
+	{:else} -->
 	<Hover texts={['TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE']} />
-	{/if}
+	<!-- {/if} -->
 </h1>
 
 <List {items} />

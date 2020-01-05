@@ -11,15 +11,15 @@ const order = ['-fields.publishedDate', '-sys.createdAt'].join(',')
 export const navigation = locale => Promise.all([
   client.getEntries({ content_type: 'article', locale, select, order }),
   client.getEntries({ content_type: 'film', locale, select: select + ',fields.teaser,fields.ralisateur', order }),
-  client.getEntries({ content_type: 'product', locale, select, order }),
+  // client.getEntries({ content_type: 'product', locale, select, order }),
   client.getEntries({ content_type: 'aboutPiece', locale, select: ['sys.id', 'fields.title', 'fields.identifier', 'fields.tags'].join(','), order }),
   client.getEntries({ content_type: 'contactPoint', locale, select: ['sys.id', 'fields.title', 'fields.link', 'fields.linkLabel'].join(','), order }),
   client.getEntries({ content_type: 'tag', locale, select: ['sys.id', 'fields.title', 'fields.identifier', 'fields.isACollaborator'].join(',') })
-]).then(async ([articles, films, products, about, contact, tags])=> {
+]).then(async ([articles, films, about, contact, tags])=> {
   return {
     articles: articles.items.map(item => ({ ...item, type: 'article' })),
     films: films.items.map(item => ({ ...item, type: 'film' })),
-    products: products.items.map(item => ({ ...item, type: 'product' })),
+    // products: products.items.map(item => ({ ...item, type: 'product' })),
     about: about.items.map(item => ({ ...item, type: 'about' })),
     contact: contact.items.map(item => ({ ...item, type: 'contact' })),
     tags: tags.items.map(item => ({ ...item, type: 'tag' }))

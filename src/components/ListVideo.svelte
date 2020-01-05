@@ -26,4 +26,4 @@
   }
 </style>
 
-<video use:onScroll={[scrollY, windowHeight]} src={src.fields.file.url} loop muted autoplay={false} disableRemotePlayback />
+<video preload='none' use:onScroll={[scrollY, windowHeight]} src={src.fields.file.url} loop muted autoplay={false} disableRemotePlayback />
