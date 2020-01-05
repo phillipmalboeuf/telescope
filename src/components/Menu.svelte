@@ -240,7 +240,7 @@
 <nav transition:fade>
 	<ul on:mouseleave={leave} class:selected={selected !== undefined}>
 		{#each columns($page) as column, index}
-		<li class:selected={selected === index} on:mouseenter={()=> !$session.isMobile && enter(index)} in:fly={{ y: ys[index], opacity: 1 }}>
+		<li class:selected={selected === index} on:mouseenter={()=> !$session.isMobile && column.items && enter(index)} in:fly={{ y: ys[index], opacity: 1 }}>
 			<a rel=prefetch href='{column.path}' on:click={toggle}><h4>{column.title}</h4></a>
 
 			{#if !$session.isMobile}<MenuItems items={column.items} all={column.all && { title: column.all, path: column.path }} on:click={toggle} />{/if}
@@ -252,7 +252,7 @@
 <nav class="bottom">
 	<ul on:mouseleave={leave} class:selected={selected !== undefined}>
 		{#each columns($page) as column, index}
-		<li class:selected={selected === index} on:mouseenter={()=> !$session.isMobile && enter(index)}>
+		<li class:selected={selected === index} on:mouseenter={()=> !$session.isMobile && column.items && enter(index)}>
 			<a rel=prefetch href='{column.path}'><h4>{column.title}</h4></a>
 
 			{#if !$session.isMobile}<MenuItems items={column.items} all={column.all && { title: column.all, path: column.path }} />{/if}
