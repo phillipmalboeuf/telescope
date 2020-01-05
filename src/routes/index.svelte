@@ -27,7 +27,7 @@
 			return new Date(right.fields.publishedDate) - new Date(left.fields.publishedDate)
 		})
 
-	items.splice(5, 0, loose)
+	items.splice(3, 0, loose)
 </script>
 
 <style>

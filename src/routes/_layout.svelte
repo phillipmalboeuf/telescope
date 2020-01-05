@@ -116,8 +116,12 @@
       font-variation-settings: "wdth" 285;
     }
 
+    :global(blockquote a) {
+      transition: font-variation-settings 666ms;
+    }
+
     :global(blockquote a:hover) {
-      font-variation-settings: "wdth" 285;
+      font-variation-settings: "wdth" 325;
     }
 
     :global(h6 a:hover) {
