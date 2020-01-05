@@ -72,6 +72,10 @@
 				items: films
 			},
 			{
+				title: $session.locale === 'fr-CA' ? 'Réalisateurs' : 'Filmmakers',
+				path: 'filmmakers'
+			},
+			{
 				title: $session.locale === 'fr-CA' ? 'Nouvelles' : 'News',
 				all: $session.locale === 'fr-CA' ? 'Toutes les Nouvelles' : 'Overview of all News',
 				path: 'articles',
@@ -187,7 +191,7 @@
 		}
 
 		ul > li > a > h4 {
-			padding: calc(var(--gutter) - 5pt) calc((var(--gutter)*1.25) - 5pt);
+			padding: calc(var(--gutter) - 5pt);
 			transition: transform 333ms, font-variation-settings 333ms;
 		}
 
@@ -198,12 +202,12 @@
 			}
 
 			ul > li > a > h4 {
-				padding: calc(var(--gutter) - 7pt) calc((var(--gutter)*1.09) - 7pt);
+				padding: calc(var(--gutter) - 7pt);
 			}
 		}
 
 		ul.selected > li > a > h4 {
-			transform: translateX(calc(var(--gutter) * -0.66));
+			transform: translateX(calc(var(--gutter) * -0.5));
 		}
 
 		ul.selected > li.selected > a > h4 {

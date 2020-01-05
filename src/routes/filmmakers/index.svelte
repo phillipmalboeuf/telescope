@@ -1,0 +1,69 @@
+<script context="module">
+	import json from 'json-complete'
+
+	export async function preload({ params, query }) {
+		const res = await this.fetch(`filmmakers.json`)
+		const text = json.decode(await res.text())
+
+		return { text }
+	}
+</script>
+
+<script>
+  import Document from '../../components/document/index.svelte'
+	export let text
+
+	import { stores } from '@sapper/app'
+	const { session } = stores()
+</script>
+
+<style>
+	nav {
+		display: flex;
+		margin: calc(var(--rythm) * -2.5) 0 calc(var(--rythm) * 1) calc(var(--rythm) / -2);
+	}
+
+		nav a {
+			opacity: 0.35;
+			padding: calc(var(--rythm) / 2);
+		}
+
+		nav a.current {
+			opacity: 1;
+		}
+
+	section > :global(h2),
+	section > :global(h4),
+	section > :global(h6),
+	section > :global(p) {
+		width: 52.5vw;
+		margin-left: auto;
+	}
+
+	@media (max-width: 900px) {
+		nav {
+			margin-top: calc(var(--rythm) * -0.5);
+		}
+
+		section > :global(h2),
+		section > :global(h4),
+		section > :global(h6),
+		section > :global(p) {
+			width: 100%;
+		}
+	}
+</style>
+
+
+<svelte:head>
+	<title>Filmmakers</title>
+</svelte:head>
+
+<nav>
+	<a href=""><h6>Telescope</h6></a>
+	<a href="filmmakers" class="current"><h6>{$session.locale === 'fr-CA' ? 'Réalisateurs' : 'Filmmakers'}</h6></a>
+</nav>
+
+<section>
+  <Document body={text.fields.body} />
+</section>

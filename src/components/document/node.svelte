@@ -38,7 +38,7 @@
     <h6 slot="content" let:content={content}>
       {#if content.tagIdentifier}<a href={`films?collaborator=${content.tagIdentifier}`}>{content.name}</a>{:else}{content.name}{/if}<br />
       {content.profession}<br />
-      <a href={content.link} target="_blank">{content.linkLabel} →</a>
+      <!-- <a href={content.link} target="_blank">{content.linkLabel} →</a> -->
     </h6>
   </Gallery>
   {:else}
