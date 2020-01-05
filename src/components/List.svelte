@@ -99,7 +99,7 @@
         }
 
           figcaption h4 {
-            margin: 0;
+            margin-bottom: calc(var(--rythm) / 4);
           }
 
           figcaption h6 {
@@ -238,8 +238,8 @@
         {/if}
         <figcaption>
           <div>
-            <h6>{#if item.fields.tags}<Tag id={item.fields.tags[0]} />{/if}{#if item.fields.ralisateur}&nbsp;• {item.fields.ralisateur}{/if}</h6>
             <h4>{item.fields.title}</h4>
+            <h6>{#if item.fields.tags}<Tag id={item.fields.tags[0]} />{/if}{#if item.fields.ralisateur}&nbsp;• {item.fields.ralisateur}{/if}</h6>
           </div>
         </figcaption>
       </figure>
