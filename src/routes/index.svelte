@@ -32,7 +32,7 @@
 
 <style>
 	h1 {
-		cursor: move;
+		/* cursor: move; */
 		font-family: 'Telescopique Splash', 'Telescopique', system-ui, -apple-system;
 		margin-bottom: calc(var(--gutter) * 2.5);
 		line-height: 1.05;
@@ -52,12 +52,22 @@
 	<title>Telescope</title>
 </svelte:head>
 
-<h1>
-	<!-- {#if $session.ua.chrome || $session.isMobile}
-	<Picture media={animation} webp />
-	{:else} -->
-	<Hover texts={['TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE']} />
-	<!-- {/if} -->
-</h1>
+<a href="#start" on:click={e => {
+	e.preventDefault()
+	window.scrollTo({
+		top: document.getElementById('start').offsetTop - 80,
+		behavior: 'smooth'
+	})
+}}>
+	<h1>
+		<!-- {#if $session.ua.chrome || $session.isMobile}
+		<Picture media={animation} webp />
+		{:else} -->
+		<Hover texts={['TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE', 'TELESCOPE']} />
+		<!-- {/if} -->
+	</h1>
+</a>
 
-<List {items} />
+<section id="start">
+	<List {items} />
+</section>
