@@ -2,7 +2,7 @@
 	import json from 'json-complete'
 
 	export async function preload({ params, query }) {
-		const res = await this.fetch(`filmmakers.json`)
+		const res = await this.fetch(`directors.json`)
 		const text = json.decode(await res.text())
 
 		return { text }
@@ -26,6 +26,10 @@
 		nav a {
 			opacity: 0.35;
 			padding: calc(var(--rythm) / 2);
+		}
+
+		nav a:hover h6 {
+			font-variation-settings: "wdth" 225;
 		}
 
 		nav a.current {
@@ -56,12 +60,12 @@
 
 
 <svelte:head>
-	<title>Filmmakers</title>
+	<title>{$session.locale === 'fr-CA' ? 'Réalisateurs' : 'Directors'}</title>
 </svelte:head>
 
 <nav>
 	<a href=""><h6>Telescope</h6></a>
-	<a href="filmmakers" class="current"><h6>{$session.locale === 'fr-CA' ? 'Réalisateurs' : 'Filmmakers'}</h6></a>
+	<a href="directors" class="current"><h6>{$session.locale === 'fr-CA' ? 'Réalisateurs' : 'Directors'}</h6></a>
 </nav>
 
 <section>

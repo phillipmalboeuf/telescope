@@ -72,8 +72,8 @@
 				items: films
 			},
 			{
-				title: $session.locale === 'fr-CA' ? 'Réalisateurs' : 'Filmmakers',
-				path: 'filmmakers'
+				title: $session.locale === 'fr-CA' ? 'Réalisateurs' : 'Directors',
+				path: 'directors'
 			},
 			{
 				title: $session.locale === 'fr-CA' ? 'Nouvelles' : 'News',

@@ -46,6 +46,9 @@ nav {
 	color: white;
 	/* max-width: calc(32.5vw - var(--gutter)); */
 }
+	nav a:hover h6 {
+		font-variation-settings: "wdth" 225;
+	}
 
 	nav a {
 		padding: calc(var(--gutter) / 4);
