@@ -80,7 +80,7 @@
       a.film.full figure :global(video),
       a.film.full figure :global(img) {
         width: 100vw;
-        height: 100vh;
+        height: 56.25vw;
         margin: calc(var(--gutter) * -1) 0 0 calc(var(--gutter) * -1);
       }
 
