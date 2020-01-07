@@ -91,8 +91,8 @@
           width: 32.5vw;
           height: 100%;
           padding: 0 calc(var(--gutter) / 2) var(--gutter);
-          transform: translateX(-100%);
-          opacity: 0;
+          /* transform: translateX(-100%); */
+          /* opacity: 0; */
 
           transition: transform 420ms, opacity 420ms;
           will-change: transform;
@@ -103,7 +103,7 @@
           }
 
           figcaption h6 {
-            transform: translateX(-25%);
+            /* transform: translateX(-25%); */
 
             transition: transform 420ms, font-variation-settings 333ms;
             will-change: transform;
@@ -112,11 +112,11 @@
         li:nth-child(2n) figcaption {
           right: 100%;
           left: auto;
-          transform: translateX(100%);
+          /* transform: translateX(100%); */
         }
 
           li:nth-child(2n) figcaption h6 {
-            transform: translateX(25%);
+            /* transform: translateX(25%); */
           }
 
         @media (max-width: 900px) {
