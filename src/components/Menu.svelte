@@ -170,6 +170,7 @@
 			margin-right: calc(var(--gutter) / 2);
 
 			position: relative;
+			overflow-x: hidden;
 			overflow-y: auto;
 
 			flex: 1;
