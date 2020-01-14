@@ -173,11 +173,12 @@
 
         a:hover figure :global(video),
         a:hover figure :global(img) {
-          width: calc(52.5vw - (var(--gutter) * 1.5));
+          /* width: calc(52.5vw - (var(--gutter) * 1.5)); */
         }
 
         a:hover :global(video:hover),
         a:hover :global(img:hover) {
+          width: calc(52.5vw - (var(--gutter) * 1.5));
           cursor: pointer;
         }
 
@@ -191,8 +192,8 @@
           font-variation-settings: "wdth" 235;
         }
 
-        a.film:not(.full):hover figure :global(video),
-        a.film:not(.full):hover figure :global(img) {
+        a.film:not(.full):hover figure :global(video:hover),
+        a.film:not(.full):hover figure :global(img:hover) {
           width: 55vw;
         }
 
