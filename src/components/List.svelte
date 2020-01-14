@@ -229,7 +229,7 @@
       <figure>
         {#if item.type === 'film'}
         {#if !$session.isMobile && item.fields.teaser}
-        <ListVideo {scrollY} {windowHeight} src={item.fields.animationList || item.fields.teaser} />
+        <ListVideo {scrollY} {windowHeight} src={(!full && item.fields.animationList) || item.fields.teaser} />
         {:else}
         <Picture media={item.fields.poster} />
         {/if}

@@ -10,7 +10,7 @@ const select = ['sys.id', 'fields.title', 'fields.identifier', 'fields.tags', 'f
 const order = ['-fields.publishedDate', '-sys.createdAt'].join(',')
 export const navigation = locale => Promise.all([
   client.getEntries({ content_type: 'article', locale, select, order }),
-  client.getEntries({ content_type: 'film', locale, select: select + ',fields.teaser,fields.ralisateur', order }),
+  client.getEntries({ content_type: 'film', locale, select: select + ',fields.teaser,fields.animationList,fields.ralisateur', order }),
   // client.getEntries({ content_type: 'product', locale, select, order }),
   client.getEntries({ content_type: 'aboutPiece', locale, select: ['sys.id', 'fields.title', 'fields.identifier', 'fields.tags'].join(','), order }),
   client.getEntries({ content_type: 'contactPoint', locale, select: ['sys.id', 'fields.title', 'fields.link', 'fields.linkLabel'].join(','), order }),
