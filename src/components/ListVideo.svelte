@@ -9,11 +9,11 @@
 
     return {
       update([y, height]) {
-        if (y + height > node.offsetParent.offsetParent.offsetTop && y < node.offsetParent.offsetParent.offsetTop + node.offsetParent.offsetParent.offsetHeight) {
-          node.play()
-        } else {
-          node.pause()
-        }
+        // if (y + height > node.offsetParent.offsetParent.offsetTop && y < node.offsetParent.offsetParent.offsetTop + node.offsetParent.offsetParent.offsetHeight) {
+        //   node.play()
+        // } else {
+        //   node.pause()
+        // }
       }
     }
   }
@@ -26,4 +26,4 @@
   }
 </style>
 
-<video preload='none' use:onScroll={[scrollY, windowHeight]} src={src.fields.file.url} loop muted autoplay={false} disableRemotePlayback />
+<video use:onScroll={[scrollY, windowHeight]} src={src.fields.file.url} loop muted autoplay={true} disableRemotePlayback />
