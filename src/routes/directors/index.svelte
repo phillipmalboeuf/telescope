@@ -60,12 +60,12 @@
 
 
 <svelte:head>
-	<title>{$session.locale === 'fr-CA' ? 'Réalisateurs' : 'Directors'}</title>
+	<title>{$session.locale === 'fr-CA' ? 'Réals' : 'Directors'}</title>
 </svelte:head>
 
 <nav>
 	<a href=""><h6>Telescope</h6></a>
-	<a href="directors" class="current"><h6>{$session.locale === 'fr-CA' ? 'Réalisateurs' : 'Directors'}</h6></a>
+	<a href="directors" class="current"><h6>{$session.locale === 'fr-CA' ? 'Réals' : 'Directors'}</h6></a>
 </nav>
 
 <section>

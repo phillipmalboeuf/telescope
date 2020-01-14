@@ -33,10 +33,10 @@
   <Gallery images={node.data.target.fields.collaborators.map(collaborator => ({
     thumbnail: collaborator.fields.photo,
     content: collaborator.fields,
-    href: collaborator.fields.tagIdentifier && `films?collaborator=${collaborator.fields.tagIdentifier}`
+    href: collaborator.fields.tagIdentifier && `films?director=${collaborator.fields.tagIdentifier}`
   }))}>
     <h6 slot="content" let:content={content}>
-      {#if content.tagIdentifier}<a href={`films?collaborator=${content.tagIdentifier}`}>{content.name}</a>{:else}{content.name}{/if}<br />
+      {#if content.tagIdentifier}<a href={`films?director=${content.tagIdentifier}`}>{content.name}</a>{:else}{content.name}{/if}<br />
       {content.profession}<br />
       <!-- <a href={content.link} target="_blank">{content.linkLabel} →</a> -->
     </h6>
@@ -44,7 +44,7 @@
   {:else}
   <div style="margin: 2rem 0">
   {#each node.data.target.fields.collaborators as collaborator}
-  <a href="{collaborator.fields.tagIdentifier && `films?collaborator=${collaborator.fields.tagIdentifier}`}">
+  <a href="{collaborator.fields.tagIdentifier && `films?director=${collaborator.fields.tagIdentifier}`}">
     <h2>{collaborator.fields.name}</h2>
   </a>
   {/each}

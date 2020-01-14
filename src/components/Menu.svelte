@@ -72,7 +72,7 @@
 				items: films
 			},
 			{
-				title: $session.locale === 'fr-CA' ? 'Réalisateurs' : 'Directors',
+				title: $session.locale === 'fr-CA' ? 'Réals' : 'Directors',
 				path: 'directors'
 			},
 			{
