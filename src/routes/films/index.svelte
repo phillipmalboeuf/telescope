@@ -22,18 +22,18 @@
 	
 		return {
 			films: films.filter(film => {
-				if (query.tag && query.collaborator) {
-					return film.fields.tags.includes(query.tag) && film.fields.tags.includes(query.collaborator)
+				if (query.tag && query.director) {
+					return film.fields.tags.includes(query.tag) && film.fields.tags.includes(query.director)
 				} else if (query.tag) {
 					return film.fields.tags.includes(query.tag)
-				} else if (query.collaborator) {
-					return film.fields.tags.includes(query.collaborator)
+				} else if (query.director) {
+					return film.fields.tags.includes(query.director)
 				}
 
 				return true
 			}),
 			...query.tag && { currentTag: query.tag },
-			...query.collaborator && { currentCollaborator: query.collaborator },
+			...query.director && { currentCollaborator: query.director },
 			tags
 		}
 
