@@ -50,6 +50,11 @@ ol {
     <a rel=prefetch href="/en{item.path}" class:disabled={item.current === 'en-US'}>English</a>
   </h4>
   <h6>Languages • Langues</h6>
+  {:else if item.type === 'collaborator'}
+  <a rel=prefetch href={`films?director=${item.fields.tagIdentifier}`} on:click>
+    <h4>{item.fields.name}</h4>
+  </a>
+  <h6>{item.fields.profession}</h6>
   {:else}
   <a rel=prefetch href={item.type === 'about'
     ? `${item.type}#${item.fields.identifier}`

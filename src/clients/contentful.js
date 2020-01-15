@@ -14,15 +14,18 @@ export const navigation = locale => Promise.all([
   // client.getEntries({ content_type: 'product', locale, select, order }),
   client.getEntries({ content_type: 'aboutPiece', locale, select: ['sys.id', 'fields.title', 'fields.identifier', 'fields.tags'].join(','), order }),
   client.getEntries({ content_type: 'contactPoint', locale, select: ['sys.id', 'fields.title', 'fields.link', 'fields.linkLabel'].join(','), order }),
-  client.getEntries({ content_type: 'tag', locale, select: ['sys.id', 'fields.title', 'fields.identifier', 'fields.isACollaborator'].join(',') })
-]).then(async ([articles, films, about, contact, tags])=> {
+  client.getEntries({ content_type: 'tag', locale, select: ['sys.id', 'fields.title', 'fields.identifier', 'fields.isACollaborator'].join(',') }),
+  client.getEntry('7xp3hPYSZZdX48KmN6waSQ', { locale })
+]).then(async ([articles, films, about, contact, tags, slider])=> {
+  console.log(slider.fields.collaborators)
   return {
     articles: articles.items.map(item => ({ ...item, type: 'article' })),
     films: films.items.map(item => ({ ...item, type: 'film' })),
     // products: products.items.map(item => ({ ...item, type: 'product' })),
     about: about.items.map(item => ({ ...item, type: 'about' })),
     contact: contact.items.map(item => ({ ...item, type: 'contact' })),
-    tags: tags.items.map(item => ({ ...item, type: 'tag' }))
+    tags: tags.items.map(item => ({ ...item, type: 'tag' })),
+    collaborators: slider.fields.collaborators.map(item => ({ ...item, type: 'collaborator' }))
   }
 })
 

@@ -8,8 +8,8 @@
 	import { stores } from '@sapper/app'
 	const { preloading, page, session } = stores()
 
-	export let segment
-	let { films, articles, products, about, contact } = $session.navigation
+	// export let segment
+	let { films, articles, products, about, contact, collaborators } = $session.navigation
 
 	let visible = false
 	let ys = new Array(7).fill(0)
@@ -73,7 +73,9 @@
 			},
 			{
 				title: $session.locale === 'fr-CA' ? 'Réals' : 'Directors',
-				path: 'directors'
+				all: $session.locale === 'fr-CA' ? 'Tous les réals' : 'Overview of all Directors',
+				path: 'directors',
+				items: collaborators
 			},
 			{
 				title: $session.locale === 'fr-CA' ? 'Nouvelles' : 'News',
