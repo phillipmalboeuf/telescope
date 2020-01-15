@@ -17,7 +17,6 @@ export const navigation = locale => Promise.all([
   client.getEntries({ content_type: 'tag', locale, select: ['sys.id', 'fields.title', 'fields.identifier', 'fields.isACollaborator'].join(',') }),
   client.getEntry('7xp3hPYSZZdX48KmN6waSQ', { locale })
 ]).then(async ([articles, films, about, contact, tags, slider])=> {
-  console.log(slider.fields.collaborators)
   return {
     articles: articles.items.map(item => ({ ...item, type: 'article' })),
     films: films.items.map(item => ({ ...item, type: 'film' })),
