@@ -35,7 +35,9 @@
 	section > :global(h2),
 	section > :global(h4),
 	section > :global(h6),
-	section > :global(p) {
+	section > :global(p),
+	section > :global(picture) {
+		display: block;
 		width: 52.5vw;
 		margin-left: auto;
 	}

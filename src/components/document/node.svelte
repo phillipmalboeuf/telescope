@@ -1,5 +1,6 @@
 <script>
   import Gallery from '../Gallery.svelte'
+  import Picture from '../Picture.svelte'
   import Mark from './mark.svelte'
 
   import { stores } from '@sapper/app'
@@ -27,6 +28,8 @@
 {:else if node.nodeType === 'blockquote'}
   <blockquote>{#each node.content as code}<svelte:self node={code} />{/each}</blockquote>
 
+{:else if node.nodeType === 'embedded-asset-block'}
+<Picture media={node.data.target} />
 {:else if node.nodeType === 'embedded-entry-block'}
   {#if node.data.target.sys.contentType.sys.id === 'collaboratorSlider'}
   {#if !$session.isMobile}
