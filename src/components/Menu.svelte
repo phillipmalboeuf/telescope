@@ -57,7 +57,7 @@
 		return [
 			{
 				title: $session.locale === 'fr-CA' ? 'Récents' : 'Latest',
-				all: $session.locale === 'fr-CA' ? 'Page d\'acceuil' : 'Homepage',
+				all: $session.locale === 'fr-CA' ? 'Page d\'accueil' : 'Homepage',
 				path: '',
 				items: [...films, ...articles]
 					.filter(item => item.fields.tags.includes('recent'))
