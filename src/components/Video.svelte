@@ -3,6 +3,9 @@
 
   import Gallery from './Gallery.svelte'
 
+  import { stores } from '@sapper/app'
+	const { session } = stores()
+
   // export let poster
   export let srcs
   export let grabs = undefined
@@ -302,7 +305,7 @@
 
 <figure class:inactive class:fullscreen on:mousemove={activate} bind:this={element}>
   <figcaption class="breadcrumbs">
-    <h6><a href="" rel=prefetch>Telescope</a> <a href="/films" rel=prefetch>Retour aux Films</a></h6>
+    <h6><a href="" rel=prefetch>Telescope</a> <a href="films" rel=prefetch>{$session.locale === 'fr-CA' ? 'Retour aux films' : 'Back to Films'}</a></h6>
   </figcaption>
   <figcaption class="title"><slot name="title" /></figcaption>
 
