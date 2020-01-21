@@ -14,7 +14,7 @@
 	export let text
 
 	import { stores } from '@sapper/app'
-	const { session } = stores()
+	const { session, page } = stores()
 </script>
 
 <style>
@@ -63,6 +63,7 @@
 	<title>{$session.locale === 'fr-CA' ? 'Réals' : 'Directors'}</title>
 </svelte:head>
 
+{#if $page.path === '/directors'}
 <nav>
 	<a href=""><h6>Telescope</h6></a>
 	<a href="directors" class="current"><h6>{$session.locale === 'fr-CA' ? 'Réals' : 'Directors'}</h6></a>
@@ -71,3 +72,4 @@
 <section>
   <Document body={text.fields.body} />
 </section>
+{/if}
