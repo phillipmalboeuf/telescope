@@ -78,13 +78,17 @@
 
 <nav>
 	<a href="" rel=prefetch><h6>Telescope</h6></a>
+  {#if !currentCollaborator}
 	<span
     class:current={true}
     on:click={toggleTags}><h6>{#if currentTag}<Tag id={currentTag} />{:else}{all}{/if} {#if showTags}<span style="display:inline-block;transform:rotate(180deg)">↓</span>{:else}↓{/if}</h6></span>
+  {/if}
 
-  {#if tags.filter(([tag, total]) => contentTags[tag] && contentTags[tag].isACollaborator).length}<span
+  {#if !currentTag && tags.filter(([tag, total]) => contentTags[tag] && contentTags[tag].isACollaborator).length}
+  <span
     class:current={true}
-    on:click={toggleCollaborators}><h6>{#if currentCollaborator}<Tag id={currentCollaborator} />{:else}{$session.locale === 'fr-CA' ? 'Tous les réals' : 'All Directors'}{/if} {#if showCollaborators}<span style="display:inline-block;transform:rotate(180deg)">↓</span>{:else}↓{/if}</h6></span>{/if}
+    on:click={toggleCollaborators}><h6>{#if currentCollaborator}<Tag id={currentCollaborator} />{:else}{$session.locale === 'fr-CA' ? 'Tous les réals' : 'All Directors'}{/if} {#if showCollaborators}<span style="display:inline-block;transform:rotate(180deg)">↓</span>{:else}↓{/if}</h6></span>
+  {/if}
 
   {#if showTags}
   <div>
