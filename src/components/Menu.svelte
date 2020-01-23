@@ -83,11 +83,11 @@
 				path: 'articles',
 				items: articles
 			},
-			{
-				title: $session.locale === 'fr-CA' ? 'À propos' : 'About',
-				path: 'about',
-				items: about,
-			},
+			// {
+			// 	title: $session.locale === 'fr-CA' ? 'À propos' : 'About',
+			// 	path: 'about',
+			// 	items: about,
+			// },
 			// {
 			// 	title: $session.locale === 'fr-CA' ? 'Boutique' : 'Shop',
 			// 	all: $session.locale === 'fr-CA' ? 'Aperçu de toute la Boutique' : 'Overview of all Items',
@@ -194,7 +194,7 @@
 		}
 
 		ul > li > a > h4 {
-			padding: calc(var(--gutter) - 5pt);
+			padding: calc(var(--gutter) - 5pt) calc((var(--gutter)*1.25) - 5pt);
 			transition: transform 333ms, font-variation-settings 333ms;
 		}
 
@@ -205,12 +205,12 @@
 			}
 
 			ul > li > a > h4 {
-				padding: calc(var(--gutter) - 7pt);
+				padding: calc(var(--gutter) - 7pt) calc((var(--gutter)*1.09) - 7pt);
 			}
 		}
 
 		ul.selected > li > a > h4 {
-			transform: translateX(calc(var(--gutter) * -0.5));
+			transform: translateX(calc(var(--gutter) * -0.66)) ;
 		}
 
 		ul.selected > li.selected > a > h4 {
