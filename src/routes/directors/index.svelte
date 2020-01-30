@@ -60,13 +60,13 @@
 
 
 <svelte:head>
-	<title>{$session.locale === 'fr-CA' ? 'Réals' : 'Directors'}</title>
+	<title>{$session.locale === 'fr-CA' ? 'À propos' : 'About'}</title>
 </svelte:head>
 
 {#if $page.path === '/directors'}
 <nav>
 	<a href=""><h6>Telescope</h6></a>
-	<a href="directors" class="current"><h6>{$session.locale === 'fr-CA' ? 'Réals' : 'Directors'}</h6></a>
+	<a href="directors" class="current"><h6>{$session.locale === 'fr-CA' ? 'À propos' : 'About'}</h6></a>
 </nav>
 
 <section>

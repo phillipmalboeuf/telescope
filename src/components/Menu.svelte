@@ -72,16 +72,16 @@
 				items: films
 			},
 			{
-				title: $session.locale === 'fr-CA' ? 'Réals' : 'Directors',
-				all: $session.locale === 'fr-CA' ? 'Tous les réals' : 'Overview of all Directors',
-				path: 'directors',
-				items: collaborators
-			},
-			{
 				title: $session.locale === 'fr-CA' ? 'Nouvelles' : 'News',
 				all: $session.locale === 'fr-CA' ? 'Toutes les Nouvelles' : 'Overview of all News',
 				path: 'articles',
 				items: articles
+			},
+			{
+				title: $session.locale === 'fr-CA' ? 'À propos' : 'About',
+				all: $session.locale === 'fr-CA' ? 'Nous visons loin' : 'We Seek Further',
+				path: 'directors',
+				items: collaborators
 			},
 			// {
 			// 	title: $session.locale === 'fr-CA' ? 'À propos' : 'About',
