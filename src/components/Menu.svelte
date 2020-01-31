@@ -79,9 +79,10 @@
 			},
 			{
 				title: $session.locale === 'fr-CA' ? 'À propos' : 'About',
-				all: $session.locale === 'fr-CA' ? 'Nous visons loin' : 'We Seek Further',
+				all: $session.locale === 'fr-CA' ? 'Vision' : 'Vision',
 				path: 'directors',
-				items: collaborators
+				items: []
+				// items: collaborators
 			},
 			// {
 			// 	title: $session.locale === 'fr-CA' ? 'À propos' : 'About',
