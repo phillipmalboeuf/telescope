@@ -4,6 +4,7 @@
   export let src
   export let scrollY
   export let windowHeight
+  export let poster
 
   function onScroll(node, [y, height]) {
 
@@ -26,4 +27,4 @@
   }
 </style>
 
-<video use:onScroll={[scrollY, windowHeight]} src={src.fields.file.url} loop muted autoplay={true} disableRemotePlayback />
+<video src={src.fields.file.url} loop muted autoplay preload="none" disableRemotePlayback poster={poster} />

@@ -230,7 +230,8 @@
       <figure>
         {#if item.type === 'film'}
         {#if !$session.isMobile && item.fields.teaser}
-        <ListVideo {scrollY} {windowHeight} src={(!full && item.fields.animationList) || item.fields.teaser} />
+        <ListVideo {scrollY} {windowHeight} src={(!full && item.fields.animationList) || item.fields.teaser}
+          poster={`${item.fields.poster.fields.file.url}?w=900`} />
         {:else}
         <Picture media={item.fields.poster} />
         {/if}
