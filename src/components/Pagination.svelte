@@ -17,7 +17,7 @@
 
 		nav a {
 			font-family: 'Telescopique', system-ui, -apple-system;
-			font-variation-settings: "wdth" 250;
+			font-variation-settings: "wdth" 200;
 			font-size: var(--tiny);
       cursor: pointer;
       display: inline-block;
