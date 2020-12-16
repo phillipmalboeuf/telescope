@@ -7,7 +7,7 @@
 	const { session, page } = stores()
 
 	function search(query) {
-		return Object.entries(query).reduce((s, [name, value]) => {
+		return Object.entries(query).filter(([name, value]) => name !== 'p').reduce((s, [name, value]) => {
 			return s + '&' + name + '=' + value
 		}, '')
 	}
