@@ -4,7 +4,13 @@
   export let numberOfPages
 
 	import { stores } from '@sapper/app'
-	const { session } = stores()
+	const { session, page } = stores()
+
+	function search(query) {
+		return Object.entries(query).reduce((s, [name, value]) => {
+			return s + '&' + name + '=' + value
+		}, '')
+	}
 </script>
 
 <style>
@@ -51,14 +57,14 @@
 
 <nav>
 	{#if currentPage > 0}
-	<a href="{path}?p={currentPage - 1}">{$session.locale === 'fr-CA' ? '« Précédent' : '« Prev'}</a>
+	<a href="{path}?p={currentPage - 1}{search($page.query)}">{$session.locale === 'fr-CA' ? '« Précédent' : '« Prev'}</a>
 	{/if}
 
 	{#each Array.from(Array(numberOfPages)) as _, index}
-  <a href="{path}?p={index}" class:current={index === currentPage}>{index+1}</a>
+  <a href="{path}?p={index}{search($page.query)}" class:current={index === currentPage}>{index+1}</a>
   {/each}
 
 	{#if currentPage < numberOfPages - 1}
-	<a href="{path}?p={currentPage + 1}">{$session.locale === 'fr-CA' ? 'Suivant »' : 'Next »'}</a>
+	<a href="{path}?p={currentPage + 1}{search($page.query)}">{$session.locale === 'fr-CA' ? 'Suivant »' : 'Next »'}</a>
 	{/if}
 </nav>
